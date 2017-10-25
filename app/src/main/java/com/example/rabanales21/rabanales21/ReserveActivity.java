@@ -3,14 +3,11 @@ package com.example.rabanales21.rabanales21;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class ReserveActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        System.out.println("ok");
+        setContentView(R.layout.activity_reserve);
     }
-    
-    String cadena = "Hola Mundo mhlhoi";
 }
