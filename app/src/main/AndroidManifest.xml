@@ -17,13 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MemberActivity" />
-        <activity android:name=".AdminActivity" />
-        <activity android:name=".AddCompanyActivity" />
-        <activity android:name=".DeleteCompanyActivity" />
-        <activity android:name=".CalendarActivity" />
-        <activity android:name=".ReserveActivity" />
-        <activity android:name=".CancelActivity"></activity>
+        <activity android:name=".MemberActivity"></activity>
     </application>
 
 </manifest>
