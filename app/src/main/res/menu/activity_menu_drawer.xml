@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Salas">
+        <menu>
+        <item
+            android:id="@+id/salacentgrande"
+            android:icon="@mipmap/ic_salas"
+            android:title="Sala Centauro Grande" />
+        <item
+            android:id="@+id/salacentpeque"
+            android:icon="@mipmap/ic_salas"
+            android:title="Sala Centauro Pequeña" />
+        <item
+            android:id="@+id/salasilos"
+            android:icon="@mipmap/ic_salas"
+            android:title="Sala Silos" />
+        <item
+            android:id="@+id/salaformacion"
+            android:icon="@mipmap/ic_salas"
+            android:title="Sala de formación" />
+        <item
+            android:id="@+id/salaaldebaran"
+            android:icon="@mipmap/ic_salas"
+            android:title="Sala Aldebarán" />
+        </menu>
+    </item>
+
+
+    <item android:title="Ajustes"
+        android:icon="@android:drawable/ic_menu_manage">
+        <menu>
+            <item
+                android:id="@+id/cambiarpass"
+                android:icon="@android:drawable/ic_partial_secure"
+                android:title="Cambiar contraseña" />
+            <item
+                android:id="@+id/cerrarsesion"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Cerrar sesion" />
+        </menu>
+    </item>
+
+</menu>
