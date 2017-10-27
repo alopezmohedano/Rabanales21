@@ -3,6 +3,10 @@
 
     <item android:title="Salas">
         <menu>
+            <item
+                android:id="@+id/inicio"
+                android:icon="@mipmap/ic_salas"
+                android:title="Inicio" />
         <item
             android:id="@+id/salacentgrande"
             android:icon="@mipmap/ic_salas"
@@ -27,8 +31,7 @@
     </item>
 
 
-    <item android:title="Ajustes"
-        android:icon="@android:drawable/ic_menu_manage">
+    <item android:title="Ajustes">
         <menu>
             <item
                 android:id="@+id/cambiarpass"
