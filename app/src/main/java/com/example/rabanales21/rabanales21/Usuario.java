@@ -1,15 +1,14 @@
 package com.example.rabanales21.rabanales21;
 
-/**
- * Created by Crcama on 26/10/2017.
- */
-
 public class Usuario {
     private String nombreUsuario;
-    private Integer nombreEmpresa;
-    private String codigoUsuario;
+    private String nombreEmpresa;
+    private Integer codigoUsuario;
 
-    public Usuario(String nombreUsuario, Integer nombreEmpresa, String codigoUsuario) {
+    public Usuario() {
+    }
+
+    public Usuario(String nombreUsuario, String nombreEmpresa, Integer codigoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.nombreEmpresa = nombreEmpresa;
         this.codigoUsuario = codigoUsuario;
@@ -23,42 +22,42 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Integer getNombreEmpresa() {
+    public String getNombreEmpresa() {
         return nombreEmpresa;
     }
 
-    public void setNombreEmpresa(Integer nombreEmpresa) {
+    public void setNombreEmpresa(String nombreEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
     }
 
-    public String getCodigoUsuario() {
+    public Integer getCodigoUsuario() {
         return codigoUsuario;
     }
 
-    public void setCodigoUsuario(String codigoUsuario) {
+    public void setCodigoUsuario(Integer codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Usuario)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Usuario usuario = (Usuario) o;
 
-        if (getNombreUsuario() != null ? !getNombreUsuario().equals(usuario.getNombreUsuario()) : usuario.getNombreUsuario() != null)
+        if (nombreUsuario != null ? !nombreUsuario.equals(usuario.nombreUsuario) : usuario.nombreUsuario != null)
             return false;
-        if (getNombreEmpresa() != null ? !getNombreEmpresa().equals(usuario.getNombreEmpresa()) : usuario.getNombreEmpresa() != null)
+        if (nombreEmpresa != null ? !nombreEmpresa.equals(usuario.nombreEmpresa) : usuario.nombreEmpresa != null)
             return false;
-        return getCodigoUsuario() != null ? getCodigoUsuario().equals(usuario.getCodigoUsuario()) : usuario.getCodigoUsuario() == null;
+        return codigoUsuario != null ? codigoUsuario.equals(usuario.codigoUsuario) : usuario.codigoUsuario == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = getNombreUsuario() != null ? getNombreUsuario().hashCode() : 0;
-        result = 31 * result + (getNombreEmpresa() != null ? getNombreEmpresa().hashCode() : 0);
-        result = 31 * result + (getCodigoUsuario() != null ? getCodigoUsuario().hashCode() : 0);
+        int result = nombreUsuario != null ? nombreUsuario.hashCode() : 0;
+        result = 31 * result + (nombreEmpresa != null ? nombreEmpresa.hashCode() : 0);
+        result = 31 * result + (codigoUsuario != null ? codigoUsuario.hashCode() : 0);
         return result;
     }
 }
