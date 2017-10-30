@@ -23,7 +23,8 @@ public class MenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.contenedor,new Inicio()).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -73,7 +74,9 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentManager fragmentManager=getSupportFragmentManager();
-        if (id == R.id.salacentgrande) {
+        if (id == R.id.inicio) {
+            fragmentManager.beginTransaction().replace(R.id.contenedor,new Inicio()).commit();
+        } else if (id == R.id.salacentgrande) {
             fragmentManager.beginTransaction().replace(R.id.contenedor,new Salacentaurogrande()).commit();
         } else if (id == R.id.salacentpeque) {
             fragmentManager.beginTransaction().replace(R.id.contenedor,new Salacentauropeque()).commit();
