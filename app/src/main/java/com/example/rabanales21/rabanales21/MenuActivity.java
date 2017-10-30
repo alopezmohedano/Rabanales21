@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MenuActivity extends AppCompatActivity
+
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -34,6 +40,9 @@ public class MenuActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
     }
 
     @Override
@@ -71,23 +80,27 @@ public class MenuActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentManager fragmentManager2=getSupportFragmentManager();
         if (id == R.id.inicio) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new Inicio()).commit();
-        } else if (id == R.id.salacentgrande) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new Salacentaurogrande()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Inicio()).commit();
+        }else if (id == R.id.salas) {
+            fragmentManager2.beginTransaction().replace(R.id.contenedor, new Muestra_salas()).commit();
+        }else if (id == R.id.salacentgrande) {
+            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Salacentaurogrande()).commit();
         } else if (id == R.id.salacentpeque) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new Salacentauropeque()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Salacentauropeque()).commit();
         } else if (id == R.id.salasilos) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new Salasilos()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Salasilos()).commit();
         } else if (id == R.id.salaformacion) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new Salaformacion()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Salaformacion()).commit();
         } else if (id == R.id.salaaldebaran) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new SalaAldebaran()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor,new SalaAldebaran()).commit();
         } else if (id == R.id.cambiarpass) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new Cambiarpass()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Cambiarpass()).commit();
         } else if (id == R.id.cerrarsesion) {
 
         }
