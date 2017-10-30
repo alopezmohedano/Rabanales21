@@ -2,13 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.example.rabanales21.rabanales21.Inicio">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/btnreservar"
@@ -17,7 +17,7 @@
             android:layout_marginStart="92dp"
             android:background="@android:color/transparent"
             app:srcCompat="@mipmap/ic_reserva"
-            android:layout_marginTop="121dp"
+            android:layout_marginTop="1dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
 
@@ -31,62 +31,7 @@
             android:layout_alignTop="@+id/btnreservar"
             android:layout_toEndOf="@+id/btnreservar" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnreservar"
-            android:layout_marginTop="21dp"
-            android:layout_toStartOf="@+id/btnconsultar"
-            android:text="Reservar"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Consultar"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:layout_alignBaseline="@+id/textView3"
-            android:layout_alignBottom="@+id/textView3"
-            android:layout_alignStart="@+id/btnconsultar" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tu proxima reserva es:"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:layout_below="@+id/textView3"
-            android:layout_toStartOf="@+id/textView4"
-            android:layout_marginTop="77dp" />
-
-        <TextView
-            android:id="@+id/tv_sala"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView5"
-            android:layout_below="@+id/textView5"
-            android:layout_marginTop="23dp" />
-
-        <TextView
-            android:id="@+id/tv_dia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_sala"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/tv_sala" />
-
-        <TextView
-            android:id="@+id/tv_hora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_dia"
-            android:layout_below="@+id/tv_dia"
-            android:layout_marginTop="27dp" />
     </RelativeLayout>
 
 

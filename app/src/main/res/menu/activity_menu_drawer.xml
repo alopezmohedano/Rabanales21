@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Salas">
+    <item android:title="Menu">
         <menu>
             <item
                 android:id="@+id/inicio"
                 android:icon="@mipmap/icono_sala1"
                 android:title="Inicio" />
+            <item
+                android:id="@+id/salas"
+                android:icon="@mipmap/icono_sala1"
+                android:title="Salas" />
         <item
             android:id="@+id/salacentgrande"
             android:icon="@mipmap/icono_sala1"
