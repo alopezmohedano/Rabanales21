@@ -5,27 +5,27 @@
         <menu>
             <item
                 android:id="@+id/inicio"
-                android:icon="@mipmap/ic_salas"
+                android:icon="@mipmap/icono_sala1"
                 android:title="Inicio" />
         <item
             android:id="@+id/salacentgrande"
-            android:icon="@mipmap/ic_salas"
+            android:icon="@mipmap/icono_sala1"
             android:title="Sala Centauro Grande" />
         <item
             android:id="@+id/salacentpeque"
-            android:icon="@mipmap/ic_salas"
+            android:icon="@mipmap/icono_sala1"
             android:title="Sala Centauro Pequeña" />
         <item
             android:id="@+id/salasilos"
-            android:icon="@mipmap/ic_salas"
+            android:icon="@mipmap/icono_sala1"
             android:title="Sala Silos" />
         <item
             android:id="@+id/salaformacion"
-            android:icon="@mipmap/ic_salas"
+            android:icon="@mipmap/icono_sala1"
             android:title="Sala de formación" />
         <item
             android:id="@+id/salaaldebaran"
-            android:icon="@mipmap/ic_salas"
+            android:icon="@mipmap/icono_sala1"
             android:title="Sala Aldebarán" />
         </menu>
     </item>
