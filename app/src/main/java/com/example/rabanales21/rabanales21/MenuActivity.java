@@ -1,5 +1,6 @@
 package com.example.rabanales21.rabanales21;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -86,6 +87,8 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager2=getSupportFragmentManager();
         if (id == R.id.inicio) {
+            Intent intent = new Intent(this, Reservar.class);
+            startActivity(intent);
             fragmentManager2.beginTransaction().replace(R.id.contenedor,new Inicio()).commit();
         }else if (id == R.id.salas) {
             fragmentManager2.beginTransaction().replace(R.id.contenedor, new Muestra_salas()).commit();
