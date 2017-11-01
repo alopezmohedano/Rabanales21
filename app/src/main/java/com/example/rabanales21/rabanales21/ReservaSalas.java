@@ -14,9 +14,10 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
-public class Salacentauropeque extends Fragment implements View.OnClickListener {
+public class ReservaSalas extends Fragment implements View.OnClickListener {
     CalendarView calendarView;
 
     @Override
@@ -65,7 +66,12 @@ public class Salacentauropeque extends Fragment implements View.OnClickListener 
 
         spSalas.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, salas));
 
-        spSalas.setSelection(1);
+        if (getArguments() != null) {
+            Bundle arguments = getArguments();
+            int numeroSala = arguments.getInt("sala");
+
+            spSalas.setSelection(numeroSala);
+        }
 
         spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
         spStart.setVisibility(View.GONE);
