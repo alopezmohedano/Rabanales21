@@ -1,5 +1,6 @@
 package com.example.rabanales21.rabanales21;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -99,25 +100,35 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentManager fragmentManager2=getSupportFragmentManager();
+        ReservaSalas fragment = new ReservaSalas();
+        Bundle arguments = new Bundle();
         if (id == R.id.inicio) {
-
+            /*Intent intent = new Intent(this, Reservar.class);
+            startActivity(intent);*/
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
-
-            Intent intent = new Intent(this, Reservar.class);
-            startActivity(intent);
-
         }else if (id == R.id.salas) {
             fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
         }else if (id == R.id.salacentgrande) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Salacentaurogrande()).commit();
+
+            arguments.putInt( "sala" , 0);
+            fragment.setArguments(arguments);
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salacentpeque) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Salacentauropeque()).commit();
+            arguments.putInt( "sala" , 1);
+            fragment.setArguments(arguments);
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salasilos) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Salasilos()).commit();
+            arguments.putInt( "sala" , 2);
+            fragment.setArguments(arguments);
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salaformacion) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Salaformacion()).commit();
+            arguments.putInt( "sala" , 3);
+            fragment.setArguments(arguments);
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salaaldebaran) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new SalaAldebaran()).commit();
+            arguments.putInt( "sala" , 4);
+            fragment.setArguments(arguments);
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.cambiarpass) {
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Cambiarpass()).commit();
         } else if (id == R.id.cerrarsesion) {
