@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:layout_gravity="center_horizontal"
-    card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="6dp"
-    card_view:cardUseCompatPadding="true">
+    style="@style/MyCardViewStyle">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
