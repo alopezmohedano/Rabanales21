@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TabHost;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +30,22 @@ public class MenuActivity extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);;
+        tabLayout.addTab(tabLayout.newTab().setText("Reservar"));
+        tabLayout.addTab(tabLayout.newTab().setText("Consultar"));
+        tabLayout.addTab(tabLayout.newTab().setText("Ajustes"));
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contenedor,new Inicio()).commit();
+        fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -92,31 +105,32 @@ public class MenuActivity extends AppCompatActivity
         if (id == R.id.inicio) {
             /*Intent intent = new Intent(this, Reservar.class);
             startActivity(intent);*/
-            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Inicio()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
         }else if (id == R.id.salas) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor, new Muestra_salas()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
         }else if (id == R.id.salacentgrande) {
+
             arguments.putInt( "sala" , 0);
             fragment.setArguments(arguments);
-            fragmentManager2.beginTransaction().replace(R.id.contenedor,fragment).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salacentpeque) {
             arguments.putInt( "sala" , 1);
             fragment.setArguments(arguments);
-            fragmentManager2.beginTransaction().replace(R.id.contenedor,fragment).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salasilos) {
             arguments.putInt( "sala" , 2);
             fragment.setArguments(arguments);
-            fragmentManager2.beginTransaction().replace(R.id.contenedor,fragment).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salaformacion) {
             arguments.putInt( "sala" , 3);
             fragment.setArguments(arguments);
-            fragmentManager2.beginTransaction().replace(R.id.contenedor,fragment).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.salaaldebaran) {
             arguments.putInt( "sala" , 4);
             fragment.setArguments(arguments);
-            fragmentManager2.beginTransaction().replace(R.id.contenedor,fragment).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).commit();
         } else if (id == R.id.cambiarpass) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor,new Cambiarpass()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Cambiarpass()).commit();
         } else if (id == R.id.cerrarsesion) {
 
         }
@@ -125,4 +139,7 @@ public class MenuActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 }
