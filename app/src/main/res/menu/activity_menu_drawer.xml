@@ -33,7 +33,8 @@
             android:title="Sala Aldebarán" />
     </menu>
 </item>
-
+<group android:id="@+id/grupoadmin"
+    android:visible="false">
     <item android:title="Menu admin">
         <menu>
             <item
@@ -46,7 +47,7 @@
                 android:title="Gestion empresas" />
         </menu>
     </item>
-
+</group>
 
     <item android:title="Ajustes">
         <menu>
