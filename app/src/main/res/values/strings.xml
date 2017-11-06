@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Rabanales21</string>
-    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_menu">Bienvenido</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

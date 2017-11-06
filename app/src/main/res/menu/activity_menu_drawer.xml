@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Menu">
-        <menu>
-            <item
-                android:id="@+id/inicio"
-                android:icon="@mipmap/icono_sala1"
-                android:title="Inicio" />
-            <item
-                android:id="@+id/salas"
-                android:icon="@mipmap/icono_sala1"
-                android:title="Salas" />
+    <menu>
+        <item
+            android:id="@+id/inicio"
+            android:icon="@mipmap/icono_sala1"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/salas"
+            android:icon="@mipmap/icono_sala1"
+            android:title="Salas" />
         <item
             android:id="@+id/salacentgrande"
             android:icon="@mipmap/icono_sala1"
@@ -31,6 +31,19 @@
             android:id="@+id/salaaldebaran"
             android:icon="@mipmap/icono_sala1"
             android:title="Sala Aldebarán" />
+    </menu>
+</item>
+
+    <item android:title="Menu admin">
+        <menu>
+            <item
+                android:id="@+id/gestionreservas"
+                android:icon="@mipmap/icono_reserva"
+                android:title="Gestion reservas" />
+            <item
+                android:id="@+id/gestionempresas"
+                android:icon="@mipmap/ic_empresa"
+                android:title="Gestion empresas" />
         </menu>
     </item>
 
