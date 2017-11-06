@@ -18,6 +18,9 @@ import android.view.MenuItem;
 
 
 
+import static com.example.rabanales21.rabanales21.R.id.contenedor1;
+import static com.example.rabanales21.rabanales21.R.id.viewPager;
+
 public class MenuActivity extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,18 +31,54 @@ public class MenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final FragmentManager fragmentManager=getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);;
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.wtabLayout);;
+
         tabLayout.addTab(tabLayout.newTab().setText("Reservar"));
         tabLayout.addTab(tabLayout.newTab().setText("Consultar"));
         tabLayout.addTab(tabLayout.newTab().setText("Ajustes"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0) {
+                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
+                } else if(tab.getPosition() == 1){
+                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
+                } else if (tab.getPosition() == 2){
+                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Cambiarpass()).commit();
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, new Inicio()).commit();
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0) {
+                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
+                } else if(tab.getPosition() == 1){
+                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
+                } else if (tab.getPosition() == 2){
+                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Cambiarpass()).commit();
+                }
+
+
+            }
+
+        });
 
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -148,4 +187,5 @@ public class MenuActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
