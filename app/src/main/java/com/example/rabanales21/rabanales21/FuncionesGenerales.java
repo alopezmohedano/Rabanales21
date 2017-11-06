@@ -3,6 +3,9 @@ package com.example.rabanales21.rabanales21;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by Eduardo on 05/11/2017.
  */
@@ -23,7 +26,7 @@ public class FuncionesGenerales {
 
             for (String data: valuesUser) {
 
-                if(data.equals(" ") || data.equals("&") || data.equals(";")){
+                if(data.equals(" ") || data.equals(",") || data.equals(";") || data.equals(".") || data.equals(":")){
 
                     error = true;
 
@@ -43,7 +46,7 @@ public class FuncionesGenerales {
 
         String[] valuesPass = pass.split("");
 
-        if (valuesPass.length != 7) {
+        if (valuesPass.length < 9) {
 
             error = 1;
 
@@ -53,7 +56,7 @@ public class FuncionesGenerales {
 
             for (String data: valuesPass) {
 
-                if(data.equals(" ") || data.equals("&") || data.equals(";")){
+                if(data.equals(" ") || data.equals(",") || data.equals(";") || data.equals(".") || data.equals(":")){
 
                     error = 2;
 
@@ -71,4 +74,11 @@ public class FuncionesGenerales {
         Toast.makeText(view, message, Toast.LENGTH_SHORT).show();
 
     }
+
+    public String datosLlamada(String m, String n){
+
+        return m+n;
+
+    }
+
 }

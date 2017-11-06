@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     FuncionesGenerales myController = new FuncionesGenerales();
@@ -51,15 +53,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case 0:
 
-                    Intent intent = new Intent(this, MenuActivity.class);
+                    String miPagina = "login.php";
 
-                    startActivity(intent);
+                    String miWhere = "?nombre_usuario=" + edtUser.getText().toString() + "&pass=" + edtPass.getText().toString();
+
+                    try {
+
+                        ConexionAsincrona miCon = new ConexionAsincrona();
+
+                        String[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+
+                        if (respuesta[0] != null){
+
+                            Intent intent = new Intent(this, MenuActivity.class);
+
+                            intent.putExtra("respuestaLogin", respuesta);
+
+                            startActivity(intent);
+
+                        } else {
+
+                            myController.WarningMessages(this, "Usuario o contraseña incorrectos");
+
+                        }
+
+
+                    } catch (InterruptedException e) {
+
+                        e.printStackTrace();
+
+                    } catch (ExecutionException e) {
+
+                        e.printStackTrace();
+
+                    }
 
                     break;
 
                 case 1:
 
-                    myController.WarningMessages(this, "Contraseña incompleta. Debe contener 6 caracteres");
+                    myController.WarningMessages(this, "Contraseña vacia o demasiado corta");
 
                     break;
 
