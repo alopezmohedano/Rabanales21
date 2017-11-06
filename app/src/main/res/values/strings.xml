@@ -9,4 +9,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Strings Activity Main -->
+    <string name="loginEdtUser">Usuario</string>
+    <string name="loginEdtPass">Contraseña</string>
+    <string name="loginImgUser">Usuario</string>
+    <string name="loginImgPass">Contraseña</string>
+    <string name="loginImgLogo">Rabanales21</string>
+    <string name="loginBtnLog">Iniciar sesión</string>
 </resources>
