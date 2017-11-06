@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Rabanales21.iml" filepath="$PROJECT_DIR$/Rabanales21.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Rabanales21(2).iml" filepath="$PROJECT_DIR$/Rabanales21(2).iml" />
+      <module fileurl="file://C:\Users\DAVID\AndroidStudioProjects\Rabanales21-3\Rabanales21.iml" filepath="C:\Users\DAVID\AndroidStudioProjects\Rabanales21-3\Rabanales21.iml" />
+      <module fileurl="file://C:\Users\DAVID\AndroidStudioProjects\Rabanales21-3\Rabanales21(2).iml" filepath="C:\Users\DAVID\AndroidStudioProjects\Rabanales21-3\Rabanales21(2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Rabanales21-3.iml" filepath="$PROJECT_DIR$/.idea/Rabanales21-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
