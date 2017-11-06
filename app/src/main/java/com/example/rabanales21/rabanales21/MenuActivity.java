@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -44,7 +45,8 @@ public class MenuActivity extends AppCompatActivity
         final FragmentManager fragmentManager=getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.wtabLayout);;
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.wtabLayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Inicio"));
         tabLayout.addTab(tabLayout.newTab().setText("Reservar"));
         tabLayout.addTab(tabLayout.newTab().setText("Consultar"));
         tabLayout.addTab(tabLayout.newTab().setText("Ajustes"));
@@ -53,14 +55,22 @@ public class MenuActivity extends AppCompatActivity
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
-                } else if(tab.getPosition() == 1){
-                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
-                } else if (tab.getPosition() == 2){
-                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Cambiarpass()).commit();
+                Fragment retorno = null;
+                switch (tab.getPosition()){
+                    case 0:
+                        retorno = new Inicio();
+                    break;
+                    case 1:
+                        retorno= new Muestra_salas();
+                        break;
+                    case 2:
+                        retorno= new Consultar();
+                        break;
+                    case 3:
+                        retorno= new Cambiarpass();
+                        break;
                 }
-
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).commit();
             }
 
             @Override
@@ -71,16 +81,24 @@ public class MenuActivity extends AppCompatActivity
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
-                } else if(tab.getPosition() == 1){
-                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).commit();
-                } else if (tab.getPosition() == 2){
-                    fragmentManager.beginTransaction().replace(R.id.contenedor1, new Cambiarpass()).commit();
+                Fragment retorno = null;
+                switch (tab.getPosition()){
+                    case 0:
+                        retorno = new Inicio();
+                        break;
+                    case 1:
+                        retorno= new Muestra_salas();
+                        break;
+                    case 2:
+                        retorno= new Consultar();
+                        break;
+                    case 3:
+                        retorno= new Cambiarpass();
+                        break;
                 }
-
-
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).commit();
             }
+
 
         });
 
@@ -179,8 +197,6 @@ public class MenuActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 
 
 }
