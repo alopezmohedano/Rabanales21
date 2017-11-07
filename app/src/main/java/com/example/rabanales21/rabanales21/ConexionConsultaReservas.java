@@ -12,17 +12,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Telefonica on 06/11/2017.
+ * Created by Alvaro on 07/11/2017.
  */
 
-class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
+class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
 
     @Override
-    protected String[] doInBackground(String... params) {
+    protected Reserva[] doInBackground(String... params) {
 
         StringBuilder resul;
 
-        String[] auxiliar = new String[4];
+        Reserva[] auxiliar = null;
 
         try {
 
@@ -47,21 +47,17 @@ class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
                     resul.append(linea);
 
                 }
-
             }
 
             JSONArray json = new JSONArray(resul.toString());
 
+            auxiliar = new Reserva[json.length()];
+
             if(json.length() > 0) {
 
-                auxiliar[0] = json.getJSONObject(0).get("nombre_usuario").toString();
-
-                auxiliar[1] = json.getJSONObject(0).get("nombre_empresa").toString();
-
-                auxiliar[2] = json.getJSONObject(0).get("tipo").toString();
-
-                auxiliar[3] = json.getJSONObject(0).get("cod_u").toString();
-
+                for (int i= 0; i < json.length(); i++) {
+                    auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
+                }
             }
 
         } catch (Exception e) {
@@ -72,5 +68,4 @@ class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
         return auxiliar;
 
     }
-
 }
