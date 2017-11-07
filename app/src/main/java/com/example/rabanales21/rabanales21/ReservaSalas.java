@@ -1,10 +1,13 @@
 package com.example.rabanales21.rabanales21;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +42,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         final Button btnDate = (Button) (getActivity().findViewById(R.id.btnDate));
         btnDate.setOnClickListener(this);
+        final Button btnReservar = (Button) (getActivity().findViewById(R.id.btnReservar));
+        btnReservar.setOnClickListener(this);
 
         // TextView tvDate = (TextView) findViewById(R.id.tvDate);
         final TextView tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
@@ -138,6 +143,22 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 } else {
                     calendarView.setVisibility(View.GONE);
                 }
+                break;
+            case R.id.btnReservar:
+                AlertDialog.Builder cuadro  = new AlertDialog.Builder(getActivity());
+                cuadro.setMessage("¿Desea realizar la reserva?");
+                //uno para aceptar que llamará a la actividad editarActivity pasandole el contacto a editar
+                cuadro.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                //y otro para cancelar que no hace nada
+                cuadro.setNegativeButton(android.R.string.no, null);
+
+                cuadro.show();
                 break;
         }
     }
