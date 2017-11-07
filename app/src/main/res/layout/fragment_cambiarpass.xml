@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/currentPass"
-        <!--android:inputType="textPersonName"   -->
         android:inputType="textPassword"
         tools:layout_constraintTop_creator="1"
         android:layout_marginTop="10dp"
@@ -42,7 +41,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/newPass"
-        <!--android:inputType="textPersonName"-->
         android:inputType="textPassword"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -58,7 +56,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/newPass"
-        <!--android:inputType="textPersonName"-->
         android:inputType="textPassword"
 
         tools:layout_constraintTop_creator="1"
