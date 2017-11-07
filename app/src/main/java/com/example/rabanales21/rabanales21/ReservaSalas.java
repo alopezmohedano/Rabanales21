@@ -115,7 +115,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         }
 
 
-        int[] testReserva = {9, 14};
+        // int[] testReserva = {17, 20};
 
         String miPagina = "consultaReservas.php";
 
@@ -132,12 +132,15 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 Reserva[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
 
                 if (respuesta[0] != null) {
-                    Toast.makeText(getContext(), "" + respuesta[0].inicio, Toast.LENGTH_LONG).show();
+                    for (int i=0;i<respuesta.length;i++) {
+                        int[] intervalo = new int[2];
 
-                } else {
+                        intervalo[0] = Integer.parseInt(respuesta[i].getInicio().substring(11,13));
+                        intervalo[1] = Integer.parseInt(respuesta[i].getFin().substring(11,13));
 
+                        eliminarIntervaloReserva(intervalo);
+                    }
                 }
-
 
             } catch (InterruptedException e) {
 
@@ -150,7 +153,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
             }
         }
 
-        eliminarIntervaloReserva(testReserva);
+        // eliminarIntervaloReserva(testReserva);
 
         spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
         spStart.setVisibility(View.GONE);
@@ -187,7 +190,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         int intervaloReserva = horarioReserva[1] - horarioReserva[0];
         for (int i = 0; i < horasStart.size(); i++) {
             if (horasStart.get(i).equals(stringReserva[0])) {
-                for (int j = i + intervaloReserva; j >= i; j--) {
+                for (int j = i + intervaloReserva -1; j >= i; j--) {
                     horasStart.remove(j);
                     horasEnd.remove(j);
                 }
