@@ -24,7 +24,7 @@ android:padding="16dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="39dp"
         android:fontFamily="sans-serif"
-        android:text="Bienvenido a la aplicacion de RABANALES 21"
+        android:text="@string/welcome"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
@@ -37,7 +37,9 @@ android:padding="16dp"
         android:layout_alignStart="@+id/viewPager"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="36dp"
-        android:text="Tu proxima reseva es:"
-        android:textColor="@android:color/black" />
+        android:text="@string/nextReserva"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/viewPager" />
 
 </RelativeLayout>

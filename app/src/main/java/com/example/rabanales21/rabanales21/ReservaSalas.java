@@ -60,7 +60,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         final Spinner spStart = (Spinner) (getActivity().findViewById(R.id.spStart));
         final Spinner spEnd = (Spinner) (getActivity().findViewById(R.id.spEnd));
 
-        String[] salas = {"SALA CENTAURO GRANDE", "SALA CENTAURO PEQUEÑA", "SALA SILOS", "SALA DE FORMACION", "SALA ALDEBARAN"};
+        String[] salas = {getString(R.string.salaCentauroG), getString(R.string.salaCentauroP), getString(R.string.salaSilos), getString(R.string.salaFormacion), getString(R.string.salaAldebaran)};
 
         spSalas.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, salas));
 
@@ -71,37 +71,12 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
             spSalas.setSelection(numeroSala);
         }
 
-        horasStart.add("7:00");
-        horasStart.add("8:00");
-        horasStart.add("9:00");
-        horasStart.add("10:00");
-        horasStart.add("11:00");
-        horasStart.add("12:00");
-        horasStart.add("13:00");
-        horasStart.add("14:00");
-        horasStart.add("15:00");
-        horasStart.add("16:00");
-        horasStart.add("17:00");
-        horasStart.add("18:00");
-        horasStart.add("19:00");
-        horasStart.add("20:00");
-        horasStart.add("21:00");
+        for (int i=7; i<22; i++) {horasStart.add(i+":00");}
+        for (int i=8; i<23; i++) {horasEnd.add(i+":00");}
 
-        horasEnd.add("8:00");
-        horasEnd.add("9:00");
-        horasEnd.add("10:00");
-        horasEnd.add("11:00");
-        horasEnd.add("12:00");
-        horasEnd.add("13:00");
-        horasEnd.add("14:00");
-        horasEnd.add("15:00");
-        horasEnd.add("16:00");
-        horasEnd.add("17:00");
-        horasEnd.add("18:00");
-        horasEnd.add("19:00");
-        horasEnd.add("20:00");
-        horasEnd.add("21:00");
-        horasEnd.add("22:00");
+        // int[] testReserva = {9,14};
+
+        // eliminarIntervaloReserva(testReserva);
 
         calendarView = (CalendarView) (getActivity().findViewById(R.id.calendarView));
 
@@ -269,7 +244,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnReservar:
                 AlertDialog.Builder cuadro  = new AlertDialog.Builder(getActivity());
-                cuadro.setMessage("¿Desea realizar la reserva?");
+
+                cuadro.setMessage(getString(R.string.confReserva));
                 cuadro.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     @Override

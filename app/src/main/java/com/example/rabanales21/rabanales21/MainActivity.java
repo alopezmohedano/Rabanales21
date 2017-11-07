@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (userError){
 
-            myController.WarningMessages(this, "Nombre de usuario incorrecto o vacio");
+            myController.WarningMessages(this, getString(R.string.emptyUser));
 
         } else {
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         } else {
 
-                            myController.WarningMessages(this, "Usuario o contraseña incorrectos");
+                            myController.WarningMessages(this, getString(R.string.wrongUser));
 
                         }
 
@@ -92,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case 1:
 
-                    myController.WarningMessages(this, "Contraseña vacia o demasiado corta");
+                    myController.WarningMessages(this, getString(R.string.emptyPass));
 
                     break;
 
                 case 2:
 
-                    myController.WarningMessages(this, "Contraseña de usuario incorrecta");
+                    myController.WarningMessages(this, getString(R.string.wrongPass));
 
                     break;
 
