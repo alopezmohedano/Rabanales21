@@ -28,6 +28,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
     ArrayList<String> horasStart = new ArrayList<>();
     ArrayList<String> horasEnd = new ArrayList<>();
     FuncionesGenerales myController = new FuncionesGenerales();
+    String diaEscogido;
+    int numeroSala = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +61,15 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         final Spinner spEnd = (Spinner) (getActivity().findViewById(R.id.spEnd));
 
         String[] salas = {"SALA CENTAURO GRANDE", "SALA CENTAURO PEQUEÑA", "SALA SILOS", "SALA DE FORMACION", "SALA ALDEBARAN"};
+
+        spSalas.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, salas));
+
+        if (getArguments() != null) {
+            Bundle arguments = getArguments();
+            numeroSala = arguments.getInt("sala");
+
+            spSalas.setSelection(numeroSala);
+        }
 
         horasStart.add("7:00");
         horasStart.add("8:00");
@@ -102,56 +113,102 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 calendarView.setVisibility(View.GONE);
                 spStart.setVisibility(View.VISIBLE);
                 tvStart.setVisibility(View.VISIBLE);
+                spEnd.setVisibility(View.VISIBLE);
+                tvEnd.setVisibility(View.VISIBLE);
+                spStart.setSelection(0);
+                spEnd.setSelection(0);
+
+                horasStart.clear();
+                horasStart.add("7:00");
+                horasStart.add("8:00");
+                horasStart.add("9:00");
+                horasStart.add("10:00");
+                horasStart.add("11:00");
+                horasStart.add("12:00");
+                horasStart.add("13:00");
+                horasStart.add("14:00");
+                horasStart.add("15:00");
+                horasStart.add("16:00");
+                horasStart.add("17:00");
+                horasStart.add("18:00");
+                horasStart.add("19:00");
+                horasStart.add("20:00");
+                horasStart.add("21:00");
+
+                horasEnd.clear();
+                horasEnd.add("8:00");
+                horasEnd.add("9:00");
+                horasEnd.add("10:00");
+                horasEnd.add("11:00");
+                horasEnd.add("12:00");
+                horasEnd.add("13:00");
+                horasEnd.add("14:00");
+                horasEnd.add("15:00");
+                horasEnd.add("16:00");
+                horasEnd.add("17:00");
+                horasEnd.add("18:00");
+                horasEnd.add("19:00");
+                horasEnd.add("20:00");
+                horasEnd.add("21:00");
+                horasEnd.add("22:00");
+
+                diaEscogido = year + "-";
+                if (month +1 <10) {
+                    diaEscogido += "0" + (month + 1);
+                } else {
+                    diaEscogido += (month + 1);
+                }
+                if (dayOfMonth < 10) {
+                    diaEscogido += "-0" + dayOfMonth;
+                } else {
+                    diaEscogido += "-" + dayOfMonth;
+                }
+
+                String miPagina = "consultaReservas.php";
+
+                if (getActivity().getIntent().hasExtra("respuestaLogin")) {
+                    String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
+                    int codUsuario = Integer.parseInt(datosUsuario[3]);
+                    if (getArguments() != null) {
+                        Bundle arguments = getArguments();
+                        numeroSala = arguments.getInt("sala");
+                    }
+
+                    String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (numeroSala + 1);
+
+                    try {
+
+                        ConexionConsultaReservas miCon = new ConexionConsultaReservas();
+
+                        Reserva[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+
+                        if (respuesta[0] != null) {
+                            for (int i=0;i<respuesta.length;i++) {
+                                if (diaEscogido.equals(respuesta[i].getInicio().substring(0, 10))) {
+                                    int[] intervalo = new int[2];
+
+                                    intervalo[0] = Integer.parseInt(respuesta[i].getInicio().substring(11, 13));
+                                    intervalo[1] = Integer.parseInt(respuesta[i].getFin().substring(11, 13));
+
+                                    eliminarIntervaloReserva(intervalo);
+                                }
+                            }
+                        }
+
+                    } catch (InterruptedException e) {
+
+                        e.printStackTrace();
+
+                    } catch (ExecutionException e) {
+
+                        e.printStackTrace();
+
+                    }
+                }
             }
         });
 
-        spSalas.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, salas));
-        int numeroSala = 0;
-        if (getArguments() != null) {
-            Bundle arguments = getArguments();
-            numeroSala = arguments.getInt("sala");
-
-            spSalas.setSelection(numeroSala);
-        }
-
-
         // int[] testReserva = {17, 20};
-
-        String miPagina = "consultaReservas.php";
-
-        if (getActivity().getIntent().hasExtra("respuestaLogin")) {
-            String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
-            int codUsuario = Integer.parseInt(datosUsuario[3]);
-
-            String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (numeroSala + 1);
-
-            try {
-
-                ConexionConsultaReservas miCon = new ConexionConsultaReservas();
-
-                Reserva[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
-
-                if (respuesta[0] != null) {
-                    for (int i=0;i<respuesta.length;i++) {
-                        int[] intervalo = new int[2];
-
-                        intervalo[0] = Integer.parseInt(respuesta[i].getInicio().substring(11,13));
-                        intervalo[1] = Integer.parseInt(respuesta[i].getFin().substring(11,13));
-
-                        eliminarIntervaloReserva(intervalo);
-                    }
-                }
-
-            } catch (InterruptedException e) {
-
-                e.printStackTrace();
-
-            } catch (ExecutionException e) {
-
-                e.printStackTrace();
-
-            }
-        }
 
         // eliminarIntervaloReserva(testReserva);
 
@@ -160,8 +217,10 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         spStart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spEnd.setVisibility(View.VISIBLE);
-                tvEnd.setVisibility(View.VISIBLE);
+                //si la hora de fin es inferior a la de inicio(+1), se pone la misma(+1)
+                if (spEnd.getSelectedItemPosition() < spStart.getSelectedItemPosition()) {
+                    spEnd.setSelection(spStart.getSelectedItemPosition());
+                }
             }
 
             @Override
@@ -211,7 +270,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
             case R.id.btnReservar:
                 AlertDialog.Builder cuadro  = new AlertDialog.Builder(getActivity());
                 cuadro.setMessage("¿Desea realizar la reserva?");
-                //uno para aceptar que llamará a la actividad editarActivity pasandole el contacto a editar
                 cuadro.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     @Override
@@ -219,7 +277,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                     }
                 });
-                //y otro para cancelar que no hace nada
                 cuadro.setNegativeButton(android.R.string.no, null);
 
                 cuadro.show();
