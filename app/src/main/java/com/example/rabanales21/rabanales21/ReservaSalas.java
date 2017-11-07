@@ -65,7 +65,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         eliminarIntervaloReserva(testReserva);
 
-
         calendarView = (CalendarView) (getActivity().findViewById(R.id.calendarView));
 
         calendarView.setVisibility(View.GONE);
