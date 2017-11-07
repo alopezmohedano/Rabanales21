@@ -115,6 +115,7 @@ public class MenuActivity extends AppCompatActivity
 
             if (tipousuario[2].equals("1")) {
                 navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
+                Toast.makeText(this, getString(R.string.adminConf), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -192,7 +193,7 @@ public class MenuActivity extends AppCompatActivity
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Cambiarpass()).addToBackStack(null).commit();
         } else if (id == R.id.cerrarsesion) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("¿Está seguro de que desea cerrar sesión?")
+            builder.setMessage(getString(R.string.closeConf))
                     .setCancelable(false)
                     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
