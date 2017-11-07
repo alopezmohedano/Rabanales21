@@ -31,9 +31,11 @@ android:padding="16dp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvProxima"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/viewPager"
+        android:layout_below="@+id/textView3"
         android:layout_marginTop="36dp"
         android:text="@string/nextReserva"
         android:textColor="@android:color/black"

@@ -14,6 +14,10 @@ public class Sala {
         this.codigoSala = codigoSala;
         this.descripcion = descripcion;
     }
+    public Sala(String nombre, Integer codigoSala) {
+        this.nombre = nombre;
+        this.codigoSala = codigoSala;
+    }
 
     public String getNombre() {
         return nombre;

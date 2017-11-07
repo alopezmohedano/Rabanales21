@@ -17,13 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.SadapterViewHolder> implements View.OnClickListener{
+public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.SadapterViewHolder> {
     private List<Sala> items;
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
 
     public static class SadapterViewHolder extends RecyclerView.ViewHolder {
@@ -31,7 +27,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.SadapterViewHolde
         //public ImageView imagen;
         public TextView nombre;
         public TextView visitas;
-        private CardView cardView;
+        //private CardView cardView;
 
 
         public SadapterViewHolder(View v) {
@@ -39,7 +35,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.SadapterViewHolde
             //imagen = (ImageView) v.findViewById(R.id.imagen);
             nombre = (TextView) v.findViewById(R.id.nombre);
             visitas = (TextView) v.findViewById(R.id.visitas);
-            cardView = (CardView) v.findViewById(R.id.card);
+            //cardView = (CardView) v.findViewById(R.id.card);
         }
     }
 
