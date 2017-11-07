@@ -91,10 +91,6 @@ public class MenuActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Si el usuario es admin, la barra sera visible
-
-        //NavigationView menuAdmin = (NavigationView) findViewById(R.id.grupoadmin);
-        //menuAdmin.getMenu().setGroupVisible(R.id.grupoadmin, false);
-
         navigationView.getMenu().setGroupVisible(R.id.grupoadmin, false);
         if(getIntent().hasExtra("respuestaLogin")) {
             String[] tipousuario = getIntent().getStringArrayExtra("respuestaLogin");
@@ -104,7 +100,6 @@ public class MenuActivity extends AppCompatActivity
                 Toast.makeText(this, "asd", Toast.LENGTH_LONG).show();
             }
         }
-
     }
 
 
