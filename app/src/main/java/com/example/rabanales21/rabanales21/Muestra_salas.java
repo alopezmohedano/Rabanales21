@@ -34,11 +34,11 @@ public class Muestra_salas extends Fragment {
 
         items = new ArrayList<>();
 
-        items.add(new Sala("Sala Centauro Grande", 01, "Capacidad: 14"));
-        items.add(new Sala( "Sala Centauro Pequeña", 02, "Capacidad: 8"));
-        items.add(new Sala("Sala Silos", 03, "Capacidad: 10"));
-        items.add(new Sala( "Sala de Formación", 04, "Capacidad: 50"));
-        items.add(new Sala("Sala Aldebarán", 05, "Capacidad: 30"));
+        items.add(new Sala(getString(R.string.centauroGrande), 01, getString(R.string.capacidadCG)));
+        items.add(new Sala(getString(R.string.centauroPeq), 02, getString(R.string.capacidadCP)));
+        items.add(new Sala(getString(R.string.silos), 03, getString(R.string.capacidadSil)));
+        items.add(new Sala(getString(R.string.formacion), 04, getString(R.string.capacidadFor)));
+        items.add(new Sala(getString(R.string.aldebaran), 05, getString(R.string.capacidadAld)));
 
 
 
