@@ -15,7 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.view.View;
+import android.widget.Toast;
 
 
 import static com.example.rabanales21.rabanales21.R.id.contenedor1;
@@ -90,8 +91,15 @@ public class MenuActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Si el usuario es admin, la barra sera visible
-        //navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
+        navigationView.getMenu().setGroupVisible(R.id.grupoadmin, false);
+        if(getIntent().hasExtra("respuestaLogin")) {
+            String[] tipousuario = getIntent().getStringArrayExtra("respuestaLogin");
 
+            if (tipousuario[2].equals("1")) {
+                navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
+                Toast.makeText(this, "asd", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
 
