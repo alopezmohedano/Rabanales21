@@ -131,8 +131,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                 Reserva[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
 
-                respuesta[0].cod_s.compareTo("as");
-
                 if (respuesta[0] != null) {
                     Toast.makeText(getContext(), "" + respuesta[0].inicio, Toast.LENGTH_LONG).show();
 
