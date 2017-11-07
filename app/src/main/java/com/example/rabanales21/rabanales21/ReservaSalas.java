@@ -20,12 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class ReservaSalas extends Fragment implements View.OnClickListener {
     CalendarView calendarView;
     ArrayList<String> horasStart = new ArrayList<>();
     ArrayList<String> horasEnd = new ArrayList<>();
+    FuncionesGenerales myController = new FuncionesGenerales();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,18 +60,37 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         String[] salas = {"SALA CENTAURO GRANDE", "SALA CENTAURO PEQUEÑA", "SALA SILOS", "SALA DE FORMACION", "SALA ALDEBARAN"};
 
-        horasStart.add("7:00");horasStart.add("8:00");horasStart.add("9:00");horasStart.add("10:00");horasStart.add("11:00");
-        horasStart.add("12:00");horasStart.add("13:00");horasStart.add("14:00");horasStart.add("15:00");horasStart.add("16:00");
-        horasStart.add("17:00");horasStart.add("18:00");horasStart.add("19:00");horasStart.add("20:00");horasStart.add("21:00");
+        horasStart.add("7:00");
+        horasStart.add("8:00");
+        horasStart.add("9:00");
+        horasStart.add("10:00");
+        horasStart.add("11:00");
+        horasStart.add("12:00");
+        horasStart.add("13:00");
+        horasStart.add("14:00");
+        horasStart.add("15:00");
+        horasStart.add("16:00");
+        horasStart.add("17:00");
+        horasStart.add("18:00");
+        horasStart.add("19:00");
+        horasStart.add("20:00");
+        horasStart.add("21:00");
 
-        horasEnd.add("8:00");horasEnd.add("9:00");horasEnd.add("10:00");horasEnd.add("11:00");horasEnd.add("12:00");
-        horasEnd.add("13:00");horasEnd.add("14:00");horasEnd.add("15:00");horasEnd.add("16:00");horasEnd.add("17:00");
-        horasEnd.add("18:00");horasEnd.add("19:00");horasEnd.add("20:00");horasEnd.add("21:00");horasEnd.add("22:00");
-
-        int[] testReserva = {9,14};
-
-        eliminarIntervaloReserva(testReserva);
-
+        horasEnd.add("8:00");
+        horasEnd.add("9:00");
+        horasEnd.add("10:00");
+        horasEnd.add("11:00");
+        horasEnd.add("12:00");
+        horasEnd.add("13:00");
+        horasEnd.add("14:00");
+        horasEnd.add("15:00");
+        horasEnd.add("16:00");
+        horasEnd.add("17:00");
+        horasEnd.add("18:00");
+        horasEnd.add("19:00");
+        horasEnd.add("20:00");
+        horasEnd.add("21:00");
+        horasEnd.add("22:00");
 
         calendarView = (CalendarView) (getActivity().findViewById(R.id.calendarView));
 
@@ -77,7 +98,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                btnDate.setText(dayOfMonth+" - "+(month+1)+" - "+year);
+                btnDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year);
                 calendarView.setVisibility(View.GONE);
                 spStart.setVisibility(View.VISIBLE);
                 tvStart.setVisibility(View.VISIBLE);
@@ -85,13 +106,54 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         });
 
         spSalas.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, salas));
-
+        int numeroSala = 0;
         if (getArguments() != null) {
             Bundle arguments = getArguments();
-            int numeroSala = arguments.getInt("sala");
+            numeroSala = arguments.getInt("sala");
 
             spSalas.setSelection(numeroSala);
         }
+
+
+        // int[] testReserva = {17, 20};
+
+        String miPagina = "consultaReservas.php";
+
+        if (getActivity().getIntent().hasExtra("respuestaLogin")) {
+            String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
+            int codUsuario = Integer.parseInt(datosUsuario[3]);
+
+            String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (numeroSala + 1);
+
+            try {
+
+                ConexionConsultaReservas miCon = new ConexionConsultaReservas();
+
+                Reserva[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+
+                if (respuesta[0] != null) {
+                    for (int i=0;i<respuesta.length;i++) {
+                        int[] intervalo = new int[2];
+
+                        intervalo[0] = Integer.parseInt(respuesta[i].getInicio().substring(11,13));
+                        intervalo[1] = Integer.parseInt(respuesta[i].getFin().substring(11,13));
+
+                        eliminarIntervaloReserva(intervalo);
+                    }
+                }
+
+            } catch (InterruptedException e) {
+
+                e.printStackTrace();
+
+            } catch (ExecutionException e) {
+
+                e.printStackTrace();
+
+            }
+        }
+
+        // eliminarIntervaloReserva(testReserva);
 
         spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
         spStart.setVisibility(View.GONE);
@@ -101,6 +163,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 spEnd.setVisibility(View.VISIBLE);
                 tvEnd.setVisibility(View.VISIBLE);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -114,19 +177,20 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-    }
 
+    }
     public void eliminarIntervaloReserva(int [] horarioReserva) {
         String[] stringReserva = {String.valueOf(horarioReserva[0] + ":00"), String.valueOf(horarioReserva[1] + ":00")};
         int intervaloReserva = horarioReserva[1] - horarioReserva[0];
         for (int i = 0; i < horasStart.size(); i++) {
             if (horasStart.get(i).equals(stringReserva[0])) {
-                for (int j = i + intervaloReserva; j >= i; j--) {
+                for (int j = i + intervaloReserva -1; j >= i; j--) {
                     horasStart.remove(j);
                     horasEnd.remove(j);
                 }

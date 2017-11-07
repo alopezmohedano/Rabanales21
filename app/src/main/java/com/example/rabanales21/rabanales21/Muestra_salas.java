@@ -42,8 +42,6 @@ public class Muestra_salas extends Fragment {
 
 
 
-
-
         // Obtener el Recycler
         recycler = (RecyclerView)v.findViewById(R.id.reciclador);
         recycler.setHasFixedSize(true);
