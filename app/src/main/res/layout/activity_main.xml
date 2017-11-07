@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="@string/loginEdtUser"
         android:inputType="textPersonName"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/edtpass"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/loginEdtPass"
         android:inputType="textPassword"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
@@ -51,7 +51,8 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="18dp"
         app:layout_constraintLeft_toLeftOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/edtusuario" />
+        app:layout_constraintTop_toTopOf="@+id/edtusuario"
+        android:contentDescription="@string/loginImgUser"/>
 
     <ImageView
         android:id="@+id/imageView3"
@@ -67,27 +68,29 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="3dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edtpass" />
+        app:layout_constraintTop_toTopOf="@+id/edtpass"
+        android:contentDescription="@string/loginImgPass"/>
 
     <ImageButton
         android:id="@+id/btnlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="64dp"
         android:background="@android:color/transparent"
         android:onClick="onClick"
-        app:srcCompat="@mipmap/ic_login"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/edtpass"
+        app:srcCompat="@mipmap/botoniniciosesion"
+        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="45dp"
-        app:layout_constraintLeft_toLeftOf="@+id/edtpass" />
+        android:contentDescription="@string/loginBtnLog"/>
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:srcCompat="@mipmap/ic_logoempresa"
+        app:srcCompat="@mipmap/logovectorialrabanales"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
@@ -96,5 +99,6 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/loginImgLogo"/>
 </android.support.constraint.ConstraintLayout>

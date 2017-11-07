@@ -4,20 +4,29 @@ package com.example.rabanales21.rabanales21;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import android.support.v4.view.ViewPager;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
-public class Inicio extends Fragment implements View.OnClickListener{
+public class Inicio extends Fragment {
+    private static int NUM_PAGES = 0;
+    private static int currentPage = 0;
+    ViewPager viewPager;
+    int images[] = {R.drawable.sala1, R.drawable.sala2, R.drawable.sala3, R.drawable.sala4, R.drawable.sala5};
+    MyCustomPagerAdapter myCustomPagerAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_inicio, container, false);
     }
@@ -25,25 +34,29 @@ public class Inicio extends Fragment implements View.OnClickListener{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        viewPager = (ViewPager)(getActivity().findViewById(R.id.viewPager));
 
-        ImageButton reservar = (ImageButton) (getActivity().findViewById(R.id.btnreservar));
-        reservar.setOnClickListener(this);
-        ImageButton consultar = (ImageButton) (getActivity().findViewById(R.id.btnconsultar));
-        consultar.setOnClickListener(this);
-    }
+        myCustomPagerAdapter = new MyCustomPagerAdapter(getActivity(), images);
+        viewPager.setAdapter(myCustomPagerAdapter);
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnreservar:
-                FragmentManager fragmentManager3=getActivity().getSupportFragmentManager();
-                fragmentManager3.beginTransaction().replace(R.id.contenedor,new ReservaSalas());
-                Toast.makeText(getContext(),"asd",Toast.LENGTH_LONG).show();
+        NUM_PAGES =images.length;
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == NUM_PAGES) {
+                    currentPage = 0;
+                }
+                viewPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 3000,3000);
 
-                break;
-            case R.id.btnconsultar:
 
-                break;
-        }
     }
 }

@@ -1,10 +1,13 @@
 package com.example.rabanales21.rabanales21;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +19,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class ReservaSalas extends Fragment implements View.OnClickListener {
     CalendarView calendarView;
+    ArrayList<String> horasStart = new ArrayList<>();
+    ArrayList<String> horasEnd = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,6 +42,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         final Button btnDate = (Button) (getActivity().findViewById(R.id.btnDate));
         btnDate.setOnClickListener(this);
+        final Button btnReservar = (Button) (getActivity().findViewById(R.id.btnReservar));
+        btnReservar.setOnClickListener(this);
 
         // TextView tvDate = (TextView) findViewById(R.id.tvDate);
         final TextView tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
@@ -48,8 +57,19 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         final Spinner spEnd = (Spinner) (getActivity().findViewById(R.id.spEnd));
 
         String[] salas = {"SALA CENTAURO GRANDE", "SALA CENTAURO PEQUEÑA", "SALA SILOS", "SALA DE FORMACION", "SALA ALDEBARAN"};
-        final String[] horasStart = {"7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"};
-        final String[] horasEnd = {"8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"};
+
+        horasStart.add("7:00");horasStart.add("8:00");horasStart.add("9:00");horasStart.add("10:00");horasStart.add("11:00");
+        horasStart.add("12:00");horasStart.add("13:00");horasStart.add("14:00");horasStart.add("15:00");horasStart.add("16:00");
+        horasStart.add("17:00");horasStart.add("18:00");horasStart.add("19:00");horasStart.add("20:00");horasStart.add("21:00");
+
+        horasEnd.add("8:00");horasEnd.add("9:00");horasEnd.add("10:00");horasEnd.add("11:00");horasEnd.add("12:00");
+        horasEnd.add("13:00");horasEnd.add("14:00");horasEnd.add("15:00");horasEnd.add("16:00");horasEnd.add("17:00");
+        horasEnd.add("18:00");horasEnd.add("19:00");horasEnd.add("20:00");horasEnd.add("21:00");horasEnd.add("22:00");
+
+        int[] testReserva = {9,14};
+
+        eliminarIntervaloReserva(testReserva);
+
 
         calendarView = (CalendarView) (getActivity().findViewById(R.id.calendarView));
 
@@ -101,6 +121,19 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         });
     }
 
+    public void eliminarIntervaloReserva(int [] horarioReserva) {
+        String[] stringReserva = {String.valueOf(horarioReserva[0] + ":00"), String.valueOf(horarioReserva[1] + ":00")};
+        int intervaloReserva = horarioReserva[1] - horarioReserva[0];
+        for (int i = 0; i < horasStart.size(); i++) {
+            if (horasStart.get(i).equals(stringReserva[0])) {
+                for (int j = i + intervaloReserva; j >= i; j--) {
+                    horasStart.remove(j);
+                    horasEnd.remove(j);
+                }
+            }
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -110,6 +143,22 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 } else {
                     calendarView.setVisibility(View.GONE);
                 }
+                break;
+            case R.id.btnReservar:
+                AlertDialog.Builder cuadro  = new AlertDialog.Builder(getActivity());
+                cuadro.setMessage("¿Desea realizar la reserva?");
+                //uno para aceptar que llamará a la actividad editarActivity pasandole el contacto a editar
+                cuadro.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                //y otro para cancelar que no hace nada
+                cuadro.setNegativeButton(android.R.string.no, null);
+
+                cuadro.show();
                 break;
         }
     }
