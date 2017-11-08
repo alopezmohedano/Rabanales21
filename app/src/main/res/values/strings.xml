@@ -42,6 +42,7 @@
     <string name="endHour">HORA FIN</string>
     <string name="reservar">RESERVAR</string>
     <string name="exitoReserva">RESERVA REALIZADA CON ÉXITO</string>
+    <string name="falloReserva">NO SE HA PODIDO REALIZAR LA RESERVA</string>
 
     <!-- Strings Nav Header Menu -->
     <string name="company">Rabanales 21</string>

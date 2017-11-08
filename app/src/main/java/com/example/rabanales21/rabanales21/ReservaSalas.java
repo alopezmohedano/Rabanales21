@@ -271,18 +271,21 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                             String fechaInicio = fechaEscogida + " " + spStart.getSelectedItem().toString() + ":00";
                             String fechaFin = fechaEscogida + " " + spEnd.getSelectedItem().toString() + ":00";
 
-                            Toast.makeText(getContext(), "--" + fechaInicio + "--", Toast.LENGTH_LONG).show();
                             String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (spSalas.getSelectedItemId() + 1)
                                     + "&fecha_inicio=" + fechaInicio + "&fecha_fin=" + fechaFin;
 
                             try {
 
-                                ConexionConsultaReservas miCon = new ConexionConsultaReservas();
+                                ConexionReservar miCon = new ConexionReservar();
 
-                                Reserva[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+                                Boolean respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
 
-                                if (respuesta[0] != null) {
-
+                                if (respuesta) {
+                                    Toast.makeText(getContext(), getString(R.string.exitoReserva), Toast.LENGTH_SHORT).show();
+                                    FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                                    fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
+                                } else {
+                                    Toast.makeText(getContext(), getString(R.string.falloReserva), Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (InterruptedException e) {
@@ -295,9 +298,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                             }
                         }
-                        Toast.makeText(getContext(), getString(R.string.exitoReserva), Toast.LENGTH_SHORT).show();
-                        FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
+
                     }
                 });
                 cuadro.setNegativeButton(android.R.string.no, null);
