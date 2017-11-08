@@ -115,7 +115,6 @@ public class MenuActivity extends AppCompatActivity
 
             if (tipousuario[2].equals("1")) {
                 navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
-                Toast.makeText(this, getString(R.string.adminConf), Toast.LENGTH_LONG).show();
             }
         }
     }

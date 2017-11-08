@@ -94,38 +94,10 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 spEnd.setSelection(0);
 
                 horasStart.clear();
-                horasStart.add("7:00");
-                horasStart.add("8:00");
-                horasStart.add("9:00");
-                horasStart.add("10:00");
-                horasStart.add("11:00");
-                horasStart.add("12:00");
-                horasStart.add("13:00");
-                horasStart.add("14:00");
-                horasStart.add("15:00");
-                horasStart.add("16:00");
-                horasStart.add("17:00");
-                horasStart.add("18:00");
-                horasStart.add("19:00");
-                horasStart.add("20:00");
-                horasStart.add("21:00");
+                for (int i=7; i<22; i++) {horasStart.add(i+":00");}
 
                 horasEnd.clear();
-                horasEnd.add("8:00");
-                horasEnd.add("9:00");
-                horasEnd.add("10:00");
-                horasEnd.add("11:00");
-                horasEnd.add("12:00");
-                horasEnd.add("13:00");
-                horasEnd.add("14:00");
-                horasEnd.add("15:00");
-                horasEnd.add("16:00");
-                horasEnd.add("17:00");
-                horasEnd.add("18:00");
-                horasEnd.add("19:00");
-                horasEnd.add("20:00");
-                horasEnd.add("21:00");
-                horasEnd.add("22:00");
+                for (int i=8; i<23; i++) {horasEnd.add(i+":00");}
 
                 diaEscogido = year + "-";
                 if (month +1 <10) {
@@ -139,7 +111,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                     diaEscogido += "-" + dayOfMonth;
                 }
 
-                String miPagina = "consultaReservas.php";
+                String miPagina = "consultaReservasSala.php";
 
                 if (getActivity().getIntent().hasExtra("respuestaLogin")) {
                     String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
