@@ -24,6 +24,12 @@
     <string name="newPass">Nueva contraseña</string>
     <string name="passSecurity">Seguridad de la contraseña: </string>
     <string name="passAdvices">Use al menos 8 caracteres. Puede contener numeros y letras. No use una contraseña demasiada obvia.</string>
+    <string name="emptyPassWarning">Ningún campo puede estar vacio</string>
+    <string name="samePassWarning">La contraseña nueva no puede coincidir con la actual</string>
+    <string name="shortPassWarning">La contraseña nueva es demasiado corta</string>
+    <string name="changeWarning">La contraseña se ha modificado correctamente</string>
+    <string name="wrongPassWarning">La contraseña actual no es la correcta</string>
+    <string name="difPassWarning">Las contraseñas nuevas no coinciden</string>
 
     <!-- Strings Fragment Inicio -->
     <string name="welcome">Bienvenido a la aplicacion de RABANALES 21</string>
@@ -35,6 +41,7 @@
     <string name="startHour">HORA INICIO</string>
     <string name="endHour">HORA FIN</string>
     <string name="reservar">RESERVAR</string>
+    <string name="exitoReserva">RESERVA REALIZADA CON ÉXITO</string>
 
     <!-- Strings Nav Header Menu -->
     <string name="company">Rabanales 21</string>

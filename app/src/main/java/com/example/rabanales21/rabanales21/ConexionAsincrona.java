@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Telefonica on 06/11/2017.
+ * Gestiona la conexion a la BBDD para realizar el login de usuario
  */
 
 class ConexionAsincrona extends AsyncTask<String, Void, String[]> {

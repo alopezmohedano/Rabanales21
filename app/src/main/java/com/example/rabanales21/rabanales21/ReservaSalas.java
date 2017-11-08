@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,13 +24,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
-
 public class ReservaSalas extends Fragment implements View.OnClickListener {
-    CalendarView calendarView;
-    ArrayList<String> horasStart = new ArrayList<>();
-    ArrayList<String> horasEnd = new ArrayList<>();
-    FuncionesGenerales myController = new FuncionesGenerales();
-    String diaEscogido;
+    private CalendarView calendarView;
+    private ArrayList<String> horasStart = new ArrayList<>();
+    private ArrayList<String> horasEnd = new ArrayList<>();
+    private FuncionesGenerales myController = new FuncionesGenerales();
+    private String diaEscogido;
     int numeroSala = 0;
     Spinner spSalas;
     Spinner spStart;
@@ -54,6 +54,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         btnDate.setOnClickListener(this);
         final Button btnReservar = (Button) (getActivity().findViewById(R.id.btnReservar));
         btnReservar.setOnClickListener(this);
+
+        btnReservar.setEnabled(false);
 
         // TextView tvDate = (TextView) findViewById(R.id.tvDate);
         final TextView tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
@@ -125,6 +127,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 tvStart.setVisibility(View.VISIBLE);
                 spEnd.setVisibility(View.VISIBLE);
                 tvEnd.setVisibility(View.VISIBLE);
+                btnReservar.setEnabled(true);
                 spStart.setSelection(0);
                 spEnd.setSelection(0);
 
@@ -292,6 +295,9 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                             }
                         }
+                        Toast.makeText(getContext(), getString(R.string.exitoReserva), Toast.LENGTH_SHORT).show();
+                        FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
                     }
                 });
                 cuadro.setNegativeButton(android.R.string.no, null);

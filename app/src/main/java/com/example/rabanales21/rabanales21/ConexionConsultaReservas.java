@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Alvaro on 07/11/2017.
+ * Gestiona la conexion
  */
 
 class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
