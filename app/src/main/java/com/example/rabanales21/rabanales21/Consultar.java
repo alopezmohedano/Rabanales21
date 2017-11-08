@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class Consultar extends Fragment {
@@ -21,6 +22,7 @@ public class Consultar extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
     private List<ConsultaReserva> items;
+    FuncionesGenerales myController = new FuncionesGenerales();
 
 
     @Override
@@ -31,8 +33,90 @@ public class Consultar extends Fragment {
 
     items = new ArrayList<>();
 
-        items.add(new ConsultaReserva("Sala Aldebaran", "22 enero", "22 de enero", "10:00", "12:00"));
-        items.add(new ConsultaReserva("Sala Formacion", "23 enero", "23 de enero", "12:00", "14:00"));
+        String miPagina = "consultaReservas.php";
+
+        if (getActivity().getIntent().hasExtra("respuestaLogin")) {
+            String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
+            int codUsuario = Integer.parseInt(datosUsuario[3]);
+
+
+            String miWhere = "?cod_usuario=" + codUsuario;
+
+            try {
+
+                ConexionConsultaReservas miCon = new ConexionConsultaReservas();
+
+                Reserva[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+
+                if (respuesta[0] != null) {
+                    for (int i=0;i<respuesta.length;i++) {
+                        String sala = "";
+                        switch (Integer.parseInt(respuesta[i].getCod_s())){
+                            case 0:
+                                sala = "Sala Centauro Grande";
+                                break;
+                            case 1:
+                                sala = "Sala Centauro Pequeña";
+                                break;
+                            case 2:
+                                sala = "Sala Silos";
+                                break;
+                            case 3:
+                                sala = "Sala de Formación";
+                                break;
+                            case 4:
+                                sala = "Sala Aldebarán";
+                                break;
+                        }
+                        String mes = "";
+                        switch (Integer.parseInt(respuesta[i].getInicio().substring(5,7))) {
+                            case 1:
+                                mes = "Enero";
+                                break;
+                            case 2:
+                                mes = "Febrero";
+                                break;
+                            case 3:
+                                mes = "Marzo";
+                                break;
+                            case 4:
+                                mes = "Abril";
+                                break;
+                            case 5:
+                                mes = "Mayo";
+                                break;
+                            case 6:
+                                mes = "Junio";
+                                break;
+                            case 7:
+                                mes = "Julio";
+                                break;
+                            case 8:
+                                mes = "Agosto";
+                                break;
+                            case 9:
+                                mes = "Septiembre";
+                                break;
+                            case 10:
+                                mes = "Octubre";
+                                break;
+                            case 11:
+                                mes = "Noviembre";
+                                break;
+                            case 121:
+                                mes = "Diciembre";
+                                break;
+                        }
+                        items.add(new ConsultaReserva(sala, respuesta[i].getInicio().substring(8,10) + " de " + mes, respuesta[i].getInicio().substring(5,7), respuesta[i].getInicio().substring(11,16), respuesta[i].getFin().substring(11,16)));
+                    }
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
 
 
     // Obtener el Recycler
