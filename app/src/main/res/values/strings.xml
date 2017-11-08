@@ -78,5 +78,12 @@
     <string name="salaAldebaran">SALA ALDEBARÁN</string>
     <string name="confReserva">¿Desea realizar la reserva?</string>
 
+    <!-- Strings GestionEmpresas -->
+    <string name="anadirEmpresa">Añadir</string>
+    <string name="modificarEmpresa">Modificar</string>
+    <string name="eliminarEmpresa">Eliminar</string>
+    <string name="infoGestionEmpresa">Seleccione una opción:</string>
+    <string name="infoBotonBuscar">Para obtener los datos completos de una empresa, introduzca el usuario y pulse el botón Buscar</string>
+    <string name="infoBotonBuscado">Para realizar una nueva busqueda, pulse el botón Modificar</string>
 
 </resources>
