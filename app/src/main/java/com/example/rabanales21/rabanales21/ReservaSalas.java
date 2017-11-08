@@ -278,14 +278,14 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                                 ConexionReservar miCon = new ConexionReservar();
 
-                                Boolean respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+                                String respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
 
-                                if (respuesta) {
+                                if (respuesta.equals("false")) {
+                                    Toast.makeText(getContext(), getString(R.string.falloReserva), Toast.LENGTH_SHORT).show();
+                                } else {
                                     Toast.makeText(getContext(), getString(R.string.exitoReserva), Toast.LENGTH_SHORT).show();
                                     FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                                     fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
-                                } else {
-                                    Toast.makeText(getContext(), getString(R.string.falloReserva), Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (InterruptedException e) {

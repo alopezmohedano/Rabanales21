@@ -12,14 +12,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class ConexionReservar extends AsyncTask<String, Void, Boolean> {
+class ConexionReservar extends AsyncTask<String, Void, String> {
 
     @Override
-    protected Boolean doInBackground(String... params) {
+    protected String doInBackground(String... params) {
 
         StringBuilder resul;
 
-        Boolean auxiliar = false;
+        String auxiliar = "aa";
 
         try {
 
@@ -49,7 +49,7 @@ class ConexionReservar extends AsyncTask<String, Void, Boolean> {
 
             JSONArray json = new JSONArray(resul.toString());
 
-            auxiliar = (Boolean) json.getJSONObject(0).get("resultado");
+            auxiliar = (String) json.getJSONObject(0).get("resultado").toString();
 
         } catch (Exception e) {
 
