@@ -109,6 +109,8 @@ public class Consultar extends Fragment {
                         }
                         items.add(new ConsultaReserva(sala, respuesta[i].getInicio().substring(8,10) + " de " + mes, respuesta[i].getInicio().substring(5,7), respuesta[i].getInicio().substring(11,16), respuesta[i].getFin().substring(11,16)));
                     }
+                } else {
+
                 }
 
             } catch (InterruptedException e) {
