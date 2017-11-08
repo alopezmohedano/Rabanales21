@@ -52,19 +52,19 @@ public class Cambiarpass extends Fragment {
 
                 if (edtAntiguo.getText().toString().equals("") || edtNuevo.getText().toString().equals("") || edtRepetido.getText().toString().equals("")) {
 
-                    misFunciones.WarningMessages(getActivity(), "Ningún campo puede estar vacio");
+                    misFunciones.WarningMessages(getActivity(), getString(R.string.emptyPassWarning));
 
                 } else {
 
                     if (edtAntiguo.getText().toString().equals(edtNuevo.getText().toString())) {
 
-                        misFunciones.WarningMessages(getActivity(), "La contraseña nueva no puede coincidir con la actual");
+                        misFunciones.WarningMessages(getActivity(), getString(R.string.samePassWarning));
 
                     } else {
 
                         if (edtNuevo.getText().toString().length() < 8) {
 
-                            misFunciones.WarningMessages(getActivity(), "La contraseña nueva es demasiado corta");
+                            misFunciones.WarningMessages(getActivity(), getString(R.string.shortPassWarning));
 
                         } else {
 
@@ -86,11 +86,11 @@ public class Cambiarpass extends Fragment {
 
                                     if (resultado == 1) {
 
-                                        misFunciones.WarningMessages(getActivity(), "La contraseña se ha modificado correctamente");
+                                        misFunciones.WarningMessages(getActivity(), getString(R.string.changeWarning));
 
                                     } else {
 
-                                        misFunciones.WarningMessages(getActivity(), "La contraseña actual no es la correcta");
+                                        misFunciones.WarningMessages(getActivity(), getString(R.string.wrongPassWarning));
 
                                     }
 
@@ -106,7 +106,7 @@ public class Cambiarpass extends Fragment {
 
                             } else {
 
-                                misFunciones.WarningMessages(getActivity(), "Las contraseñas nuevas no coinciden");
+                                misFunciones.WarningMessages(getActivity(), getString(R.string.difPassWarning));
 
                             }
                         }
