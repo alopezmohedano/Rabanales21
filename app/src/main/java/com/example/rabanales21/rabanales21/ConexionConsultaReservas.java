@@ -22,7 +22,7 @@ class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
 
         StringBuilder resul;
 
-        Reserva[] auxiliar = null;
+        Reserva[] auxiliar = new Reserva[1];
 
         try {
 
@@ -51,9 +51,11 @@ class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
 
             JSONArray json = new JSONArray(resul.toString());
 
-            auxiliar = new Reserva[json.length()];
+
 
             if(json.length() > 0) {
+
+                auxiliar = new Reserva[json.length()];
 
                 for (int i= 0; i < json.length(); i++) {
                     auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_r").toString(), json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
