@@ -1,13 +1,176 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rabanales21.rabanales21.Gestionempresa">
+    tools:context="com.example.rabanales21.rabanales21.Gestionempresa"
+    tools:layout_editor_absoluteY="81dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnAnadirEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/anadirEmpresa"
+        app:layout_constraintBottom_toBottomOf="@+id/btnModificarEmpresa"
+        app:layout_constraintEnd_toStartOf="@+id/btnModificarEmpresa"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnModificarEmpresa" />
+
+    <Button
+        android:id="@+id/btnModificarEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAnadirEmpresa"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/modificarEmpresa"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarEmpresa"
+        app:layout_constraintStart_toEndOf="@+id/btnAnadirEmpresa"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfo" />
+
+    <Button
+        android:id="@+id/btnEliminarEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnModificarEmpresa"
+        android:layout_below="@+id/btnModificarEmpresa"
+        android:layout_marginEnd="16dp"
+        android:text="@string/eliminarEmpresa"
+        app:layout_constraintBottom_toBottomOf="@+id/btnModificarEmpresa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnModificarEmpresa"
+        app:layout_constraintTop_toTopOf="@+id/btnModificarEmpresa" />
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/infoGestionEmpresa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNuevoUsusario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Usuario:"
+        android:visibility="gone"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtNuevoUsuario"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtNuevoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Usuario..."
+        android:inputType="textPersonName"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/btnAnadirEmpresa"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnadirEmpresa" />
+
+    <TextView
+        android:id="@+id/txtNuevoPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Password:"
+        android:visibility="gone"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtNuevoPassword"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtNuevoPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Password..."
+        android:inputType="textPersonName"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/edtNuevoUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevoUsuario" />
+
+    <TextView
+        android:id="@+id/txtNuevaEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Empresa:"
+        android:visibility="gone"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtNuevaEmpresa"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtNuevaEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Nombre de empresa..."
+        android:inputType="textPersonName"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/edtNuevoPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevoPassword" />
+
+    <TextView
+        android:id="@+id/txtInfoModificar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevaEmpresa" />
+
+    <Button
+        android:id="@+id/btnHacerOperacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="264dp"
+        android:text="Guardar"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEliminarEmpresa" />
+
+    <Button
+        android:id="@+id/btnBuscarDatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="264dp"
+        android:text="Buscar"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarEmpresa" />
+
+    <Button
+        android:id="@+id/btnBorrarCampos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="250dp"
+        android:text="Limpiar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btnHacerOperacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnadirEmpresa"
+        app:layout_constraintVertical_bias="1.0" />
+
+</android.support.constraint.ConstraintLayout>
