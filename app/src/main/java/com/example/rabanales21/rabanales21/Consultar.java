@@ -33,7 +33,7 @@ public class Consultar extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_consultar, container, false);
 
     items = new ArrayList<>();
-
+        ((MenuActivity)getActivity()).setBoleano(false);
         String miPagina = "consultaReservas.php";
 
         if (getActivity().getIntent().hasExtra("respuestaLogin")) {
