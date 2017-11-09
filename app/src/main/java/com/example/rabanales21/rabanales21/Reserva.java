@@ -1,10 +1,6 @@
 package com.example.rabanales21.rabanales21;
 
-/**
- * Created by Alvaro on 07/11/2017.
- */
-
-class Reserva {
+public class Reserva {
     String cod_r;
     String cod_s;
     String cod_u;
