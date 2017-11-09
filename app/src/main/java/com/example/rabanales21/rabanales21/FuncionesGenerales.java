@@ -1,16 +1,7 @@
 package com.example.rabanales21.rabanales21;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-/**
- * Created by Eduardo on 05/11/2017.
- */
 
 public class FuncionesGenerales {
 

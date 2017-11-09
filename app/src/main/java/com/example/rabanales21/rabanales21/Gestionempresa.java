@@ -29,6 +29,7 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
+        ((MenuActivity)getActivity()).setBoleano(false);
 
         txtUsuario = getActivity().findViewById(R.id.txtNuevoUsusario);
 

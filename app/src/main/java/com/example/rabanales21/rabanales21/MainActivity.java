@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
@@ -30,13 +29,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
-
-        getSupportActionBar().hide();
+       setContentView(R.layout.activity_main);
 
         edtUser = (EditText) findViewById(R.id.edtusuario);
 
         edtPass = (EditText) findViewById(R.id.edtpass);
+        edtPass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    edtPass.setText("");
+                }
+
+            }
+        });
 
         imageButton=(ImageButton) findViewById(R.id.btnlogin);
 
@@ -52,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageButton.setOnClickListener(this);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Por favor para consultar el usuario y contraseña puede ponerse en contacto con nosotros vía teléfono:  957 340 116 o vía email: nfo@rabanales21.com. Gracias por su atención.")
-        .setTitle("¿Ha perdido los datos de su cuenta?")
+        builder.setMessage(R.string.infoLostPass)
+        .setTitle(R.string.questionLostPass)
                 .setCancelable(false)
                 .setNeutralButton("OK",
                         new DialogInterface.OnClickListener() {

@@ -1,6 +1,5 @@
 package com.example.rabanales21.rabanales21;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -12,7 +11,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class ConexionUpdate extends AsyncTask<String, Void, Integer> {
+/**
+ * Gestiona la conexion a la BBDD para modificar usuarios. </p>
+ * Envia los datos modificados a un webservice </br>
+ * Recibe un JSON si la conexion es correcta confirmando el update </br>
+ */
+
+public class ConexionUpdate extends AsyncTask<String, Void, Integer> {
 
     @Override
     protected Integer doInBackground(String... params) {

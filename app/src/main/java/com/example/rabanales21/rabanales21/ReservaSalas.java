@@ -25,6 +25,8 @@ import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class ReservaSalas extends Fragment implements View.OnClickListener {
+
+    Boolean principal=false;
     private CalendarView calendarView;
     private ArrayList<String> horasStart = new ArrayList<>();
     private ArrayList<String> horasEnd = new ArrayList<>();
@@ -231,7 +233,9 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
             }
         });
 
+        ((MenuActivity)getActivity()).setBoleano(false);
     }
+
     public void eliminarIntervaloReserva(int [] horarioReserva) {
         String[] stringReserva = {String.valueOf(horarioReserva[0] + ":00"), String.valueOf(horarioReserva[1] + ":00")};
         int intervaloReserva = horarioReserva[1] - horarioReserva[0];

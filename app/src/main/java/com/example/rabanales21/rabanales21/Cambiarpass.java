@@ -11,15 +11,15 @@ import android.widget.EditText;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Gestiona el cambio de password de un usuario.<p>
- * Realiza las oomprobaciones de seguridad de forma secuencial:<p>
- * 1. Que los campos no esten vacios.<p>
- * 2. Que la nueva password introducida no coincida con la antigua.<p>
- * 3. Que la nueva password introducida cumpla los requisitos de longitud.<p>
- * 4. Que la nueva password introducida coincida en ambos campos.<p>
- * Posteriormente intenta realizar el update en la BBDD.<p>
- * Si tiene exito lo notifica con un Toast.<p>
- * En caso contrario notifica que la password antigua introducida no es correcta.<p>
+ * Gestiona el cambio de password de un usuario.</p>
+ * Realiza las oomprobaciones de seguridad de forma secuencial:</br>
+ * 1. Que los campos no esten vacios.</br>
+ * 2. Que la nueva password introducida no coincida con la antigua.</br>
+ * 3. Que la nueva password introducida cumpla los requisitos de longitud.</br>
+ * 4. Que la nueva password introducida coincida en ambos campos.</br>
+ * Posteriormente intenta realizar el update en la BBDD.</br>
+ * Si tiene exito lo notifica con un Toast.</br>
+ * En caso contrario notifica que la password antigua introducida no es correcta.</br>
  */
 
 public class Cambiarpass extends Fragment {
@@ -33,6 +33,7 @@ public class Cambiarpass extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_cambiarpass, container, false);
 
     }
@@ -41,6 +42,7 @@ public class Cambiarpass extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
+        ((MenuActivity)getActivity()).setBoleano(false);
         edtAntiguo = getActivity().findViewById(R.id.passvieja);
         edtNuevo = getActivity().findViewById(R.id.passnueva1);
         edtRepetido = getActivity().findViewById(R.id.passnueva2);
@@ -87,4 +89,6 @@ public class Cambiarpass extends Fragment {
 
         });
     }
+
+
 }
