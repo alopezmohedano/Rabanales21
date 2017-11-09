@@ -3,112 +3,163 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="4dp"
     tools:context="com.example.rabanales21.rabanales21.Cambiarpass">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="24dp"
         android:text="@string/changePass"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/passvieja"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/passvieja"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/custom_border"
+        android:backgroundTint="#E2E2E2"
         android:ems="10"
         android:hint="@string/currentPass"
         android:inputType="textPassword"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/textView5" />
+        tools:layout_constraintTop_creator="1" />
 
-    <EditText
-        android:id="@+id/passnueva1"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/newPass"
-        android:inputType="textPassword"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/passvieja"
-        android:layout_marginTop="110dp"
-        app:layout_constraintTop_toBottomOf="@+id/passvieja"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/passvieja" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bt_cambiar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passvieja">
 
-    <EditText
-        android:id="@+id/passnueva2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/newPass"
-        android:inputType="textPassword"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/border_notas"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="158dp">
 
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/passnueva1"
-        android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@+id/passnueva1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/passnueva1" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:text="@string/passSecurity"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textView7"
+                app:layout_constraintLeft_toLeftOf="@+id/textView7"
+                tools:layout_constraintBottom_creator="1"
+                tools:layout_constraintLeft_creator="1" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/passSecurity"
-        android:textStyle="bold"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="11dp"
-        app:layout_constraintLeft_toLeftOf="@+id/textView7" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="279dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="28dp"
+                android:layout_weight="1"
+                android:allowUndo="true"
+                android:gravity="center"
+                android:text="@string/passAdvices"
+                app:layout_constraintBottom_toTopOf="@+id/passnueva1"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:layout_constraintBottom_creator="1"
+                tools:layout_constraintRight_creator="1" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/passAdvices"
-        android:textAlignment="viewStart"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/passnueva1"
-        android:layout_marginEnd="28dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="18dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="28dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="1.0" />
+        <EditText
+            android:id="@+id/passnueva1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/custom_border"
+            android:backgroundTint="#E2E2E2"
+            android:ems="10"
+            android:hint="@string/newPass"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="290dp" />
+
+        <EditText
+            android:id="@+id/passnueva2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_border"
+            android:backgroundTint="#E2E2E2"
+            android:ems="10"
+            android:hint="@string/newPass"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/passnueva1"
+            app:layout_constraintRight_toRightOf="@+id/passnueva1"
+            app:layout_constraintTop_toBottomOf="@+id/passnueva1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/bt_cambiar"
-        android:layout_width="250dp"
+        android:layout_width="314dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/changePass"
+        android:layout_margin="8dp"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/custom_border"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:elevation="2dp"
+        android:text="@string/confirmPass"
         android:textColor="@android:color/white"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="60dp"
-        app:layout_constraintTop_toBottomOf="@+id/passnueva2"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="58dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        tools:layout_constraintTop_creator="1" />
+
 </android.support.constraint.ConstraintLayout>
