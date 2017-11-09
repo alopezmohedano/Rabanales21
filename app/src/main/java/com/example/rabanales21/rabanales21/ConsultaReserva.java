@@ -11,16 +11,26 @@ private String sala;
     private String fecha_inicio;
     private String id_reserva;
     private String nombre_usuario;
+    private String tipo_usuario;
     private String hora_inio;
     private String hora_fin;
 
-    public ConsultaReserva(String sala, String fecha_inicio, String id_reserva, String nombre_usuario, String hora_inio, String hora_fin) {
+    public ConsultaReserva(String sala, String fecha_inicio, String id_reserva, String nombre_usuario, String tipo_usuario, String hora_inio, String hora_fin) {
         this.sala = sala;
         this.fecha_inicio = fecha_inicio;
         this.id_reserva = id_reserva;
         this.nombre_usuario = nombre_usuario;
+        this.tipo_usuario = tipo_usuario;
         this.hora_inio = hora_inio;
         this.hora_fin = hora_fin;
+    }
+
+    public String getTipo_usuario() {
+        return tipo_usuario;
+    }
+
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
     }
 
     public String getSala() {

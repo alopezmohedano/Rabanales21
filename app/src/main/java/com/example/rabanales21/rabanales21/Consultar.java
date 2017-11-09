@@ -114,10 +114,16 @@ public class Consultar extends Fragment {
                                 mes = "Diciembre";
                                 break;
                         }
+                        String tipoUsuario = "9";
+                        if (getArguments() != null) {
+                            tipoUsuario = "1";
+                        }
+
                         items.add(new ConsultaReserva(sala,
                                 respuesta[i].getInicio().substring(8,10) + " de " + mes,
                                 respuesta[i].getCod_r(),
                                 respuesta[i].getNombre_usuario(),
+                                tipoUsuario,
                                 respuesta[i].getInicio().substring(11,16),
                                 respuesta[i].getFin().substring(11,16)));
                     }

@@ -105,12 +105,12 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
     @Override
     public void onBindViewHolder(AdaptadorReservas.SadapterViewHolder viewHolder, final int i) {
 
-                viewHolder.txtsala.setText(items.get(i).getSala());
+        viewHolder.txtsala.setText(items.get(i).getSala());
         viewHolder.txtfechainicio.setText(String.valueOf(items.get(i).getFecha_inicio()));
         viewHolder.txtnombreusuario.setText(String.valueOf(items.get(i).getNombre_usuario()));
         viewHolder.txtnombreusuario.setVisibility(View.GONE);
         viewHolder.tvUsuario.setVisibility(View.GONE);
-        if (String.valueOf(items.get(i).getNombre_usuario()).equals("admin")) {
+        if (String.valueOf(items.get(i).getTipo_usuario()).equals("1")) {
             viewHolder.txtnombreusuario.setVisibility(View.VISIBLE);
             viewHolder.tvUsuario.setVisibility(View.VISIBLE);
         }
