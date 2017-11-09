@@ -6,6 +6,8 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.RecyclerView;
@@ -47,7 +49,8 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
 
         public TextView txtsala;
         public TextView txtfechainicio;
-        public TextView txtidreserva;
+        public TextView txtnombreusuario;
+        public TextView tvUsuario;
         public TextView txthorainicio;
         public TextView txthorafin;
         public ImageButton btneliminar;
@@ -65,7 +68,8 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
 
             txtsala = (TextView) v.findViewById(R.id.nombresala);
             txtfechainicio = (TextView) v.findViewById(R.id.finicio);
-            txtidreserva = (TextView) v.findViewById(R.id.idreserva);
+            txtnombreusuario = (TextView) v.findViewById(R.id.idreserva);
+            tvUsuario = (TextView)v.findViewById(R.id.tvUsuario);
             txthorainicio = (TextView) v.findViewById(R.id.hinicio);
             txthorafin = (TextView) v.findViewById(R.id.hfin);
             btneliminar = (ImageButton) v.findViewById(R.id.botoneliminar);
@@ -101,9 +105,15 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
     @Override
     public void onBindViewHolder(AdaptadorReservas.SadapterViewHolder viewHolder, final int i) {
 
-        viewHolder.txtsala.setText(items.get(i).getSala());
+                viewHolder.txtsala.setText(items.get(i).getSala());
         viewHolder.txtfechainicio.setText(String.valueOf(items.get(i).getFecha_inicio()));
-        viewHolder.txtidreserva.setText(String.valueOf(items.get(i).getId_reserva()));
+        viewHolder.txtnombreusuario.setText(String.valueOf(items.get(i).getNombre_usuario()));
+        viewHolder.txtnombreusuario.setVisibility(View.GONE);
+        viewHolder.tvUsuario.setVisibility(View.GONE);
+        if (String.valueOf(items.get(i).getNombre_usuario()).equals("admin")) {
+            viewHolder.txtnombreusuario.setVisibility(View.VISIBLE);
+            viewHolder.tvUsuario.setVisibility(View.VISIBLE);
+        }
         viewHolder.txthorainicio.setText(String.valueOf(items.get(i).getHora_inio()));
         viewHolder.txthorafin.setText(String.valueOf(items.get(i).getHora_fin()));
         viewHolder.btneliminar.setOnClickListener(new View.OnClickListener() {

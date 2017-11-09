@@ -8,18 +8,28 @@ class Reserva {
     String cod_r;
     String cod_s;
     String cod_u;
+    String nombre_usuario;
     String inicio;
     String fin;
 
     public Reserva() {
     }
 
-    public Reserva(String cod_r, String cod_s, String cod_u, String inicio, String fin) {
+    public Reserva(String cod_r, String cod_s, String cod_u, String nombre_usuario, String inicio, String fin) {
         this.cod_r = cod_r;
         this.cod_s = cod_s;
         this.cod_u = cod_u;
+        this.nombre_usuario = nombre_usuario;
         this.inicio = inicio;
         this.fin = fin;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
     }
 
     public String getCod_u() {
@@ -72,6 +82,8 @@ class Reserva {
         if (cod_r != null ? !cod_r.equals(reserva.cod_r) : reserva.cod_r != null) return false;
         if (cod_s != null ? !cod_s.equals(reserva.cod_s) : reserva.cod_s != null) return false;
         if (cod_u != null ? !cod_u.equals(reserva.cod_u) : reserva.cod_u != null) return false;
+        if (nombre_usuario != null ? !nombre_usuario.equals(reserva.nombre_usuario) : reserva.nombre_usuario != null)
+            return false;
         if (inicio != null ? !inicio.equals(reserva.inicio) : reserva.inicio != null) return false;
         return fin != null ? fin.equals(reserva.fin) : reserva.fin == null;
 
@@ -82,6 +94,7 @@ class Reserva {
         int result = cod_r != null ? cod_r.hashCode() : 0;
         result = 31 * result + (cod_s != null ? cod_s.hashCode() : 0);
         result = 31 * result + (cod_u != null ? cod_u.hashCode() : 0);
+        result = 31 * result + (nombre_usuario != null ? nombre_usuario.hashCode() : 0);
         result = 31 * result + (inicio != null ? inicio.hashCode() : 0);
         result = 31 * result + (fin != null ? fin.hashCode() : 0);
         return result;

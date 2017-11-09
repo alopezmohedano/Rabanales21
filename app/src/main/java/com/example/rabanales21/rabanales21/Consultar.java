@@ -117,6 +117,7 @@ public class Consultar extends Fragment {
                         items.add(new ConsultaReserva(sala,
                                 respuesta[i].getInicio().substring(8,10) + " de " + mes,
                                 respuesta[i].getCod_r(),
+                                respuesta[i].getNombre_usuario(),
                                 respuesta[i].getInicio().substring(11,16),
                                 respuesta[i].getFin().substring(11,16)));
                     }

@@ -27,7 +27,6 @@ public class MenuActivity extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +104,6 @@ public class MenuActivity extends AppCompatActivity
         navigationView.getMenu().setGroupVisible(R.id.grupoadmin, false);
         if(getIntent().hasExtra("respuestaLogin")) {
             String[] tipousuario = getIntent().getStringArrayExtra("respuestaLogin");
-
             if (tipousuario[2].equals("1")) {
                 navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
             }
