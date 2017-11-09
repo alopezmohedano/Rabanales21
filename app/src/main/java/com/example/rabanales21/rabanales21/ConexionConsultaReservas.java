@@ -12,17 +12,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Gestiona la conexion a la BBDD para realizar el login de usuario
+ * Gestiona la conexion
  */
 
-class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
+class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
 
     @Override
-    protected String[] doInBackground(String... params) {
+    protected Reserva[] doInBackground(String... params) {
 
         StringBuilder resul;
 
-        String[] auxiliar = new String[4];
+        Reserva[] auxiliar = new Reserva[1];
 
         try {
 
@@ -47,21 +47,19 @@ class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
                     resul.append(linea);
 
                 }
-
             }
 
             JSONArray json = new JSONArray(resul.toString());
 
+
+
             if(json.length() > 0) {
 
-                auxiliar[0] = json.getJSONObject(0).get("nombre_usuario").toString();
+                auxiliar = new Reserva[json.length()];
 
-                auxiliar[1] = json.getJSONObject(0).get("nombre_empresa").toString();
-
-                auxiliar[2] = json.getJSONObject(0).get("tipo").toString();
-
-                auxiliar[3] = json.getJSONObject(0).get("cod_u").toString();
-
+                for (int i= 0; i < json.length(); i++) {
+                    auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_r").toString(), json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("cod_u").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
+                }
             }
 
         } catch (Exception e) {
@@ -72,5 +70,4 @@ class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
         return auxiliar;
 
     }
-
 }

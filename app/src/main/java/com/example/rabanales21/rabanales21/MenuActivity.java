@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -38,25 +39,31 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         final FragmentManager fragmentManager2=getSupportFragmentManager();
         fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.wtabLayout);;
-
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.wtabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Inicio"));
+        tabLayout.addTab(tabLayout.newTab().setText("Reservar"));
+
         tabLayout.addTab(tabLayout.newTab().setText("Consultar"));
-        tabLayout.addTab(tabLayout.newTab().setText("Ajustes"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Inicio()).addToBackStack(null).commit();
-                } else if(tab.getPosition() == 1){
-                    fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).addToBackStack(null).commit();
-                } else if (tab.getPosition() == 2){
-                    fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Cambiarpass()).addToBackStack(null).commit();
-                }
 
+                Fragment retorno = null;
+                switch (tab.getPosition()){
+                    case 0:
+                        retorno = new Inicio();
+                    break;
+                    case 1:
+                        retorno= new Muestra_salas();
+                        break;
+                    case 2:
+                        retorno= new Consultar();
+                        break;
+                }
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).addToBackStack(null).commit();
             }
 
             @Override
@@ -67,16 +74,22 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).addToBackStack(null).commit();
-                } else if(tab.getPosition() == 1){
-                    fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).addToBackStack(null).commit();
-                } else if (tab.getPosition() == 2){
-                    fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Cambiarpass()).addToBackStack(null).commit();
+
+                Fragment retorno = null;
+                switch (tab.getPosition()){
+                    case 0:
+                        retorno = new Inicio();
+                        break;
+                    case 1:
+                        retorno= new Muestra_salas();
+                        break;
+                    case 2:
+                        retorno= new Consultar();
+                        break;
                 }
-
-
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).commit();
             }
+
 
         });
 
@@ -99,7 +112,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
             if (tipousuario[2].equals("1")) {
                 navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
-
             }
         }
 
@@ -171,6 +183,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         FragmentManager fragmentManager2=getSupportFragmentManager();
         ReservaSalas fragment = new ReservaSalas();
+        Consultar fragment2 = new Consultar();
 
         Bundle arguments = new Bundle();
         if (id == R.id.inicio) {
@@ -199,14 +212,16 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
             fragment.setArguments(arguments);
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).addToBackStack(null).commit();
         } else if (id == R.id.gestionreservas) {
-
+            arguments.putString("reservas" , "todas");
+            fragment2.setArguments(arguments);
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment2).addToBackStack(null).commit();
         } else if (id == R.id.gestionempresas) {
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Gestionempresa()).addToBackStack(null).commit();
         } else if (id == R.id.cambiarpass) {
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Cambiarpass()).addToBackStack(null).commit();
         } else if (id == R.id.cerrarsesion) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("¿Está seguro de que desea cerrar sesión?")
+            builder.setMessage(getString(R.string.closeConf))
                     .setCancelable(false)
                     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -232,6 +247,4 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         principal = valor;
 
     }
-
-
 }

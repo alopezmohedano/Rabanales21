@@ -12,17 +12,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Gestiona la conexion a la BBDD para realizar el login de usuario
+ * Created by Alvaro on 07/11/2017.
  */
 
-class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
+public class ConexionProximaReserva extends AsyncTask<String, Void, String[]> {
 
     @Override
     protected String[] doInBackground(String... params) {
 
         StringBuilder resul;
 
-        String[] auxiliar = new String[4];
+        String[] auxiliar = new String[3];
 
         try {
 
@@ -54,13 +54,11 @@ class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
 
             if(json.length() > 0) {
 
-                auxiliar[0] = json.getJSONObject(0).get("nombre_usuario").toString();
+                auxiliar[0] = json.getJSONObject(0).get("nombre_sala").toString();
 
-                auxiliar[1] = json.getJSONObject(0).get("nombre_empresa").toString();
+                auxiliar[1] = json.getJSONObject(0).get("inicio").toString();
 
-                auxiliar[2] = json.getJSONObject(0).get("tipo").toString();
-
-                auxiliar[3] = json.getJSONObject(0).get("cod_u").toString();
+                auxiliar[2] = json.getJSONObject(0).get("fin").toString();
 
             }
 
@@ -72,5 +70,4 @@ class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
         return auxiliar;
 
     }
-
 }

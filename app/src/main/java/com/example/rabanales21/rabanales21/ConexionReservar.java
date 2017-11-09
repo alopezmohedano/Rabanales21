@@ -1,5 +1,6 @@
 package com.example.rabanales21.rabanales21;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -11,18 +12,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Gestiona la conexion a la BBDD para realizar el login de usuario
- */
-
-class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
+class ConexionReservar extends AsyncTask<String, Void, String> {
 
     @Override
-    protected String[] doInBackground(String... params) {
+    protected String doInBackground(String... params) {
 
         StringBuilder resul;
 
-        String[] auxiliar = new String[4];
+        String auxiliar = "aa";
 
         try {
 
@@ -52,17 +49,7 @@ class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
 
             JSONArray json = new JSONArray(resul.toString());
 
-            if(json.length() > 0) {
-
-                auxiliar[0] = json.getJSONObject(0).get("nombre_usuario").toString();
-
-                auxiliar[1] = json.getJSONObject(0).get("nombre_empresa").toString();
-
-                auxiliar[2] = json.getJSONObject(0).get("tipo").toString();
-
-                auxiliar[3] = json.getJSONObject(0).get("cod_u").toString();
-
-            }
+            auxiliar = (String) json.getJSONObject(0).get("resultado").toString();
 
         } catch (Exception e) {
 

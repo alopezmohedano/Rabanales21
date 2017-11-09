@@ -4,11 +4,7 @@
     <modules>
 
       <module fileurl="file://$PROJECT_DIR$/Rabanales21.iml" filepath="$PROJECT_DIR$/Rabanales21.iml" />
-
-      <module fileurl="file://$PROJECT_DIR$/../../../../DAVID/AndroidStudioProjects/Rabanales21-3/Rabanales21.iml" filepath="$PROJECT_DIR$/../../../../DAVID/AndroidStudioProjects/Rabanales21-3/Rabanales21.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../DAVID/AndroidStudioProjects/Rabanales21-3/Rabanales21(2).iml" filepath="$PROJECT_DIR$/../../../../DAVID/AndroidStudioProjects/Rabanales21-3/Rabanales21(2).iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Rabanales21-3.iml" filepath="$PROJECT_DIR$/.idea/Rabanales21-3.iml" />
-
+      <module fileurl="file://E:/AndroidStudioProjects/Rabanales21/Rabanales21.iml" filepath="E:/AndroidStudioProjects/Rabanales21/Rabanales21.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://E:/AndroidStudioProjects/Rabanales21/app/app.iml" filepath="E:/AndroidStudioProjects/Rabanales21/app/app.iml" />
     </modules>

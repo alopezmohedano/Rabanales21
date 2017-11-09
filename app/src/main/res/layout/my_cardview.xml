@@ -8,14 +8,15 @@
     style="@style/MyCardViewStyle"
     android:clipToPadding="false"
     android:clickable="true"
-    android:background="?attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground">/>
+
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="1dp"
-        android:background="@drawable/degradado"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         android:weightSum="1"
         android:layout_gravity="center_horizontal">
@@ -23,24 +24,27 @@
 
         <TextView
             android:id="@+id/nombre"
-            android:layout_width="352dp"
+            android:layout_width="336dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="8dp"
+            android:elevation="2dp"
             android:fontFamily="sans-serif"
-            android:gravity="top|center_horizontal"
-            android:text="Large Text"
+            android:gravity="center"
+            android:text="android"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="8dp"
-            />
+            android:layout_marginRight="8dp"
+            card_view:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            card_view:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
             android:id="@+id/visitas"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nombre"
             android:layout_centerHorizontal="true"
@@ -59,7 +63,8 @@
             card_view:layout_constraintLeft_toLeftOf="parent"
             card_view:layout_constraintRight_toRightOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/nombre"
-            card_view:layout_constraintVertical_bias="0.5" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
 
     </android.support.constraint.ConstraintLayout>
