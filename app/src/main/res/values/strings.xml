@@ -20,6 +20,7 @@
 
     <!-- Strings Cambiar Pass -->
     <string name="changePass">Cambiar contraseña</string>
+    <string name="confirmPass">Confirmar</string>
     <string name="currentPass">Contraseña actual</string>
     <string name="newPass">Nueva contraseña</string>
     <string name="passSecurity">Seguridad de la contraseña: </string>
