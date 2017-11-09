@@ -21,17 +21,28 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
- * Created by usuario on 06/11/2017.
+ * Gestiona la consulta de la BBDD para mostar una lista con todas las reservas del usuario, con opcion a eliminarlas.
  */
 
 public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.SadapterViewHolder> {
     private List<ConsultaReserva> items;
 
+    /**
+     * Recoge las reservas obtenidas en la consulta a la BBDD. </p>
+     * @param items Cada una de las reservas devueltas por la consulta a la BBDD
+     */
+
     public AdaptadorReservas(List<ConsultaReserva> items) {
+
         this.items = items;
     }
 
+    /**
+     * Declara los campos que forma cada reserva
+     */
+
     public static class SadapterViewHolder extends RecyclerView.ViewHolder {
+
         // Campos respectivos de un item
 
         public TextView txtsala;
@@ -41,9 +52,15 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
         public TextView txthorafin;
         public ImageButton btneliminar;
 
-
+        /**
+         * Asigna los elementos a los campos declarados anteriormente
+         * @param v Cada uno de los elementos que contiene una reserva
+         */
 
         public SadapterViewHolder(View v) {
+
+
+
             super(v);
 
             txtsala = (TextView) v.findViewById(R.id.nombresala);
@@ -61,6 +78,13 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
         return items.size();
     }
 
+    /**
+     * Infla la vista que va a mostrar las reservas obtenidas en la consulta.
+     * @param viewGroup
+     * @param i indice que controla el numero de reservas a mostrar.
+     * @return Devuelve la vista inflada.
+     */
+
     @Override
     public AdaptadorReservas.SadapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
@@ -68,9 +92,15 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
         return new AdaptadorReservas.SadapterViewHolder(v);
     }
 
+    /**
+     * Rellena los elementos con los datos obtenidos de la consulta a la BBDD.
+     * @param viewHolder los elementos que conforman la reserva
+     * @param i indice para rellenar cada reserva individualmente
+     */
 
     @Override
     public void onBindViewHolder(AdaptadorReservas.SadapterViewHolder viewHolder, final int i) {
+
         viewHolder.txtsala.setText(items.get(i).getSala());
         viewHolder.txtfechainicio.setText(String.valueOf(items.get(i).getFecha_inicio()));
         viewHolder.txtidreserva.setText(String.valueOf(items.get(i).getId_reserva()));

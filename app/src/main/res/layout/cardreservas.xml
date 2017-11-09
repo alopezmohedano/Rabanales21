@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="1dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -132,7 +132,7 @@
                 android:layout_width="102dp"
                 android:layout_height="34dp"
                 card_view:srcCompat="@android:drawable/ic_menu_delete"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
         </LinearLayout>
 
 

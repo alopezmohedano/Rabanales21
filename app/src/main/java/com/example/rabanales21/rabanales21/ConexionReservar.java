@@ -1,5 +1,6 @@
 package com.example.rabanales21.rabanales21;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -11,18 +12,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Gestiona la conexion
- */
-
-class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
+class ConexionReservar extends AsyncTask<String, Void, String> {
 
     @Override
-    protected Reserva[] doInBackground(String... params) {
+    protected String doInBackground(String... params) {
 
         StringBuilder resul;
 
-        Reserva[] auxiliar = new Reserva[1];
+        String auxiliar = "aa";
 
         try {
 
@@ -47,20 +44,12 @@ class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
                     resul.append(linea);
 
                 }
+
             }
 
             JSONArray json = new JSONArray(resul.toString());
 
-
-
-            if(json.length() > 0) {
-
-                auxiliar = new Reserva[json.length()];
-
-                for (int i= 0; i < json.length(); i++) {
-                    auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_r").toString(), json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
-                }
-            }
+            auxiliar = (String) json.getJSONObject(0).get("resultado").toString();
 
         } catch (Exception e) {
 
@@ -70,4 +59,5 @@ class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
         return auxiliar;
 
     }
+
 }

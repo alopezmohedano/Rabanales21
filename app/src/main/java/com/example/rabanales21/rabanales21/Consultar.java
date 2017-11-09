@@ -54,19 +54,19 @@ public class Consultar extends Fragment {
                     for (int i=0;i<respuesta.length;i++) {
                         String sala = "";
                         switch (Integer.parseInt(respuesta[i].getCod_s())){
-                            case 0:
+                            case 1:
                                 sala = "Sala Centauro Grande";
                                 break;
-                            case 1:
+                            case 2:
                                 sala = "Sala Centauro Pequeña";
                                 break;
-                            case 2:
+                            case 3:
                                 sala = "Sala Silos";
                                 break;
-                            case 3:
+                            case 4:
                                 sala = "Sala de Formación";
                                 break;
-                            case 4:
+                            case 5:
                                 sala = "Sala Aldebarán";
                                 break;
                         }
@@ -115,6 +115,8 @@ public class Consultar extends Fragment {
                                 respuesta[i].getInicio().substring(11,16),
                                 respuesta[i].getFin().substring(11,16)));
                     }
+                } else {
+
                 }
 
             } catch (InterruptedException e) {
