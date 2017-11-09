@@ -2,7 +2,7 @@ package com.example.rabanales21.rabanales21;
 
 
 import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,19 +14,20 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
 
-import static com.example.rabanales21.rabanales21.R.id.contenedor1;
-import static com.example.rabanales21.rabanales21.R.id.viewPager;
 
-public class MenuActivity extends AppCompatActivity
 
-        implements NavigationView.OnNavigationItemSelectedListener {
 
+public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    Boolean principal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +36,21 @@ public class MenuActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
-
+        final FragmentManager fragmentManager2=getSupportFragmentManager();
+        fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.wtabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Inicio"));
         tabLayout.addTab(tabLayout.newTab().setText("Reservar"));
+
         tabLayout.addTab(tabLayout.newTab().setText("Consultar"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 Fragment retorno = null;
                 switch (tab.getPosition()){
                     case 0:
@@ -65,12 +68,13 @@ public class MenuActivity extends AppCompatActivity
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                fragmentManager.beginTransaction().replace(R.id.contenedor1, new Inicio()).commit();
+                fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Inicio()).commit();
 
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
                 Fragment retorno = null;
                 switch (tab.getPosition()){
                     case 0:
@@ -110,7 +114,16 @@ public class MenuActivity extends AppCompatActivity
                 navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
             }
         }
+
+        String[] datosUsuario = getIntent().getStringArrayExtra("respuestaLogin");
+        String usuario = datosUsuario[0].toString();
+        String empresa = datosUsuario[1].toString();
+        View nav_header = LayoutInflater.from(this).inflate(R.layout.nav_header_menu, null);
+        ((TextView) nav_header.findViewById(R.id.nombreusuario)).setText(usuario);
+        ((TextView) nav_header.findViewById(R.id.empresa)).setText(empresa);
+        navigationView.addHeaderView(nav_header);
     }
+
 
 
     @Override
@@ -119,7 +132,27 @@ public class MenuActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (principal) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("¿Está seguro de que desea cerrar sesión?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            } else {
+
+
+                super.onBackPressed();
+            }
         }
     }
 
@@ -207,5 +240,11 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void setBoleano (Boolean valor){
+
+        principal = valor;
+
     }
 }

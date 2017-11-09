@@ -95,7 +95,6 @@ public class Inicio extends Fragment {
                 }
             }, 3000, 3000);
 
-
-
+            ((MenuActivity)getActivity()).setBoleano(true);
     }
 }

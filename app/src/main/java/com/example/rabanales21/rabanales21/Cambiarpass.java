@@ -33,6 +33,7 @@ public class Cambiarpass extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_cambiarpass, container, false);
 
     }
@@ -86,5 +87,12 @@ public class Cambiarpass extends Fragment {
             }
 
         });
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+        ((MenuActivity)getActivity()).setBoleano(false);
     }
 }
