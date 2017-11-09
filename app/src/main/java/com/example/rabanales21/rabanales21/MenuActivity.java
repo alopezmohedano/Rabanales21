@@ -36,8 +36,8 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final FragmentManager fragmentManager2=getSupportFragmentManager();
-        fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
+        final FragmentManager fragmentManager=getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.wtabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Inicio"));
@@ -68,7 +68,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Inicio()).commit();
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, new Inicio()).commit();
 
             }
 
@@ -87,7 +87,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                         retorno= new Consultar();
                         break;
                 }
-                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).commit();
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).addToBackStack(null).commit();
             }
 
 

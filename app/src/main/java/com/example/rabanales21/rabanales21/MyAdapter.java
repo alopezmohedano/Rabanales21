@@ -62,7 +62,7 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.SadapterViewHolde
                     Bundle arguments = new Bundle();
                     arguments.putInt( "sala" , position);
                     fragment.setArguments(arguments);
-                    fragmentManager.beginTransaction().replace(R.id.contenedor1,fragment).commit();
+                    fragmentManager.beginTransaction().replace(R.id.contenedor1,fragment).addToBackStack(null).commit();
 
                 }
             });
