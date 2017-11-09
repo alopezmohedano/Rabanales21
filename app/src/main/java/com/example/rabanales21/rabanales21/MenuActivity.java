@@ -157,6 +157,7 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager2=getSupportFragmentManager();
         ReservaSalas fragment = new ReservaSalas();
+        Consultar fragment2 = new Consultar();
 
         Bundle arguments = new Bundle();
         if (id == R.id.inicio) {
@@ -185,7 +186,9 @@ public class MenuActivity extends AppCompatActivity
             fragment.setArguments(arguments);
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment).addToBackStack(null).commit();
         } else if (id == R.id.gestionreservas) {
-
+            arguments.putString("reservas" , "todas");
+            fragment2.setArguments(arguments);
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,fragment2).addToBackStack(null).commit();
         } else if (id == R.id.gestionempresas) {
             fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Gestionempresa()).addToBackStack(null).commit();
         } else if (id == R.id.cambiarpass) {

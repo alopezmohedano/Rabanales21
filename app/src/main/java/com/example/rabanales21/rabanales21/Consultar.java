@@ -39,8 +39,13 @@ public class Consultar extends Fragment {
             String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
             int codUsuario = Integer.parseInt(datosUsuario[3]);
 
-
-            String miWhere = "?cod_usuario=" + codUsuario;
+            String miWhere;
+            if (getArguments() != null) {
+                Bundle arguments = getArguments();
+                miWhere = "?cod_usuario=0";
+            } else {
+                miWhere = "?cod_usuario=" + codUsuario;
+            }
 
             try {
 
@@ -103,7 +108,7 @@ public class Consultar extends Fragment {
                             case 11:
                                 mes = "Noviembre";
                                 break;
-                            case 121:
+                            case 12:
                                 mes = "Diciembre";
                                 break;
                         }
