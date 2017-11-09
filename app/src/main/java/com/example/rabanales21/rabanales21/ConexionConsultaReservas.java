@@ -58,7 +58,7 @@ class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
                 auxiliar = new Reserva[json.length()];
 
                 for (int i= 0; i < json.length(); i++) {
-                    auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_r").toString(), json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
+                    auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_r").toString(), json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("cod_u").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
                 }
             }
 
