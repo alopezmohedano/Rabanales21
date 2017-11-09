@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 
 public class ReservaSalas extends Fragment implements View.OnClickListener {
+    Boolean principal=false;
     CalendarView calendarView;
     ArrayList<String> horasStart = new ArrayList<>();
     ArrayList<String> horasEnd = new ArrayList<>();
@@ -119,6 +120,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
             }
         });
+        ((MenuActivity)getActivity()).setBoleano(false);
     }
 
     public void eliminarIntervaloReserva(int [] horarioReserva) {

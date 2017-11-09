@@ -56,7 +56,7 @@ public class Inicio extends Fragment {
                 handler.post(Update);
             }
         }, 3000,3000);
-
+        ((MenuActivity)getActivity()).setBoleano(true);
 
     }
 }
