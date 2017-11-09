@@ -1,6 +1,8 @@
 package com.example.rabanales21.rabanales21;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -85,5 +87,6 @@ public class FuncionesGenerales {
 
         return fecha.substring(8,10) + "/" + fecha.substring(5,7) + "/" + fecha.substring(0,4);
     }
+
 
 }

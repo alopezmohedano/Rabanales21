@@ -53,7 +53,7 @@ public class Muestra_salas extends Fragment {
 // Crear un nuevo adaptador
         adapter = new MyAdapter(items);
         recycler.setAdapter(adapter);
-        recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+        /*recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean b) {
 
@@ -87,7 +87,8 @@ public class Muestra_salas extends Fragment {
             public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
 
             }
-        });
+        }
+        );*/
         return  v;
 
 
