@@ -1,17 +1,25 @@
 package com.example.rabanales21.rabanales21;
 
-import android.view.View;
-
 /**
- * Created by usuario on 06/11/2017.
+ * Traduce la respuesta obtenida de la BBDD para crear las reservas que seran mostradas en la app. </p>
  */
 
 public class ConsultaReserva {
-private String sala;
+
+    private String sala;
     private String fecha_inicio;
     private String id_reserva;
     private String hora_inio;
     private String hora_fin;
+
+    /**
+     * Constructor de consultas de reservas para mostarlas en la app </br>
+     * @param sala La sala en la que se realizo la reserva
+     * @param fecha_inicio La fecha en que se realizo la reserva
+     * @param id_reserva ID de control de la reserva
+     * @param hora_inio Hora a la que se inicia la reserva
+     * @param hora_fin Hora a la que finaliza la reserva
+     */
 
     public ConsultaReserva(String sala, String fecha_inicio, String id_reserva, String hora_inio, String hora_fin) {
         this.sala = sala;

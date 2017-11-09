@@ -12,10 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Gestiona la conexion a la BBDD para realizar el login de usuario
+ * Gestiona la conexion a la BBDD para realizar el login de usuario.</p>
+ * Envia los datos de login a un webservice </br>
+ * Recibe un JSON si la conexion es correcta con los datos de usuario </br>
  */
 
-class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
+public class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
 
     @Override
     protected String[] doInBackground(String... params) {

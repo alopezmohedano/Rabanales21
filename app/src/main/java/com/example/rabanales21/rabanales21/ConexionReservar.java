@@ -1,6 +1,5 @@
 package com.example.rabanales21.rabanales21;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -12,7 +11,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class ConexionReservar extends AsyncTask<String, Void, String> {
+/**
+ * Gestiona la conexion a la BBDD para realizar la reserva. </p>
+ * Envia los datos de reserva a un webservice </br>
+ * Recibe un JSON si la conexion es correcta confirmando la reserva </br>
+ */
+
+public class ConexionReservar extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {

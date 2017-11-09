@@ -1,9 +1,5 @@
 package com.example.rabanales21.rabanales21;
 
-/**
- * Created by usuario on 02/11/2017.
- */
-
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;

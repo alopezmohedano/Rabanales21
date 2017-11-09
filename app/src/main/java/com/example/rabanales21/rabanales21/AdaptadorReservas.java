@@ -1,22 +1,14 @@
 package com.example.rabanales21.rabanales21;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -28,7 +20,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
     private List<ConsultaReserva> items;
 
     /**
-     * Recoge las reservas obtenidas en la consulta a la BBDD. </p>
+     * Recoge las reservas obtenidas en la consulta a la BBDD. </br>
      * @param items Cada una de las reservas devueltas por la consulta a la BBDD
      */
 
@@ -112,16 +104,16 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
                 String idreserva;
                 idreserva = items.get(i).getId_reserva();
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder((Activity) view.getContext());
-                dialogo1.setTitle("Atención");
-                dialogo1.setMessage("¿ Cancelar esta reserva ?");
+                dialogo1.setTitle(R.string.warning);
+                dialogo1.setMessage(R.string.cancelReserva);
                 dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                dialogo1.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
 
 
                     }
                 });
-                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                dialogo1.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
                     }
                 });

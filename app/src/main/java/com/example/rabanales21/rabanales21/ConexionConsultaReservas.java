@@ -12,10 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Gestiona la conexion
+ * Gestiona la conexion a la BBDD para la consulta de reservas futuras de un usuario. </p>
+ * Envia los datos de consulta a un webservice </br>
+ * Recibe un JSON si la conexion es correcta con los datos requeridos </br>
  */
 
-class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
+public class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
 
     @Override
     protected Reserva[] doInBackground(String... params) {
