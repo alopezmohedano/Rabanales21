@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class Gestionempresa extends Fragment {
+public class Gestionempresa extends Fragment implements View.OnClickListener{
     
     Button btnAnadir, btnModificar, btnEliminar, btnBorrar, btnBuscar, btnGuardar;
 
@@ -46,116 +46,23 @@ public class Gestionempresa extends Fragment {
 
         btnAnadir = getActivity().findViewById(R.id.btnAnadirEmpresa);
 
-        btnAnadir.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                camposUsuario(View.VISIBLE);
-
-                camposPassword(View.VISIBLE);
-
-                camposEmpresa(View.VISIBLE);
-
-                camposBuscar(View.GONE);
-
-                botonesAccion(View.VISIBLE);
-
-                nuevoClick();
-
-            }
-
-        });
+        btnAnadir.setOnClickListener(this);
 
         btnModificar = getActivity().findViewById(R.id.btnModificarEmpresa);
 
-        btnModificar.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                camposUsuario(View.VISIBLE);
-
-                camposPassword(View.GONE);
-
-                camposEmpresa(View.GONE);
-
-                camposBuscar(View.VISIBLE);
-
-                botonesAccion(View.GONE);
-
-                nuevoClick();
-
-                txtBuscar.setText("Para obtener los datos completos de una empresa, introduzca el usuario y pulse el botón Buscar");
-
-            }
-
-        });
+        btnModificar.setOnClickListener(this);
 
         btnEliminar = getActivity().findViewById(R.id.btnEliminarEmpresa);
 
-        btnEliminar.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                camposUsuario(View.VISIBLE);
-
-                camposPassword(View.GONE);
-
-                camposEmpresa(View.GONE);
-
-                camposBuscar(View.GONE);
-
-                botonesAccion(View.VISIBLE);
-
-                nuevoClick();
-
-            }
-
-        });
+        btnEliminar.setOnClickListener(this);
 
         btnBorrar = getActivity().findViewById(R.id.btnBorrarCampos);
 
-        btnBorrar.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                nuevoClick();
-
-            }
-
-        });
+        btnBorrar.setOnClickListener(this);
 
         btnBuscar = getActivity().findViewById(R.id.btnBuscarDatos);
 
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                camposPassword(View.VISIBLE);
-
-                camposEmpresa(View.VISIBLE);
-
-                txtBuscar.setText("Para realizar una nueva busqueda, pulse el botón Modificar");
-
-                btnBuscar.setVisibility(View.GONE);
-
-                botonesAccion(View.VISIBLE);
-
-                edtUsuario.setEnabled(false);
-
-                if (edtUsuario.isFocusable()) {
-
-                   edtPassword.requestFocus();
-
-                }
-
-            }
-
-        });
+        btnBuscar.setOnClickListener(this);
 
         btnGuardar = getActivity().findViewById(R.id.btnHacerOperacion);
 
@@ -213,4 +120,56 @@ public class Gestionempresa extends Fragment {
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnAnadirEmpresa:
+                camposUsuario(View.VISIBLE);
+                camposPassword(View.VISIBLE);
+                camposEmpresa(View.VISIBLE);
+                camposBuscar(View.GONE);
+                botonesAccion(View.VISIBLE);
+                nuevoClick();
+
+
+                break;
+            case R.id.btnEliminarEmpresa:
+                camposUsuario(View.VISIBLE);
+                camposPassword(View.GONE);
+                camposEmpresa(View.GONE);
+                camposBuscar(View.GONE);
+                botonesAccion(View.VISIBLE);
+                nuevoClick();
+
+
+                break;
+            case R.id.btnModificarEmpresa:
+                camposUsuario(View.VISIBLE);
+                camposPassword(View.GONE);
+                camposEmpresa(View.GONE);
+                camposBuscar(View.VISIBLE);
+                botonesAccion(View.GONE);
+                nuevoClick();
+                txtBuscar.setText("Para obtener los datos completos de una empresa, introduzca el usuario y pulse el botón Buscar");
+
+                break;
+            case R.id.btnBorrarCampos:
+                nuevoClick();
+
+                break;
+            case R.id.btnBuscarDatos:
+                camposPassword(View.VISIBLE);
+                camposEmpresa(View.VISIBLE);
+                txtBuscar.setText("Para realizar una nueva busqueda, pulse el botón Modificar");
+                btnBuscar.setVisibility(View.GONE);
+                botonesAccion(View.VISIBLE);
+                edtUsuario.setEnabled(false);
+
+                if (edtUsuario.isFocusable()) {
+                    edtPassword.requestFocus();
+                }
+
+                break;
+        }
+    }
 }
