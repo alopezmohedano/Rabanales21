@@ -236,7 +236,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         ((MenuActivity)getActivity()).setBoleano(false);
     }
 
-    }
     public void eliminarIntervaloReserva(int [] horarioReserva) {
         String[] stringReserva = {String.valueOf(horarioReserva[0] + ":00"), String.valueOf(horarioReserva[1] + ":00")};
         int intervaloReserva = horarioReserva[1] - horarioReserva[0];
