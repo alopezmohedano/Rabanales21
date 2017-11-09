@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +21,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
-
 public class ReservaSalas extends Fragment implements View.OnClickListener {
-    CalendarView calendarView;
-    ArrayList<String> horasStart = new ArrayList<>();
-    ArrayList<String> horasEnd = new ArrayList<>();
-    FuncionesGenerales myController = new FuncionesGenerales();
-    String diaEscogido;
+    private CalendarView calendarView;
+    private ArrayList<String> horasStart = new ArrayList<>();
+    private ArrayList<String> horasEnd = new ArrayList<>();
+    private FuncionesGenerales myController = new FuncionesGenerales();
+    private String diaEscogido;
     int numeroSala = 0;
+    Spinner spSalas;
+    Spinner spStart;
+    Spinner spEnd;
+    Button btnDate;
+    String fechaEscogida;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,10 +50,12 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         //setContentView(R.layout.activity_reservar);
 
-        final Button btnDate = (Button) (getActivity().findViewById(R.id.btnDate));
+        btnDate = (Button) (getActivity().findViewById(R.id.btnDate));
         btnDate.setOnClickListener(this);
         final Button btnReservar = (Button) (getActivity().findViewById(R.id.btnReservar));
         btnReservar.setOnClickListener(this);
+
+        btnReservar.setEnabled(false);
 
         // TextView tvDate = (TextView) findViewById(R.id.tvDate);
         final TextView tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
@@ -56,13 +64,14 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         tvStart.setVisibility(View.GONE);
         tvEnd.setVisibility(View.GONE);
 
-        Spinner spSalas = (Spinner) (getActivity().findViewById(R.id.spSalas));
-        final Spinner spStart = (Spinner) (getActivity().findViewById(R.id.spStart));
-        final Spinner spEnd = (Spinner) (getActivity().findViewById(R.id.spEnd));
+        spSalas = (Spinner) (getActivity().findViewById(R.id.spSalas));
+        spStart = (Spinner) (getActivity().findViewById(R.id.spStart));
+        spEnd = (Spinner) (getActivity().findViewById(R.id.spEnd));
 
         String[] salas = {getString(R.string.salaCentauroG), getString(R.string.salaCentauroP), getString(R.string.salaSilos), getString(R.string.salaFormacion), getString(R.string.salaAldebaran)};
 
         spSalas.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, salas));
+
 
         if (getArguments() != null) {
             Bundle arguments = getArguments();
@@ -70,6 +79,22 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
             spSalas.setSelection(numeroSala);
         }
+
+        spSalas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tvStart.setVisibility(View.GONE);
+                tvEnd.setVisibility(View.GONE);
+                spStart.setVisibility(View.GONE);
+                spEnd.setVisibility(View.GONE);
+                btnDate.setText("FECHA");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         for (int i=7; i<22; i++) {horasStart.add(i+":00");}
         for (int i=8; i<23; i++) {horasEnd.add(i+":00");}
@@ -84,48 +109,33 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                fechaEscogida = year + "-";
+                if (month < 10) {
+                    fechaEscogida += "0" + (month + 1) + "-";
+                } else {
+                    fechaEscogida += (month + 1) + "-";
+                }
+                if (dayOfMonth < 10) {
+                    fechaEscogida += "0" + dayOfMonth;
+                } else {
+                    fechaEscogida += dayOfMonth;
+                }
+
                 btnDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year);
                 calendarView.setVisibility(View.GONE);
                 spStart.setVisibility(View.VISIBLE);
                 tvStart.setVisibility(View.VISIBLE);
                 spEnd.setVisibility(View.VISIBLE);
                 tvEnd.setVisibility(View.VISIBLE);
+                btnReservar.setEnabled(true);
                 spStart.setSelection(0);
                 spEnd.setSelection(0);
 
                 horasStart.clear();
-                horasStart.add("7:00");
-                horasStart.add("8:00");
-                horasStart.add("9:00");
-                horasStart.add("10:00");
-                horasStart.add("11:00");
-                horasStart.add("12:00");
-                horasStart.add("13:00");
-                horasStart.add("14:00");
-                horasStart.add("15:00");
-                horasStart.add("16:00");
-                horasStart.add("17:00");
-                horasStart.add("18:00");
-                horasStart.add("19:00");
-                horasStart.add("20:00");
-                horasStart.add("21:00");
+                for (int i=7; i<22; i++) {horasStart.add(i+":00");}
 
                 horasEnd.clear();
-                horasEnd.add("8:00");
-                horasEnd.add("9:00");
-                horasEnd.add("10:00");
-                horasEnd.add("11:00");
-                horasEnd.add("12:00");
-                horasEnd.add("13:00");
-                horasEnd.add("14:00");
-                horasEnd.add("15:00");
-                horasEnd.add("16:00");
-                horasEnd.add("17:00");
-                horasEnd.add("18:00");
-                horasEnd.add("19:00");
-                horasEnd.add("20:00");
-                horasEnd.add("21:00");
-                horasEnd.add("22:00");
+                for (int i=8; i<23; i++) {horasEnd.add(i+":00");}
 
                 diaEscogido = year + "-";
                 if (month +1 <10) {
@@ -139,7 +149,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                     diaEscogido += "-" + dayOfMonth;
                 }
 
-                String miPagina = "consultaReservas.php";
+                String miPagina = "consultaReservasSala.php";
 
                 if (getActivity().getIntent().hasExtra("respuestaLogin")) {
                     String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
@@ -210,6 +220,9 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         spEnd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (spEnd.getSelectedItemPosition() < spStart.getSelectedItemPosition()) {
+                    spStart.setSelection(spEnd.getSelectedItemPosition());
+                }
             }
 
             @Override
@@ -250,6 +263,41 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        String miPagina = "realizarReserva.php";
+
+                        if (getActivity().getIntent().hasExtra("respuestaLogin")) {
+                            String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
+                            int codUsuario = Integer.parseInt(datosUsuario[3]);
+                            String fechaInicio = fechaEscogida + " " + spStart.getSelectedItem().toString() + ":00";
+                            String fechaFin = fechaEscogida + " " + spEnd.getSelectedItem().toString() + ":00";
+
+                            String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (spSalas.getSelectedItemId() + 1)
+                                    + "&fecha_inicio=" + fechaInicio + "&fecha_fin=" + fechaFin;
+
+                            try {
+
+                                ConexionReservar miCon = new ConexionReservar();
+
+                                String respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+
+                                if (respuesta.equals("false")) {
+                                    Toast.makeText(getContext(), getString(R.string.falloReserva), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getContext(), getString(R.string.exitoReserva), Toast.LENGTH_SHORT).show();
+                                    FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                                    fragmentManager.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
+                                }
+
+                            } catch (InterruptedException e) {
+
+                                e.printStackTrace();
+
+                            } catch (ExecutionException e) {
+
+                                e.printStackTrace();
+
+                            }
+                        }
 
                     }
                 });

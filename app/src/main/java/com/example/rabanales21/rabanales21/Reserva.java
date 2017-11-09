@@ -5,6 +5,7 @@ package com.example.rabanales21.rabanales21;
  */
 
 class Reserva {
+    String cod_r;
     String cod_s;
     String inicio;
     String fin;
@@ -12,10 +13,19 @@ class Reserva {
     public Reserva() {
     }
 
-    public Reserva(String cod_s, String inicio, String fin) {
+    public Reserva(String cod_r, String cod_s, String inicio, String fin) {
+        this.cod_r = cod_r;
         this.cod_s = cod_s;
         this.inicio = inicio;
         this.fin = fin;
+    }
+
+    public String getCod_r() {
+        return cod_r;
+    }
+
+    public void setCod_r(String cod_r) {
+        this.cod_r = cod_r;
     }
 
     public String getCod_s() {
@@ -49,6 +59,7 @@ class Reserva {
 
         Reserva reserva = (Reserva) o;
 
+        if (cod_r != null ? !cod_r.equals(reserva.cod_r) : reserva.cod_r != null) return false;
         if (cod_s != null ? !cod_s.equals(reserva.cod_s) : reserva.cod_s != null) return false;
         if (inicio != null ? !inicio.equals(reserva.inicio) : reserva.inicio != null) return false;
         return fin != null ? fin.equals(reserva.fin) : reserva.fin == null;
@@ -57,7 +68,8 @@ class Reserva {
 
     @Override
     public int hashCode() {
-        int result = cod_s != null ? cod_s.hashCode() : 0;
+        int result = cod_r != null ? cod_r.hashCode() : 0;
+        result = 31 * result + (cod_s != null ? cod_s.hashCode() : 0);
         result = 31 * result + (inicio != null ? inicio.hashCode() : 0);
         result = 31 * result + (fin != null ? fin.hashCode() : 0);
         return result;
