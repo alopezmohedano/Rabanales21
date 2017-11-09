@@ -109,7 +109,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().setGroupVisible(R.id.grupoadmin, false);
         if(getIntent().hasExtra("respuestaLogin")) {
             String[] tipousuario = getIntent().getStringArrayExtra("respuestaLogin");
-
             if (tipousuario[2].equals("1")) {
                 navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
             }

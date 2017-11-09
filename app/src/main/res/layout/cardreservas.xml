@@ -50,11 +50,11 @@
                 android:text="" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/tvUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Id reserva :" />
+                android:text="Usuario :" />
 
             <TextView
                 android:id="@+id/idreserva"
