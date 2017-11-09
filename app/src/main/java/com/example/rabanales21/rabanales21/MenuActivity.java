@@ -43,7 +43,6 @@ public class MenuActivity extends AppCompatActivity
         tabLayout.addTab(tabLayout.newTab().setText("Inicio"));
         tabLayout.addTab(tabLayout.newTab().setText("Reservar"));
         tabLayout.addTab(tabLayout.newTab().setText("Consultar"));
-        tabLayout.addTab(tabLayout.newTab().setText("Ajustes"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -60,11 +59,8 @@ public class MenuActivity extends AppCompatActivity
                     case 2:
                         retorno= new Consultar();
                         break;
-                    case 3:
-                        retorno= new Cambiarpass();
-                        break;
                 }
-                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).commit();
+                fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).addToBackStack(null).commit();
             }
 
             @Override
@@ -85,9 +81,6 @@ public class MenuActivity extends AppCompatActivity
                         break;
                     case 2:
                         retorno= new Consultar();
-                        break;
-                    case 3:
-                        retorno= new Cambiarpass();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.contenedor1, retorno).commit();

@@ -1,10 +1,12 @@
 package com.example.rabanales21.rabanales21;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -107,7 +109,11 @@ public class Consultar extends Fragment {
                                 mes = "Diciembre";
                                 break;
                         }
-                        items.add(new ConsultaReserva(sala, respuesta[i].getInicio().substring(8,10) + " de " + mes, respuesta[i].getInicio().substring(5,7), respuesta[i].getInicio().substring(11,16), respuesta[i].getFin().substring(11,16)));
+                        items.add(new ConsultaReserva(sala,
+                                respuesta[i].getInicio().substring(8,10) + " de " + mes,
+                                respuesta[i].getCod_r(),
+                                respuesta[i].getInicio().substring(11,16),
+                                respuesta[i].getFin().substring(11,16)));
                     }
                 } else {
 
@@ -137,6 +143,7 @@ public class Consultar extends Fragment {
 
 
 }
+
 
 }
 
