@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 
 public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.SadapterViewHolder> {
     private List<ConsultaReserva> items;
-    FuncionesGenerales myController = new FuncionesGenerales();
+    private FuncionesGenerales myController = new FuncionesGenerales();
 
     /**
      * Recoge las reservas obtenidas en la consulta a la BBDD. </br>

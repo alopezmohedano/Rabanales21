@@ -9,7 +9,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class ConexionGestionEmpresas extends AsyncTask<String, Void, String[]> {
+/**
+ * Gestiona la conexion a la BBDD para la gestion de usuarios por parte del administrador. </p>
+ */
+
+public class ConexionGestionEmpresas extends AsyncTask<String, Void, String[]> {
 
     @Override
     protected String[] doInBackground(String... params) {

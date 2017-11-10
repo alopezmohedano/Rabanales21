@@ -23,7 +23,7 @@ public class Consultar extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
     private List<ConsultaReserva> items;
-    FuncionesGenerales myController = new FuncionesGenerales();
+    private FuncionesGenerales myController = new FuncionesGenerales();
 
 
     @Override

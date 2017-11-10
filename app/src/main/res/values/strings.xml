@@ -89,6 +89,8 @@
     <string name="infoGestionEmpresa">Seleccione una opción:</string>
     <string name="infoBotonBuscar">Para obtener los datos completos de una empresa, introduzca el usuario y pulse el botón Buscar</string>
     <string name="infoBotonBuscado">Para realizar una nueva busqueda, pulse el botón Modificar</string>
+    <string name="nodataEmpresa">Deben existir los datos de la empresa</string>
+    <string name="wrongOption">No se ha elegido una opción correcta</string>
 
     <!-- Strings AdaptadorReservas -->
     <string name="warning">Atención</string>
