@@ -20,8 +20,9 @@ import java.util.concurrent.ExecutionException;
 public class Gestionempresa extends Fragment implements View.OnClickListener{
 
     private Button btnAnadir, btnModificar, btnEliminar, btnBorrar, btnBuscar, btnGuardar;
-    private TextView txtUsuario, txtPassword, txtEmpresa, txtBuscar;
+    private TextView txtBuscar;
     private EditText edtUsuario, edtPassword, edtEmpresa;
+    private View linear;
     private Integer bandera = 0;
     private FuncionesGenerales misFunciones = new FuncionesGenerales();
 
@@ -36,10 +37,8 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
-        txtUsuario = getActivity().findViewById(R.id.txtNuevoUsusario);
-        txtPassword = getActivity().findViewById(R.id.txtNuevoPassword);
-        txtEmpresa = getActivity().findViewById(R.id.txtNuevaEmpresa);
         txtBuscar = getActivity().findViewById(R.id.txtInfoModificar);
+        linear=getActivity().findViewById(R.id.linearLayout4);
         edtUsuario = getActivity().findViewById(R.id.edtNuevoUsuario);
         edtPassword = getActivity().findViewById(R.id.edtNuevoPassword);
         edtEmpresa = getActivity().findViewById(R.id.edtNuevaEmpresa);
@@ -64,6 +63,7 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
         switch (view.getId()) {
             case R.id.btnAnadirEmpresa:
                 bandera = 1;
+                linear.setVisibility(View.VISIBLE);
                 camposUsuario(View.VISIBLE);
                 camposPassword(View.VISIBLE);
                 camposEmpresa(View.VISIBLE);
@@ -73,6 +73,7 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
                 break;
             case R.id.btnModificarEmpresa:
                 bandera = 2;
+                linear.setVisibility(View.VISIBLE);
                 camposUsuario(View.VISIBLE);
                 camposPassword(View.GONE);
                 camposEmpresa(View.GONE);
@@ -83,6 +84,7 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
                 break;
             case R.id.btnEliminarEmpresa:
                 bandera = 3;
+                linear.setVisibility(View.VISIBLE);
                 camposUsuario(View.VISIBLE);
                 camposPassword(View.GONE);
                 camposEmpresa(View.GONE);
@@ -141,18 +143,15 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
     }
 
     private void camposUsuario(Integer estado) {
-        txtUsuario.setVisibility(estado);
         edtUsuario.setVisibility(estado);
         edtUsuario.setEnabled(true);
     }
 
     private void camposPassword(Integer estado){
-        txtPassword.setVisibility(estado);
         edtPassword.setVisibility(estado);
     }
 
     private void camposEmpresa(Integer estado){
-        txtEmpresa.setVisibility(estado);
         edtEmpresa.setVisibility(estado);
     }
 
