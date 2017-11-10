@@ -1,9 +1,6 @@
 package com.example.rabanales21.rabanales21;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -50,7 +47,7 @@ public class Inicio extends Fragment {
         if (getActivity().getIntent().hasExtra("respuestaLogin")) {
             String[] nombreUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
 
-            String miWhere = "?nombre_usuario=" + nombreUsuario[0];
+            String miWhere = "?cod_u=" + nombreUsuario[3];
 
             try {
 
@@ -63,7 +60,7 @@ public class Inicio extends Fragment {
                     tvProxima.setText("Tu próxima reserva:\n\n" + respuesta[0] + "\nDía: " + myController.formatoFecha(respuesta[1]) + "\nHora: de " + respuesta[1].substring(11, 16) + " a " + respuesta[2].substring(11,16));
 
                 } else {
-                    tvProxima.setText("No tienes ninguna reserva.");
+                    tvProxima.setText(R.string.noReserva);
                 }
 
 
@@ -95,7 +92,6 @@ public class Inicio extends Fragment {
                 }
             }, 3000, 3000);
 
-
-
+            ((MenuActivity)getActivity()).setBoleano(true);
     }
 }

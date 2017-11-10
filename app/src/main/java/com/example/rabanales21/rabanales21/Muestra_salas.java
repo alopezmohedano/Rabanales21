@@ -3,6 +3,7 @@ package com.example.rabanales21.rabanales21;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +19,7 @@ import java.util.List;
 
 
 public class Muestra_salas extends Fragment {
-
+    Boolean principal=false;
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
@@ -53,7 +54,7 @@ public class Muestra_salas extends Fragment {
 // Crear un nuevo adaptador
         adapter = new MyAdapter(items);
         recycler.setAdapter(adapter);
-        recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+        /*recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean b) {
 
@@ -87,10 +88,17 @@ public class Muestra_salas extends Fragment {
             public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
 
             }
-        });
+        }
+        );*/
         return  v;
 
 
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((MenuActivity)getActivity()).setBoleano(false);
     }
+}
 

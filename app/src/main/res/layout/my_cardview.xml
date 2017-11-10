@@ -8,7 +8,8 @@
     style="@style/MyCardViewStyle"
     android:clipToPadding="false"
     android:clickable="true"
-    android:background="?attr/selectableItemBackground">
+    android:background="?attr/selectableItemBackground">/>
+
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

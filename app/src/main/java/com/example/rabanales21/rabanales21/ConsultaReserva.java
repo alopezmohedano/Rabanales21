@@ -1,24 +1,45 @@
 package com.example.rabanales21.rabanales21;
 
-import android.view.View;
-
 /**
- * Created by usuario on 06/11/2017.
+ * Traduce la respuesta obtenida de la BBDD para crear las reservas que seran mostradas en la app. </p>
  */
 
 public class ConsultaReserva {
-private String sala;
+
+    private String sala;
     private String fecha_inicio;
-    private String fecha_fin;
+    private String id_reserva;
+    private String nombre_usuario;
+    private String tipo_usuario;
     private String hora_inio;
     private String hora_fin;
 
-    public ConsultaReserva(String sala, String fecha_inicio, String fecha_fin, String hora_inio, String hora_fin) {
+    public ConsultaReserva(String sala, String fecha_inicio, String id_reserva, String nombre_usuario, String tipo_usuario, String hora_inio, String hora_fin) {
+
+    /**
+     * Constructor de consultas de reservas para mostarlas en la app </br>
+     * @param sala La sala en la que se realizo la reserva
+     * @param fecha_inicio La fecha en que se realizo la reserva
+     * @param id_reserva ID de control de la reserva
+     * @param hora_inio Hora a la que se inicia la reserva
+     * @param hora_fin Hora a la que finaliza la reserva
+     */
+
         this.sala = sala;
         this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
+        this.id_reserva = id_reserva;
+        this.nombre_usuario = nombre_usuario;
+        this.tipo_usuario = tipo_usuario;
         this.hora_inio = hora_inio;
         this.hora_fin = hora_fin;
+    }
+
+    public String getTipo_usuario() {
+        return tipo_usuario;
+    }
+
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
     }
 
     public String getSala() {
@@ -37,12 +58,20 @@ private String sala;
         this.fecha_inicio = fecha_inicio;
     }
 
-    public String getFecha_fin() {
-        return fecha_fin;
+    public String getId_reserva() {
+        return id_reserva;
     }
 
-    public void setFecha_fin(String fecha_fin) {
-        this.fecha_fin = fecha_fin;
+    public void setId_reserva(String fecha_fin) {
+        this.id_reserva = fecha_fin;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
     }
 
     public String getHora_inio() {
@@ -71,7 +100,9 @@ private String sala;
         if (sala != null ? !sala.equals(that.sala) : that.sala != null) return false;
         if (fecha_inicio != null ? !fecha_inicio.equals(that.fecha_inicio) : that.fecha_inicio != null)
             return false;
-        if (fecha_fin != null ? !fecha_fin.equals(that.fecha_fin) : that.fecha_fin != null)
+        if (id_reserva != null ? !id_reserva.equals(that.id_reserva) : that.id_reserva != null)
+            return false;
+        if (nombre_usuario != null ? !nombre_usuario.equals(that.nombre_usuario) : that.nombre_usuario != null)
             return false;
         if (hora_inio != null ? !hora_inio.equals(that.hora_inio) : that.hora_inio != null)
             return false;
@@ -83,10 +114,10 @@ private String sala;
     public int hashCode() {
         int result = sala != null ? sala.hashCode() : 0;
         result = 31 * result + (fecha_inicio != null ? fecha_inicio.hashCode() : 0);
-        result = 31 * result + (fecha_fin != null ? fecha_fin.hashCode() : 0);
+        result = 31 * result + (id_reserva != null ? id_reserva.hashCode() : 0);
+        result = 31 * result + (nombre_usuario != null ? nombre_usuario.hashCode() : 0);
         result = 31 * result + (hora_inio != null ? hora_inio.hashCode() : 0);
         result = 31 * result + (hora_fin != null ? hora_fin.hashCode() : 0);
         return result;
     }
-
 }
