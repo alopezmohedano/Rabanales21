@@ -1,9 +1,7 @@
 package com.example.rabanales21.rabanales21;
 
 import android.os.AsyncTask;
-
 import org.json.JSONArray;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -12,19 +10,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Gestiona la conexion a la BBDD para modificar usuarios. </p>
- * Envia los datos modificados a un webservice </br>
- * Recibe un JSON si la conexion es correcta confirmando el update </br>
+ * Gestiona la conexion a la BBDD para la gestion de usuarios por parte del administrador. </p>
  */
 
-public class ConexionUpdate extends AsyncTask<String, Void, Integer> {
+public class ConexionGestionEmpresas extends AsyncTask<String, Void, String[]> {
 
     @Override
-    protected Integer doInBackground(String... params) {
+    protected String[] doInBackground(String... params) {
 
         StringBuilder resul;
 
-        Integer auxiliar = 0;
+        String[] auxiliar = new String[0];
 
         try {
 
@@ -54,7 +50,21 @@ public class ConexionUpdate extends AsyncTask<String, Void, Integer> {
 
             JSONArray json = new JSONArray(resul.toString());
 
-            auxiliar = (Integer) json.getJSONObject(0).get("resultado");
+            if(json.getJSONObject(0).get(("resultado")).toString().equals("false")) {
+
+                auxiliar = new String [1];
+
+                auxiliar[0] = json.getJSONObject(0).get("resultado").toString();
+
+                /*auxiliar[0] = json.getJSONObject(0).get("nombre_usuario").toString();
+
+                auxiliar[1] = json.getJSONObject(0).get("nombre_empresa").toString();
+
+                auxiliar[2] = json.getJSONObject(0).get("tipo").toString();
+
+                auxiliar[3] = json.getJSONObject(0).get("cod_u").toString();*/
+
+            }
 
         } catch (Exception e) {
 

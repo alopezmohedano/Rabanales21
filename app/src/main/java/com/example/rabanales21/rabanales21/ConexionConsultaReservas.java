@@ -12,10 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Gestiona la conexion
+ * Gestiona la conexion a la BBDD para la consulta de reservas futuras de un usuario. </p>
+ * Envia los datos de consulta a un webservice </br>
+ * Recibe un JSON si la conexion es correcta con los datos requeridos </br>
  */
 
-class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
+public class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
 
     @Override
     protected Reserva[] doInBackground(String... params) {
@@ -58,7 +60,7 @@ class ConexionConsultaReservas extends AsyncTask<String, Void, Reserva[]> {
                 auxiliar = new Reserva[json.length()];
 
                 for (int i= 0; i < json.length(); i++) {
-                    auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_r").toString(), json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("cod_u").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
+                    auxiliar[i] = new Reserva(json.getJSONObject(i).get("cod_r").toString(), json.getJSONObject(i).get("cod_s").toString(), json.getJSONObject(i).get("cod_u").toString(), json.getJSONObject(i).get("nombre_usuario").toString(), json.getJSONObject(i).get("inicio").toString(), json.getJSONObject(i).get("fin").toString());
                 }
             }
 

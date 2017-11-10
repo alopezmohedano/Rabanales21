@@ -18,12 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+/**
+ *
+ */
+
 import android.view.View;
 import android.widget.TextView;
-
-
-
-
 
 public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -55,7 +55,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 switch (tab.getPosition()){
                     case 0:
                         retorno = new Inicio();
-                    break;
+                        break;
                     case 1:
                         retorno= new Muestra_salas();
                         break;
@@ -109,7 +109,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().setGroupVisible(R.id.grupoadmin, false);
         if(getIntent().hasExtra("respuestaLogin")) {
             String[] tipousuario = getIntent().getStringArrayExtra("respuestaLogin");
-
             if (tipousuario[2].equals("1")) {
                 navigationView.getMenu().setGroupVisible(R.id.grupoadmin, true);
             }

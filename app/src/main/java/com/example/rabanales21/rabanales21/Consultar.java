@@ -1,30 +1,29 @@
 package com.example.rabanales21.rabanales21;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Gestiona la consulta de reservas de un usuario. </p>
+ * 1. Envia la consulta PHP al webservice. </br>
+ * 2. Recibe y traduce la respuesta para mostrar las reservas. </br>
+ * 3. Invoca al adaptador que va a inflar la vista para mostrar las reservas. </br>
+ */
 
 public class Consultar extends Fragment {
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
     private List<ConsultaReserva> items;
-    FuncionesGenerales myController = new FuncionesGenerales();
+    private FuncionesGenerales myController = new FuncionesGenerales();
 
 
     @Override
@@ -114,9 +113,16 @@ public class Consultar extends Fragment {
                                 mes = "Diciembre";
                                 break;
                         }
+                        String tipoUsuario = "9";
+                        if (getArguments() != null) {
+                            tipoUsuario = "1";
+                        }
+
                         items.add(new ConsultaReserva(sala,
                                 respuesta[i].getInicio().substring(8,10) + " de " + mes,
                                 respuesta[i].getCod_r(),
+                                respuesta[i].getNombre_usuario(),
+                                tipoUsuario,
                                 respuesta[i].getInicio().substring(11,16),
                                 respuesta[i].getFin().substring(11,16)));
                     }

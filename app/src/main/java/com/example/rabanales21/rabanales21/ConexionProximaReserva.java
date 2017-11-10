@@ -12,7 +12,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Alvaro on 07/11/2017.
+ * Gestiona la conexion a la BBDD para consultar la inmediata proxima reserva de un usuario. </p>
+ * Envia la consulta a un webservice </br>
+ * Recibe un JSON si la conexion es correcta con los datos requeridos</br>
  */
 
 public class ConexionProximaReserva extends AsyncTask<String, Void, String[]> {
