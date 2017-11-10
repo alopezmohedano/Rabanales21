@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -116,7 +117,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
         viewHolder.txthorafin.setText(String.valueOf(items.get(i).getHora_fin()));
         viewHolder.btneliminar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 final String idreserva;
                 idreserva = items.get(i).getId_reserva();
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder((Activity) view.getContext());
@@ -126,19 +127,22 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
                 dialogo1.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
 
-                        String miPagina = "login.php";
+                        String miPagina = "cancelarReserva.php";
 
                         String miWhere = "?cod_r=" + idreserva;
 
                         try {
 
-                            ConexionAsincrona miCon = new ConexionAsincrona();
+                            ConexionCancelar miCon = new ConexionCancelar();
 
-                            String[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+                            Integer respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
 
-                            if (respuesta[0].equals(false)){
-                                //Toast.makeText(viewHolder., "No se ha podido cancelar la reserva", Toast.LENGTH_LONG).show();
+                            if (respuesta == 1){
+                                Toast.makeText(view.getContext(), "La reserva se ha cancelado correctamente", Toast.LENGTH_LONG).show();
+                                FragmentManager fragmentManager = ((FragmentActivity)view.getContext()).getSupportFragmentManager();
+                                fragmentManager.beginTransaction().replace(R.id.contenedor1, new Consultar()).addToBackStack(null).commit();
                             } else {
+                                Toast.makeText(view.getContext(), "No se ha podido cancelar la reserva", Toast.LENGTH_LONG).show();
 
                             }
 

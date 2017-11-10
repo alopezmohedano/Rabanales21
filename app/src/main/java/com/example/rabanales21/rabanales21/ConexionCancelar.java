@@ -17,14 +17,14 @@ import java.net.URL;
  * Recibe un JSON si la conexion es correcta y confirma la cancelacion </br>
  */
 
-public class ConexionCancelar extends AsyncTask<String, Void, String> {
+public class ConexionCancelar extends AsyncTask<String, Void, Integer> {
 
     @Override
-    protected String doInBackground(String... params) {
+    protected Integer doInBackground(String... params) {
 
         StringBuilder resul;
 
-        String auxiliar = "";
+        Integer auxiliar = 0;
 
         try {
 
@@ -54,7 +54,7 @@ public class ConexionCancelar extends AsyncTask<String, Void, String> {
 
             JSONArray json = new JSONArray(resul.toString());
 
-            auxiliar = (String) json.getJSONObject(0).get("resultado");
+            auxiliar = (Integer) json.getJSONObject(0).get("resultado");
 
         } catch (Exception e) {
 
