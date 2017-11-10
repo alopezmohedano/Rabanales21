@@ -15,14 +15,14 @@ import java.net.URL;
  * Created by Alvaro on 10/11/2017.
  */
 
-public class ConexionCancelar extends AsyncTask<String, Void, String> {
+public class ConexionCancelar extends AsyncTask<String, Void, Integer> {
 
     @Override
-    protected String doInBackground(String... params) {
+    protected Integer doInBackground(String... params) {
 
         StringBuilder resul;
 
-        String auxiliar = "";
+        Integer auxiliar = 0;
 
         try {
 
@@ -52,7 +52,7 @@ public class ConexionCancelar extends AsyncTask<String, Void, String> {
 
             JSONArray json = new JSONArray(resul.toString());
 
-            auxiliar = (String) json.getJSONObject(0).get("resultado");
+            auxiliar = (Integer) json.getJSONObject(0).get("resultado");
 
         } catch (Exception e) {
 

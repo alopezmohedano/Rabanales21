@@ -190,14 +190,12 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                         e.printStackTrace();
 
+                    } catch (IllegalStateException e) {
+                        Toast.makeText(getContext(), ""+e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
-
-        // int[] testReserva = {17, 20};
-
-        // eliminarIntervaloReserva(testReserva);
 
         spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
         spStart.setVisibility(View.GONE);
