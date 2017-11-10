@@ -16,11 +16,10 @@
         android:background="@drawable/border_cambiopass"
         android:backgroundTint="#F2F2F2"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteY="16dp">
 
         <TextView
             android:id="@+id/txtInfo"
@@ -42,10 +41,10 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
@@ -112,14 +111,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/border_notas"
         android:backgroundTint="#F2F2F2"
         android:orientation="vertical"
         android:padding="5dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
@@ -194,62 +193,68 @@
                 app:layout_constraintStart_toStartOf="@+id/edtNuevoPassword"
                 app:layout_constraintTop_toBottomOf="@+id/edtNuevoPassword" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnBuscarDatos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_border"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    android:elevation="2dp"
-                    android:text="Buscar"
-                    android:textColor="@android:color/white"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnModificarEmpresa" />
-
-                <Button
-                    android:id="@+id/btnHacerOperacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_border"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    android:elevation="2dp"
-                    android:text="Guardar"
-                    android:textColor="@android:color/white"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnEliminarEmpresa" />
-
-                <Button
-                    android:id="@+id/btnBorrarCampos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_border"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    android:elevation="2dp"
-                    android:text="Limpiar"
-                    android:textColor="@android:color/white"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnHacerOperacion"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnAnadirEmpresa"
-                    app:layout_constraintVertical_bias="1.0" />
-            </LinearLayout>
-
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="444dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnBuscarDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_border"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:elevation="2dp"
+            android:text="Buscar"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnModificarEmpresa" />
+
+        <Button
+            android:id="@+id/btnHacerOperacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_border"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:elevation="2dp"
+            android:text="Guardar"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEliminarEmpresa" />
+
+        <Button
+            android:id="@+id/btnBorrarCampos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_border"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:elevation="2dp"
+            android:text="Limpiar"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btnHacerOperacion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAnadirEmpresa"
+            app:layout_constraintVertical_bias="1.0" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
