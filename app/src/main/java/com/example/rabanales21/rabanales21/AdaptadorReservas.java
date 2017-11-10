@@ -14,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Gestiona la consulta de la BBDD para mostar una lista con todas las reservas del usuario, con opcion a eliminarlas.
@@ -23,6 +25,7 @@ import java.util.List;
 
 public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.SadapterViewHolder> {
     private List<ConsultaReserva> items;
+    FuncionesGenerales myController = new FuncionesGenerales();
 
     /**
      * Recoge las reservas obtenidas en la consulta a la BBDD. </br>
@@ -98,7 +101,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
      */
 
     @Override
-    public void onBindViewHolder(AdaptadorReservas.SadapterViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(final AdaptadorReservas.SadapterViewHolder viewHolder, final int i) {
 
         viewHolder.txtsala.setText(items.get(i).getSala());
         viewHolder.txtfechainicio.setText(String.valueOf(items.get(i).getFecha_inicio()));
@@ -114,7 +117,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
         viewHolder.btneliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String idreserva;
+                final String idreserva;
                 idreserva = items.get(i).getId_reserva();
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder((Activity) view.getContext());
                 dialogo1.setTitle(R.string.warning);
@@ -123,7 +126,32 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
                 dialogo1.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
 
+                        String miPagina = "login.php";
 
+                        String miWhere = "?cod_r=" + idreserva;
+
+                        try {
+
+                            ConexionAsincrona miCon = new ConexionAsincrona();
+
+                            String[] respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
+
+                            if (respuesta[0].equals(false)){
+                                //Toast.makeText(viewHolder., "No se ha podido cancelar la reserva", Toast.LENGTH_LONG).show();
+                            } else {
+
+                            }
+
+
+                        } catch (InterruptedException e) {
+
+                            e.printStackTrace();
+
+                        } catch (ExecutionException e) {
+
+                            e.printStackTrace();
+
+                        }
                     }
                 });
                 dialogo1.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
