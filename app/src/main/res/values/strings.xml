@@ -52,15 +52,15 @@
 
     <!-- Strings Muestra Salas -->
     <string name="centauroGrande">Sala Centauro Grande</string>
-    <string name="capacidadCG">Capacidad: 14</string>
+    <string name="capacidadCG">Sala de reuniones con capacidad para 14 personas, equipada con pantalla lcd con conexión al ordenador y papelógrafo.</string>
     <string name="centauroPeq">Sala Centauro Pequeña</string>
-    <string name="capacidadCP">Capacidad: 8</string>
+    <string name="capacidadCP">Sala de reuniones con capacidad para 8 personas, posibilidad de solicitar proyector y/o papelógrafo.</string>
     <string name="silos">Sala Silos</string>
-    <string name="capacidadSil">Capacidad: 10</string>
+    <string name="capacidadSil">Sala de reuniones con capacidad para 10 personas, equipada con proyector, pantalla y papelógrafo.</string>
     <string name="formacion">Sala de Formación</string>
-    <string name="capacidadFor">Capacidad: 50</string>
+    <string name="capacidadFor">Aula con capacidad para 50 personas, equipada con proyector, pantalla y papelógrafo.</string>
     <string name="aldebaran">Sala Aldebarán</string>
-    <string name="capacidadAld">Capacidad: 30</string>
+    <string name="capacidadAld">Sala de reuniones y/o aula con capacidad para 30 personas, posibilidad de solicitar proyector y/o papelógrafo.</string>
 
     <!-- Strings Main Activity -->
     <string name="emptyUser">Nombre de usuario incorrecto o vacio</string>
