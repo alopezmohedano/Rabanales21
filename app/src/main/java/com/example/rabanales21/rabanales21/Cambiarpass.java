@@ -42,6 +42,7 @@ public class Cambiarpass extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
+
         ((MenuActivity)getActivity()).setBoleano(false);
         edtAntiguo = getActivity().findViewById(R.id.passvieja);
         edtNuevo = getActivity().findViewById(R.id.passnueva1);
