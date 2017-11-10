@@ -47,7 +47,7 @@ public class Inicio extends Fragment {
         if (getActivity().getIntent().hasExtra("respuestaLogin")) {
             String[] nombreUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
 
-            String miWhere = "?nombre_usuario=" + nombreUsuario[0];
+            String miWhere = "?cod_u=" + nombreUsuario[3];
 
             try {
 
