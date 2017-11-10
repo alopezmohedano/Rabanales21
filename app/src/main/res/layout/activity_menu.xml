@@ -36,9 +36,9 @@
             android:id="@+id/wtabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@drawable/border_titulo"
             android:layout_marginTop="58dp"
-            style="@style/TabLayoutStyle"/>
+            style="@style/TabLayoutStyle" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
