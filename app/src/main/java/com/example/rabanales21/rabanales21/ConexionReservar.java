@@ -24,7 +24,7 @@ public class ConexionReservar extends AsyncTask<String, Void, String> {
 
         StringBuilder resul;
 
-        String auxiliar = "aa";
+        String auxiliar = "false";
 
         try {
 

@@ -270,8 +270,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                         if (getActivity().getIntent().hasExtra("respuestaLogin")) {
                             String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
                             int codUsuario = Integer.parseInt(datosUsuario[3]);
-                            String fechaInicio = fechaEscogida + " " + spStart.getSelectedItem().toString() + ":00";
-                            String fechaFin = fechaEscogida + " " + spEnd.getSelectedItem().toString() + ":00";
+                            String fechaInicio = fechaEscogida + "%20" + spStart.getSelectedItem().toString() + ":00";
+                            String fechaFin = fechaEscogida + "%20" + spEnd.getSelectedItem().toString() + ":00";
 
                             String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (spSalas.getSelectedItemId() + 1)
                                     + "&fecha_inicio=" + fechaInicio + "&fecha_fin=" + fechaFin;
