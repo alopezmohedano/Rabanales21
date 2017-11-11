@@ -186,7 +186,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
         Bundle arguments = new Bundle();
         if (id == R.id.inicio) {
-            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Inicio()).commit();
+            fragmentManager2.beginTransaction().replace(R.id.contenedor1,new Inicio()).addToBackStack(null).commit();
         }else if (id == R.id.salas) {
             fragmentManager2.beginTransaction().replace(R.id.contenedor1, new Muestra_salas()).addToBackStack(null).commit();
         }else if (id == R.id.salacentgrande) {
