@@ -126,17 +126,13 @@ public class Consultar extends Fragment {
                                 respuesta[i].getInicio().substring(11,16),
                                 respuesta[i].getFin().substring(11,16)));
                     }
-                } else {
-
                 }
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
         }
-
 
     // Obtener el Recycler
     recycler = (RecyclerView)v.findViewById(R.id.reservasreciclador);
@@ -151,11 +147,5 @@ public class Consultar extends Fragment {
         recycler.setAdapter(adapter);
 
         return  v;
-
-
+    }
 }
-
-
-}
-
-

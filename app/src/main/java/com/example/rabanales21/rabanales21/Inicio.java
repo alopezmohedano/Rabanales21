@@ -20,7 +20,7 @@ public class Inicio extends Fragment {
     private static int NUM_PAGES = 0;
     private static int currentPage = 0;
     ViewPager viewPager;
-    int images[] = {R.drawable.sala1, R.drawable.sala2, R.drawable.sala3, R.drawable.sala4, R.drawable.sala5};
+    int images[] = {R.drawable.sala1, R.drawable.sala2, R.drawable.sala3, R.drawable.sala4, R.drawable.sala5mod};
     MyCustomPagerAdapter myCustomPagerAdapter;
     FuncionesGenerales myController = new FuncionesGenerales();
 
