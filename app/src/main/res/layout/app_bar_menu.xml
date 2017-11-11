@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/divider"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
             <LinearLayout
             android:orientation="horizontal"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:src="@drawable/rabanales21"
+                android:src="@drawable/logorabanales21cabecera"
                 android:layout_width="150dp"
                 android:layout_height="60dp" />
             </LinearLayout>

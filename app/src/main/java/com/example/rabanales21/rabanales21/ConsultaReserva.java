@@ -104,6 +104,8 @@ public class ConsultaReserva {
             return false;
         if (nombre_usuario != null ? !nombre_usuario.equals(that.nombre_usuario) : that.nombre_usuario != null)
             return false;
+        if (tipo_usuario != null ? !tipo_usuario.equals(that.tipo_usuario) : that.tipo_usuario != null)
+            return false;
         if (hora_inio != null ? !hora_inio.equals(that.hora_inio) : that.hora_inio != null)
             return false;
         return hora_fin != null ? hora_fin.equals(that.hora_fin) : that.hora_fin == null;
@@ -116,6 +118,7 @@ public class ConsultaReserva {
         result = 31 * result + (fecha_inicio != null ? fecha_inicio.hashCode() : 0);
         result = 31 * result + (id_reserva != null ? id_reserva.hashCode() : 0);
         result = 31 * result + (nombre_usuario != null ? nombre_usuario.hashCode() : 0);
+        result = 31 * result + (tipo_usuario != null ? tipo_usuario.hashCode() : 0);
         result = 31 * result + (hora_inio != null ? hora_inio.hashCode() : 0);
         result = 31 * result + (hora_fin != null ? hora_fin.hashCode() : 0);
         return result;
