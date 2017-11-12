@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:id="@+id/fechas"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
@@ -38,29 +38,42 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Día : "
                 android:layout_weight="1"
-                android:text="Fecha inicio:" />
+                android:textColor="@color/primary_text"/>
 
             <TextView
                 android:id="@+id/finicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textStyle="bold"
+                android:textColor="@color/primary_text"
+                android:layout_marginTop="0dp"
+                android:layout_gravity="start"
+                android:layout_weight="1"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="4"/>
 
             <TextView
                 android:id="@+id/tvUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/usuario"
+                android:textColor="@color/primary_text"
                 android:layout_weight="1"
-                android:text="Usuario :" />
+               />
 
             <TextView
                 android:id="@+id/idreserva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/primary_text"
                 android:layout_weight="1"
-                android:text="" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -82,57 +95,75 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Hora inicio: " />
+            android:text="Hora :"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/hinicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
             android:layout_weight="1"
-            android:text="" />
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=" Hora fin: " />
+            />
 
-        <TextView
-            android:id="@+id/hfin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="" />
+
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="6"/>
+
+
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/salacancelar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:orientation="horizontal"
-            card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintLeft_toLeftOf="parent"
-            card_view:layout_constraintRight_toRightOf="parent"
-            card_view:layout_constraintTop_toTopOf="@+id/horas">
+
         <TextView
             android:id="@+id/nombresala"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3" />
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:gravity="left|bottom"
+            android:paddingBottom="0dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/horas"
+            card_view:layout_constraintVertical_bias="1.0" />
 
-            <ImageButton
-                android:id="@+id/botoneliminar"
-                android:layout_width="102dp"
-                android:layout_height="34dp"
-                card_view:srcCompat="@android:drawable/ic_menu_delete"
-                android:background="@color/colorPrimaryDark"/>
-        </LinearLayout>
+
+        <Button
+            android:id="@+id/botoneliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/border_cancel"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:elevation="2dp"
+            android:gravity="center|center_vertical"
+            android:orientation="horizontal"
+            android:text="@string/cancelar"
+            android:textColor="@android:color/white"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.925"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintRight_toRightOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/horas"
+            card_view:layout_constraintVertical_bias="1.0" />
+
+
 
 
     </android.support.constraint.ConstraintLayout>

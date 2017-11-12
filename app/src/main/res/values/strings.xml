@@ -97,7 +97,11 @@
     <string name="cancelReserva">¿ Cancelar esta reserva ?</string>
     <string name="confirm">Confirmar</string>
     <string name="cancel">Cancelar</string>
-
+    <string name="listado_de_reservas">LISTADO DE RESERVAS</string>
+    <string name="d_a">Dïa:</string>
+    <string name="usuario">Usuario :</string>
+    <string name="hora">Hora:</string>
+    <string name="cancelar">Cancelar</string>
 
 
 </resources>
