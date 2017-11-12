@@ -1,7 +1,9 @@
 package com.example.rabanales21.rabanales21;
 
 import android.os.AsyncTask;
+
 import org.json.JSONArray;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -10,17 +12,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Gestiona la conexion a la BBDD para la gestion de usuarios por parte del administrador. </p>
+ * Created by Eduardo on 12/11/2017.
  */
 
-public class ConexionGestionEmpresas extends AsyncTask<String, Void, Integer> {
+public class BusquedaUsuarios extends AsyncTask<String, Void, String[]> {
 
     @Override
-    protected Integer doInBackground(String... params) {
+    protected String[] doInBackground(String... params) {
 
         StringBuilder resul;
 
-        Integer auxiliar = 0;
+        String[] auxiliar = new String[2];
 
         try {
 
@@ -50,15 +52,19 @@ public class ConexionGestionEmpresas extends AsyncTask<String, Void, Integer> {
 
             JSONArray json = new JSONArray(resul.toString());
 
-            auxiliar = (Integer) json.getJSONObject(0).get("resultado");
+            if(json.length() > 0) {
+
+                auxiliar[0] = json.getJSONObject(0).get("pass").toString();
+
+                auxiliar[1] = json.getJSONObject(0).get("nombre_empresa").toString();
+
+            }
 
         } catch (Exception e) {
-
 
         }
 
         return auxiliar;
 
     }
-
 }
