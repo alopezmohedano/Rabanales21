@@ -122,7 +122,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
                 dialogo1.setTitle(R.string.warning);
                 dialogo1.setMessage(R.string.cancelReserva);
                 dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                dialogo1.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
 
                         String miPagina = "cancelarReserva.php";
@@ -156,7 +156,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
                         }
                     }
                 });
-                dialogo1.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                dialogo1.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
                     }
                 });
