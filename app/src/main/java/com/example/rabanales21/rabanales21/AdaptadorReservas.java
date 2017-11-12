@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,8 +52,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
         public TextView txtnombreusuario;
         public TextView tvUsuario;
         public TextView txthorainicio;
-        public TextView txthorafin;
-        public ImageButton btneliminar;
+        public Button btneliminar;
 
         /**
          * Asigna los elementos a los campos declarados anteriormente
@@ -70,8 +70,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
             txtnombreusuario = (TextView) v.findViewById(R.id.idreserva);
             tvUsuario = (TextView)v.findViewById(R.id.tvUsuario);
             txthorainicio = (TextView) v.findViewById(R.id.hinicio);
-            txthorafin = (TextView) v.findViewById(R.id.hfin);
-            btneliminar = (ImageButton) v.findViewById(R.id.botoneliminar);
+            btneliminar = (Button) v.findViewById(R.id.botoneliminar);
 
         }
     }
@@ -113,8 +112,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
             viewHolder.txtnombreusuario.setVisibility(View.VISIBLE);
             viewHolder.tvUsuario.setVisibility(View.VISIBLE);
         }
-        viewHolder.txthorainicio.setText(String.valueOf(items.get(i).getHora_inio()));
-        viewHolder.txthorafin.setText(String.valueOf(items.get(i).getHora_fin()));
+        viewHolder.txthorainicio.setText(String.valueOf(items.get(i).getHora_inio())+" a "+String.valueOf(items.get(i).getHora_fin()));
         viewHolder.btneliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
