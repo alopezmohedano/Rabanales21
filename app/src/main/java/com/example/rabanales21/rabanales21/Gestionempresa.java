@@ -238,7 +238,7 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                             if(respuesta == 1){
 
-                                misFunciones.WarningMessages(getActivity(), "El usuario se ha creado correctamente");
+                                misFunciones.WarningMessages(getActivity(), getString(R.string.confUserCreated));
 
                                 nuevoClick();
 
@@ -246,7 +246,7 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                             } else {
 
-                                misFunciones.WarningMessages(getActivity(), "El usuario ya ha sido creado");
+                                misFunciones.WarningMessages(getActivity(), getString(R.string.repetUser));
 
                             }
 

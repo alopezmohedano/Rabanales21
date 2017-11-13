@@ -1,21 +1,20 @@
 package com.example.rabanales21.rabanales21;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Pantalla con la informacion detallada de todas las salas y el acceso directo a su reserva. </p>
+ */
 
 
 public class Muestra_salas extends Fragment {

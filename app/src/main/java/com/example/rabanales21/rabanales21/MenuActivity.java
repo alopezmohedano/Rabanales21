@@ -18,12 +18,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-/**
- *
- */
-
 import android.view.View;
 import android.widget.TextView;
+
+/**
+ * Gestiona el menu lateral y sus diversas opciones en la aplicacion. </p>
+ * Acceso directo a la pantalla de inicio. </br>
+ * Acceso directo a las distintas salas del complejo. </br>
+ * Menu admin solo visible si el user logado es administrador. </br>
+ * Acceso a la pantalla para cambiar password del usuario. </br>
+ * Posibilidad de cerrar la sesion y salir de la aplicacion. </br>
+ */
 
 public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -133,7 +138,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         } else {
             if (principal) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("¿Está seguro de que desea cerrar sesión?")
+                builder.setMessage(R.string.closeConf)
                         .setCancelable(false)
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

@@ -15,6 +15,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Pantalla de inicio que aparece tras realizar el login. </p>
+ * Crea el menu superior con los shortcuts basicos de la app (Inicio, Reservar, Consultar). </br>
+ * Muestra el mensaje de bienvenida. </br>
+ * Recordatorio de la inmediata proxima reserva del usuario. </br>
+ * Galeria de imagenes de las salas que pueden ser reservadas. </br>
+ */
 
 public class Inicio extends Fragment {
     private static int NUM_PAGES = 0;

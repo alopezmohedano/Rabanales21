@@ -13,8 +13,8 @@ import java.net.URL;
 
 /**
  * Gestiona la conexion a la BBDD para cancelar una reserva. </p>
- * Envia los datos de cancelacion a un webservice </br>
- * Recibe un JSON si la conexion es correcta y confirma la cancelacion </br>
+ * Envia los datos de cancelacion a un webservice.</br>
+ * Recibe un JSON si la conexion es correcta y confirma la cancelacion.</br>
  */
 
 public class ConexionCancelar extends AsyncTask<String, Void, Integer> {

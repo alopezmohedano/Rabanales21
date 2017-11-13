@@ -3,9 +3,7 @@ package com.example.rabanales21.rabanales21;
 import android.app.Activity;
 import android.content.DialogInterface;
 
-import android.content.Intent;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -14,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +19,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Gestiona la consulta de la BBDD para mostar una lista con todas las reservas del usuario, con opcion a eliminarlas.
+ * Adaptador que gestiona el CardView con la  lista de todas las reservas del usuario, con opcion a eliminarlas.
  */
 
 public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.SadapterViewHolder> {
@@ -45,8 +42,6 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
 
     public static class SadapterViewHolder extends RecyclerView.ViewHolder {
 
-        // Campos respectivos de un item
-
         public TextView txtsala;
         public TextView txtfechainicio;
         public TextView txtnombreusuario;
@@ -55,7 +50,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
         public Button btneliminar;
 
         /**
-         * Asigna los elementos a los campos declarados anteriormente
+         * Asigna los elementos a los campos declarados previamente
          * @param v Cada uno de los elementos que contiene una reserva
          */
 
@@ -97,7 +92,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
     /**
      * Rellena los elementos con los datos obtenidos de la consulta a la BBDD.
      * @param viewHolder los elementos que conforman la reserva
-     * @param i indice para rellenar cada reserva individualmente
+     * @param i indice para rellenar la tarjeta de cada reserva individualmente
      */
 
     @Override
@@ -136,11 +131,11 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
                             Integer respuesta = miCon.execute(myController.datosLlamada(miPagina, miWhere)).get();
 
                             if (respuesta == 1){
-                                Toast.makeText(view.getContext(), "La reserva se ha cancelado correctamente", Toast.LENGTH_LONG).show();
+                                Toast.makeText(view.getContext(), R.string.confCancel, Toast.LENGTH_LONG).show();
                                 FragmentManager fragmentManager = ((FragmentActivity)view.getContext()).getSupportFragmentManager();
                                 fragmentManager.beginTransaction().replace(R.id.contenedor1, new Consultar()).addToBackStack(null).commit();
                             } else {
-                                Toast.makeText(view.getContext(), "No se ha podido cancelar la reserva", Toast.LENGTH_LONG).show();
+                                Toast.makeText(view.getContext(), R.string.negCancel, Toast.LENGTH_LONG).show();
 
                             }
 
