@@ -174,27 +174,35 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                         } else {
 
-                            camposPassword(View.VISIBLE);
+                            if(respuesta2[2].toString().equals("1")){
 
-                            camposEmpresa(View.VISIBLE);
+                                misFunciones.WarningMessages(getActivity(), "Este usuario no se puede modificar");
 
-                            txtBuscar.setText(getString(R.string.infoBotonBuscado));
+                            } else {
 
-                            btnBuscar.setVisibility(View.GONE);
+                                camposPassword(View.VISIBLE);
 
-                            botonesAccion(View.VISIBLE);
+                                camposEmpresa(View.VISIBLE);
 
-                            edtUsuario.setEnabled(false);
+                                txtBuscar.setText(getString(R.string.infoBotonBuscado));
 
-                            if (edtUsuario.isFocusable()) {
+                                btnBuscar.setVisibility(View.GONE);
 
-                                edtPassword.requestFocus();
+                                botonesAccion(View.VISIBLE);
+
+                                edtUsuario.setEnabled(false);
+
+                                if (edtUsuario.isFocusable()) {
+
+                                    edtPassword.requestFocus();
+
+                                }
+
+                                edtPassword.setText(respuesta2[0].toString());
+
+                                edtEmpresa.setText(respuesta2[1].toString());
 
                             }
-
-                            edtPassword.setText(respuesta2[0].toString());
-
-                            edtEmpresa.setText(respuesta2[1].toString());
 
                         }
 
@@ -266,54 +274,62 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                                 } else {
 
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                    if(respuesta2[2].toString().equals("1")){
 
-                                    builder.setMessage("¿Está seguro de que desea borrar " + edtUsuario.getText().toString() + "?").setCancelable(false)
-                                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int id) {
+                                        misFunciones.WarningMessages(getActivity(), "Este usuario no se puede eliminar");
 
-                                                    String miPagina2 = "GestionEmpresas.php";
+                                    } else {
 
-                                                    String miWhere2 = "?nombre_usuario=" + edtUsuario.getText().toString() + "&bandera=" + bandera;
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                                                    try{
-                                                        ConexionGestionEmpresas miCon = new ConexionGestionEmpresas();
+                                        builder.setMessage("¿Está seguro de que desea borrar " + edtUsuario.getText().toString() + "?").setCancelable(false)
+                                                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
 
-                                                        Integer respuesta = miCon.execute(misFunciones.datosLlamada(miPagina2, miWhere2)).get();
+                                                        String miPagina2 = "GestionEmpresas.php";
 
-                                                        if(respuesta == 1){
+                                                        String miWhere2 = "?nombre_usuario=" + edtUsuario.getText().toString() + "&bandera=" + bandera;
 
-                                                            misFunciones.WarningMessages(getActivity(), "El usuario se ha eliminado correctamente");
+                                                        try{
+                                                            ConexionGestionEmpresas miCon = new ConexionGestionEmpresas();
 
-                                                            nuevoClick();
+                                                            Integer respuesta = miCon.execute(misFunciones.datosLlamada(miPagina2, miWhere2)).get();
 
-                                                        } else {
+                                                            if(respuesta == 1){
 
-                                                            misFunciones.WarningMessages(getActivity(), "El usuario no se encontraba en la base de datos");
+                                                                misFunciones.WarningMessages(getActivity(), "El usuario se ha eliminado correctamente");
+
+                                                                nuevoClick();
+
+                                                            } else {
+
+                                                                misFunciones.WarningMessages(getActivity(), "El usuario no se encontraba en la base de datos");
+
+                                                            }
+
+                                                        } catch (InterruptedException e){
+
+                                                        } catch (ExecutionException e){
 
                                                         }
 
-                                                    } catch (InterruptedException e){
-
-                                                    } catch (ExecutionException e){
+                                                        nuevoClick();
 
                                                     }
+                                                })
+                                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
 
-                                                    nuevoClick();
+                                                        dialog.cancel();
 
-                                                }
-                                            })
-                                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int id) {
+                                                    }
+                                                });
 
-                                                    dialog.cancel();
+                                        AlertDialog alert = builder.create();
 
-                                                }
-                                            });
+                                        alert.show();
 
-                                    AlertDialog alert = builder.create();
-
-                                    alert.show();
+                                    }
 
                                 }
 
@@ -383,11 +399,25 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                                     misFunciones.WarningMessages(getActivity(), "El usuario se ha actualizado correctamente");
 
+                                    camposUsuario(View.VISIBLE);
+
+                                    camposPassword(View.GONE);
+
+                                    camposEmpresa(View.GONE);
+
+                                    camposBuscar(View.VISIBLE);
+
+                                    botonesAccion(View.GONE);
+
                                     nuevoClick();
+
+                                    txtBuscar.setText(getString(R.string.infoBotonBuscar));
+
+                                    edtUsuario.setText("");
 
                                 } else {
 
-                                    misFunciones.WarningMessages(getActivity(), "El usuario ya ha sido actualizado");
+                                    misFunciones.WarningMessages(getActivity(), "No se ha realizado ninguna modificación");
 
                                 }
 

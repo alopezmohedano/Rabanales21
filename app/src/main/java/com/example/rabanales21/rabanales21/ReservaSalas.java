@@ -39,6 +39,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
     Spinner spEnd;
     Button btnDate;
     String fechaEscogida;
+    TextView tvStart;
+    TextView tvEnd;
 
 
     @Override
@@ -60,8 +62,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         btnReservar.setEnabled(false);
 
-        final TextView tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
-        final TextView tvEnd = (TextView) (getActivity().findViewById(R.id.tvEnd));
+        tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
+        tvEnd = (TextView) (getActivity().findViewById(R.id.tvEnd));
 
         tvStart.setVisibility(View.GONE);
         tvEnd.setVisibility(View.GONE);
@@ -123,12 +125,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                 btnDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year);
                 calendarView.setVisibility(View.GONE);
-                spStart.setVisibility(View.VISIBLE);
-                tvStart.setVisibility(View.VISIBLE);
-                spEnd.setVisibility(View.VISIBLE);
-                tvEnd.setVisibility(View.VISIBLE);
-                btnReservar.setVisibility(View.VISIBLE);
-                btnReservar.setEnabled(true);
+
 
 
                 horasStart.clear();
@@ -192,12 +189,30 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                         Toast.makeText(getContext(), ""+e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
-                spStart.setSelection(0);
-                spEnd.setSelection(0);
+                if (horasStart.isEmpty()) {
+                    tvStart.setText("NO HAY HORAS DISPONIBLES");
+                    tvStart.setVisibility(View.VISIBLE);
+                    tvEnd.setVisibility(View.GONE);
+                    btnReservar.setVisibility(View.GONE);
+                    spStart.setVisibility(View.GONE);
+                    spEnd.setVisibility(View.GONE);
+                } else  {
+                    tvStart.setText("HORA INICIO");
+                    tvStart.setVisibility(View.VISIBLE);
+                    tvEnd.setVisibility(View.VISIBLE);
+                    btnReservar.setVisibility(View.VISIBLE);
+                    btnReservar.setEnabled(true);
+                    spStart.setVisibility(View.VISIBLE);
+                    spEnd.setVisibility(View.VISIBLE);
+                    spStart.setSelection(0);
+                    spEnd.setSelection(0);
+                }
             }
         });
 
-        spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
+        if (!horasStart.isEmpty()) {
+            spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
+
         spStart.setVisibility(View.GONE);
         spStart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -215,6 +230,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         });
 
 
+
         spEnd.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasEnd));
         spEnd.setVisibility(View.GONE);
         spEnd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -230,7 +246,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
             }
         });
-
+        }
         ((MenuActivity)getActivity()).setBoleano(false);
     }
 
@@ -253,8 +269,18 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
             case R.id.btnDate:
                 if (calendarView.getVisibility() == View.GONE) {
                     calendarView.setVisibility(View.VISIBLE);
+                    tvStart.setVisibility(View.GONE);
+                    spStart.setVisibility(View.GONE);
+                    tvEnd.setVisibility(View.GONE);
+                    spEnd.setVisibility(View.GONE);
                 } else {
                     calendarView.setVisibility(View.GONE);
+                    if(!btnDate.getText().toString().equals("FECHA")){
+                        tvStart.setVisibility(View.VISIBLE);
+                        spStart.setVisibility(View.VISIBLE);
+                        tvEnd.setVisibility(View.VISIBLE);
+                        spEnd.setVisibility(View.VISIBLE);
+                    }
                 }
                 break;
             case R.id.btnReservar:
