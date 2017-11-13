@@ -34,7 +34,7 @@
 
     <!-- Strings Fragment Inicio -->
     <string name="welcome">Bienvenido a la aplicacion de \n RABANALES 21</string>
-    <string name="nextReserva">Tu proxima reseva es: </string>
+    <string name="nextReserva">Tu próxima reseva</string>
     <string name="noReserva">No tienes ninguna reserva.</string>
 
     <!-- Strings Reserva Salas -->
