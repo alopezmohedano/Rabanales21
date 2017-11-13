@@ -51,8 +51,6 @@ android:padding="16dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:background="@drawable/border_cambiopass"
-                android:backgroundTint="@color/claricons"
                 android:orientation="horizontal"
                 android:padding="0dp"
                 android:visibility="visible">
@@ -91,7 +89,6 @@ android:padding="16dp"
                 android:padding="0dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/border_cambiopass"
                 android:elevation="4dp"
                  />
         </LinearLayout>
