@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?attr/divider"
+            app:theme="@style/ToolbarColoredBackArrow">
             app:popupTheme="@style/AppTheme.PopupOverlay" >
             <LinearLayout
             android:orientation="horizontal"

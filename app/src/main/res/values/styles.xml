@@ -50,7 +50,9 @@
         <item name="textAllCaps">true</item>
     </style>
 
-
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
+    </style>
 
 
 </resources>

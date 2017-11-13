@@ -47,7 +47,11 @@ public class Inicio extends Fragment {
         myCustomPagerAdapter = new MyCustomPagerAdapter(getActivity(), images);
         viewPager.setAdapter(myCustomPagerAdapter);
 
-        TextView tvProxima = (TextView) getActivity().findViewById(R.id.tvProxima);
+        TextView txtdia = (TextView) getActivity().findViewById(R.id.iniciodia);
+        TextView txthora = (TextView) getActivity().findViewById(R.id.iniciohora);
+        TextView txtsala = (TextView) getActivity().findViewById(R.id.inicionombresala);
+        TextView tvProxima = (TextView) getActivity().findViewById(R.id.txtProxima);
+
 
         String miPagina = "proximaReserva.php";
 
@@ -64,7 +68,13 @@ public class Inicio extends Fragment {
 
                 if (respuesta[0] != null) {
 
-                    tvProxima.setText("Tu próxima reserva:\n\n" + respuesta[0] + "\nDía: " + myController.formatoFecha(respuesta[1]) + "\nHora: de " + respuesta[1].substring(11, 16) + " a " + respuesta[2].substring(11,16));
+                    txtdia.setText(myController.formatoFecha(respuesta[1]));
+                    txthora.setText(respuesta[1].substring(11, 16) + " a " + respuesta[2].substring(11,16));
+                    txtsala.setText(respuesta[0]);
+
+
+                    //("Tu próxima reserva:\n\n" + respuesta[0] + "\nDía: " + myController.formatoFecha(respuesta[1]) + "\nHora: de " + respuesta[1].substring(11, 16) + " a " + respuesta[2].substring(11,16));
+
 
                 } else {
                     tvProxima.setText(R.string.noReserva);
@@ -81,24 +91,24 @@ public class Inicio extends Fragment {
 
             }
         }
-            NUM_PAGES = images.length;
-            final Handler handler = new Handler();
-            final Runnable Update = new Runnable() {
-                public void run() {
-                    if (currentPage == NUM_PAGES) {
-                        currentPage = 0;
-                    }
-                    viewPager.setCurrentItem(currentPage++, true);
+        NUM_PAGES = images.length;
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == NUM_PAGES) {
+                    currentPage = 0;
                 }
-            };
-            Timer swipeTimer = new Timer();
-            swipeTimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    handler.post(Update);
-                }
-            }, 3000, 3000);
+                viewPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 3000, 3000);
 
-            ((MenuActivity)getActivity()).setBoleano(true);
+        ((MenuActivity)getActivity()).setBoleano(true);
     }
 }
