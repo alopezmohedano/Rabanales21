@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Pantalla principal de la aplicacion, desde la que se realiza el login de usuario. </p>
+ */
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     FuncionesGenerales myController = new FuncionesGenerales();

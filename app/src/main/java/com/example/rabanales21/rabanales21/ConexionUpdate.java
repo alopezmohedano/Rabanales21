@@ -13,8 +13,8 @@ import java.net.URL;
 
 /**
  * Gestiona la conexion a la BBDD para modificar usuarios. </p>
- * Envia los datos modificados a un webservice </br>
- * Recibe un JSON si la conexion es correcta confirmando el update </br>
+ * Envia los datos modificados a un webservice. </br>
+ * Recibe un JSON si la conexion es correcta confirmando el update. </br>
  */
 
 public class ConexionUpdate extends AsyncTask<String, Void, Integer> {

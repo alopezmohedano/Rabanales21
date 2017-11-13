@@ -91,6 +91,8 @@
     <string name="infoBotonBuscado">Para realizar una nueva busqueda, pulse el botón Modificar</string>
     <string name="nodataEmpresa">Deben existir los datos de la empresa</string>
     <string name="wrongOption">No se ha elegido una opción correcta</string>
+    <string name="confUserCreated">El usuario se ha creado correctamente</string>
+    <string name="repetUser">El usuario ya ha sido creado</string>
 
     <!-- Strings AdaptadorReservas -->
     <string name="warning">Atención</string>
@@ -102,6 +104,9 @@
     <string name="usuario">Usuario :</string>
     <string name="hora">Hora:</string>
     <string name="cancelar">Cancelar</string>
+    <string name="confCancel">La reserva se ha cancelado correctamente</string>
+    <string name="negCancel">No se ha podido cancelar la reserva</string>
+
 
 
 </resources>

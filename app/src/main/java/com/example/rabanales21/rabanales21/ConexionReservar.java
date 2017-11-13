@@ -13,8 +13,8 @@ import java.net.URL;
 
 /**
  * Gestiona la conexion a la BBDD para realizar la reserva. </p>
- * Envia los datos de reserva a un webservice </br>
- * Recibe un JSON si la conexion es correcta confirmando la reserva </br>
+ * Envia los datos de reserva a un webservice. </br>
+ * Recibe un JSON si la conexion es correcta confirmando la reserva. </br>
  */
 
 public class ConexionReservar extends AsyncTask<String, Void, String> {

@@ -12,7 +12,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Eduardo on 12/11/2017.
+ * Gestiona la conexion a la BBDD para realizar la busqueda de usuarios. </p>
+ * Envia los datos de consulta a un webservice. </br>
+ * Recibe un JSON si la conexion es correcta con los datos requeridos. </br>
  */
 
 public class BusquedaUsuarios extends AsyncTask<String, Void, String[]> {

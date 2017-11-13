@@ -13,8 +13,8 @@ import java.net.URL;
 
 /**
  * Gestiona la conexion a la BBDD para realizar el login de usuario.</p>
- * Envia los datos de login a un webservice </br>
- * Recibe un JSON si la conexion es correcta con los datos de usuario </br>
+ * Envia los datos de login a un webservice. </br>
+ * Recibe un JSON si la conexion es correcta con los datos de usuario. </br>
  */
 
 public class ConexionAsincrona extends AsyncTask<String, Void, String[]> {
