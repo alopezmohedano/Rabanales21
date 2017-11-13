@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.view.ViewPager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -51,6 +52,9 @@ public class Inicio extends Fragment {
         TextView txthora = (TextView) getActivity().findViewById(R.id.iniciohora);
         TextView txtsala = (TextView) getActivity().findViewById(R.id.inicionombresala);
         TextView tvProxima = (TextView) getActivity().findViewById(R.id.txtProxima);
+        LinearLayout fechas = (LinearLayout) getActivity().findViewById(R.id.fechas);
+        LinearLayout horas = (LinearLayout) getActivity().findViewById(R.id.horas);
+
 
 
         String miPagina = "proximaReserva.php";
@@ -68,6 +72,10 @@ public class Inicio extends Fragment {
 
                 if (respuesta[0] != null) {
 
+
+                    fechas.setVisibility(View.VISIBLE);
+                    horas.setVisibility(View.VISIBLE);
+
                     txtdia.setText(myController.formatoFecha(respuesta[1]));
                     txthora.setText(respuesta[1].substring(11, 16) + " a " + respuesta[2].substring(11,16));
                     txtsala.setText(respuesta[0]);
@@ -78,6 +86,8 @@ public class Inicio extends Fragment {
 
                 } else {
                     tvProxima.setText(R.string.noReserva);
+                    horas.setVisibility(View.GONE);
+                    fechas.setVisibility(View.GONE);
                 }
 
 
