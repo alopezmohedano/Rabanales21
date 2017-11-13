@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -137,8 +138,14 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
 
                             if (respuesta == 1){
                                 Toast.makeText(view.getContext(), "La reserva se ha cancelado correctamente", Toast.LENGTH_LONG).show();
+                                Consultar fragment = new Consultar();
+                                if (items.get(i).getTipo_usuario() == "1") {
+                                    Bundle arguments = new Bundle();
+                                    arguments.putString("reservas", "todas");
+                                    fragment.setArguments(arguments);
+                                }
                                 FragmentManager fragmentManager = ((FragmentActivity)view.getContext()).getSupportFragmentManager();
-                                fragmentManager.beginTransaction().replace(R.id.contenedor1, new Consultar()).addToBackStack(null).commit();
+                                fragmentManager.beginTransaction().replace(R.id.contenedor1, fragment).addToBackStack(null).commit();
                             } else {
                                 Toast.makeText(view.getContext(), "No se ha podido cancelar la reserva", Toast.LENGTH_LONG).show();
 

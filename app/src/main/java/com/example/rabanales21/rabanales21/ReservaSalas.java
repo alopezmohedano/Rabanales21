@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
@@ -39,6 +40,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
     Button btnDate;
     String fechaEscogida;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,7 +52,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //setContentView(R.layout.activity_reservar);
 
         btnDate = (Button) (getActivity().findViewById(R.id.btnDate));
         btnDate.setOnClickListener(this);
@@ -59,7 +60,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         btnReservar.setEnabled(false);
 
-        // TextView tvDate = (TextView) findViewById(R.id.tvDate);
         final TextView tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
         final TextView tvEnd = (TextView) (getActivity().findViewById(R.id.tvEnd));
 
@@ -91,6 +91,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 spEnd.setVisibility(View.GONE);
                 btnReservar.setVisibility(View.GONE);
                 btnDate.setText("FECHA");
+                calendarView.setDate(System.currentTimeMillis());
             }
 
             @Override
@@ -101,10 +102,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         for (int i=7; i<22; i++) {horasStart.add(i+":00");}
         for (int i=8; i<23; i++) {horasEnd.add(i+":00");}
-
-        // int[] testReserva = {9,14};
-
-        // eliminarIntervaloReserva(testReserva);
 
         calendarView = (CalendarView) (getActivity().findViewById(R.id.calendarView));
 
@@ -132,8 +129,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 tvEnd.setVisibility(View.VISIBLE);
                 btnReservar.setVisibility(View.VISIBLE);
                 btnReservar.setEnabled(true);
-                spStart.setSelection(0);
-                spEnd.setSelection(0);
+
 
                 horasStart.clear();
                 for (int i=7; i<22; i++) {horasStart.add(i+":00");}
@@ -158,12 +154,12 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 if (getActivity().getIntent().hasExtra("respuestaLogin")) {
                     String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
                     int codUsuario = Integer.parseInt(datosUsuario[3]);
-                    if (getArguments() != null) {
+                    /*if (getArguments() != null) {
                         Bundle arguments = getArguments();
                         numeroSala = arguments.getInt("sala");
-                    }
+                    }*/
 
-                    String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (numeroSala + 1);
+                    String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (spSalas.getSelectedItemId() + 1);
 
                     try {
 
@@ -196,6 +192,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                         Toast.makeText(getContext(), ""+e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
+                spStart.setSelection(0);
+                spEnd.setSelection(0);
             }
         });
 

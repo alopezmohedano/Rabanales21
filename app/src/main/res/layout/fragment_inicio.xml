@@ -18,8 +18,9 @@ android:padding="16dp"
             android:layout_height="match_parent"
             android:background="@drawable/border_notas"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:orientation="vertical"
-            android:elevation="2dp">
+            android:elevation="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView3"
