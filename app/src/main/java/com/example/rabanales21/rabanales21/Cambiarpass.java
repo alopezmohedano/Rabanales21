@@ -72,6 +72,9 @@ public class Cambiarpass extends Fragment {
                                     resultado = miCon.execute(misFunciones.datosLlamada(miPagina, miWhere)).get();
                                     if (resultado == 1) {
                                         misFunciones.WarningMessages(getActivity(), getString(R.string.changeWarning));
+                                        edtAntiguo.setText("");
+                                        edtNuevo.setText("");
+                                        edtRepetido.setText("");
                                     } else {
                                         misFunciones.WarningMessages(getActivity(), getString(R.string.wrongPassWarning));
                                     }

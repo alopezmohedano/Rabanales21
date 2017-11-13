@@ -24,7 +24,7 @@ public class BusquedaUsuarios extends AsyncTask<String, Void, String[]> {
 
         StringBuilder resul;
 
-        String[] auxiliar = new String[2];
+        String[] auxiliar = new String[3];
 
         try {
 
@@ -59,6 +59,8 @@ public class BusquedaUsuarios extends AsyncTask<String, Void, String[]> {
                 auxiliar[0] = json.getJSONObject(0).get("pass").toString();
 
                 auxiliar[1] = json.getJSONObject(0).get("nombre_empresa").toString();
+
+                auxiliar[2] = json.getJSONObject(0).get("tipo").toString();
 
             }
 
