@@ -125,12 +125,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
                 btnDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year);
                 calendarView.setVisibility(View.GONE);
-                spStart.setVisibility(View.VISIBLE);
-                tvStart.setVisibility(View.VISIBLE);
-                spEnd.setVisibility(View.VISIBLE);
-                tvEnd.setVisibility(View.VISIBLE);
-                btnReservar.setVisibility(View.VISIBLE);
-                btnReservar.setEnabled(true);
+
 
 
                 horasStart.clear();
@@ -194,12 +189,30 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                         Toast.makeText(getContext(), ""+e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
-                spStart.setSelection(0);
-                spEnd.setSelection(0);
+                if (horasStart.isEmpty()) {
+                    tvStart.setText("NO HAY HORAS DISPONIBLES");
+                    tvStart.setVisibility(View.VISIBLE);
+                    tvEnd.setVisibility(View.GONE);
+                    btnReservar.setVisibility(View.GONE);
+                    spStart.setVisibility(View.GONE);
+                    spEnd.setVisibility(View.GONE);
+                } else  {
+                    tvStart.setText("HORA INICIO");
+                    tvStart.setVisibility(View.VISIBLE);
+                    tvEnd.setVisibility(View.VISIBLE);
+                    btnReservar.setVisibility(View.VISIBLE);
+                    btnReservar.setEnabled(true);
+                    spStart.setVisibility(View.VISIBLE);
+                    spEnd.setVisibility(View.VISIBLE);
+                    spStart.setSelection(0);
+                    spEnd.setSelection(0);
+                }
             }
         });
 
-        spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
+        if (!horasStart.isEmpty()) {
+            spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
+
         spStart.setVisibility(View.GONE);
         spStart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -217,6 +230,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
         });
 
 
+
         spEnd.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasEnd));
         spEnd.setVisibility(View.GONE);
         spEnd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -232,7 +246,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
             }
         });
-
+        }
         ((MenuActivity)getActivity()).setBoleano(false);
     }
 
