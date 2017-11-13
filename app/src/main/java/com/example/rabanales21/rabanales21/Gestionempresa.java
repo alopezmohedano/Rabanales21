@@ -462,6 +462,16 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
         edtUsuario.setFocusable(true);
 
+        if(bandera == 3){
+
+            btnGuardar.setText("Eliminar");
+
+        } else {
+
+            btnGuardar.setText("Guardar");
+
+        }
+
     }
 
     private Boolean camposVacios(){
