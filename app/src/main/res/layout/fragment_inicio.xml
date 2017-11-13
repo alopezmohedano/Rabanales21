@@ -41,57 +41,133 @@ android:padding="16dp"
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_notas"
+            android:layout_margin="8dp"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/border_proxima"
             android:backgroundTint="@color/divider"
-            android:orientation="vertical">
+            android:elevation="10dp"
+            android:orientation="vertical"
+
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/txtProxima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nextReserva"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
 
             <LinearLayout
+                android:id="@+id/fechas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:padding="0dp"
-                android:visibility="visible">
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvProxima"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignStart="@+id/viewPager"
-                    android:layout_below="@+id/textView3"
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Día : "
                     android:layout_weight="1"
-                    android:elevation="2dp"
-                    android:layout_margin="4dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="@string/nextReserva"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    android:textStyle="italic" />
+                    android:textColor="@color/primary_text"/>
+
+                <TextView
+                    android:id="@+id/iniciodia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_text"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"/>
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"/>
+
+
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/horas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hora :"
+                    android:textColor="@color/primary_text" />
+
+                <TextView
+                    android:id="@+id/iniciohora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold" />
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/inicionombresala"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:gravity="left|bottom"
+                android:paddingBottom="0dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
+
+
+        </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:padding="0.5dp"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginTop="23dp"
+            android:orientation="vertical">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="0dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:elevation="4dp"
-                 />
+                android:padding="0dp" />
         </LinearLayout>
 
     </LinearLayout>
-
 </RelativeLayout>
