@@ -1,9 +1,11 @@
 package com.example.rabanales21.rabanales21;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,8 +92,6 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                 bandera = 1;
 
-                linear.setVisibility(View.VISIBLE);
-
                 camposUsuario(View.VISIBLE);
 
                 camposPassword(View.VISIBLE);
@@ -107,10 +107,6 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.btnModificarEmpresa:
-
-                bandera = 2;
-
-                linear.setVisibility(View.VISIBLE);
 
                 camposUsuario(View.VISIBLE);
 
@@ -131,8 +127,6 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
             case R.id.btnEliminarEmpresa:
 
                 bandera = 3;
-
-                linear.setVisibility(View.VISIBLE);
 
                 camposUsuario(View.VISIBLE);
 
@@ -156,29 +150,67 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
             case R.id.btnBuscarDatos:
 
-                bandera = 4;
+                bandera = 2;
 
-                camposPassword(View.VISIBLE);
+                if (misFunciones.badUser(edtUsuario.getText().toString())) {
 
-                camposEmpresa(View.VISIBLE);
+                    misFunciones.WarningMessages(getActivity(), getString(R.string.emptyUser));
 
-                txtBuscar.setText(getString(R.string.infoBotonBuscado));
+                } else {
 
-                btnBuscar.setVisibility(View.GONE);
+                    miPagina = "BusquedaUsuarios.php";
 
-                botonesAccion(View.VISIBLE);
+                    miWhere = "?nombre_usuario=" + edtUsuario.getText().toString();
 
-                edtUsuario.setEnabled(false);
+                    try {
 
-                if (edtUsuario.isFocusable()) {
+                        BusquedaUsuarios miBusqueda = new BusquedaUsuarios();
 
-                    edtPassword.requestFocus();
+                        String[] respuesta2 = miBusqueda.execute(misFunciones.datosLlamada(miPagina, miWhere)).get();
+
+                        if (respuesta2[0] == null) {
+
+                            misFunciones.WarningMessages(getActivity(), "El usuario no existe");
+
+                        } else {
+
+                            camposPassword(View.VISIBLE);
+
+                            camposEmpresa(View.VISIBLE);
+
+                            txtBuscar.setText(getString(R.string.infoBotonBuscado));
+
+                            btnBuscar.setVisibility(View.GONE);
+
+                            botonesAccion(View.VISIBLE);
+
+                            edtUsuario.setEnabled(false);
+
+                            if (edtUsuario.isFocusable()) {
+
+                                edtPassword.requestFocus();
+
+                            }
+
+                            edtPassword.setText(respuesta2[0].toString());
+
+                            edtEmpresa.setText(respuesta2[1].toString());
+
+                        }
+
+                    } catch (InterruptedException e) {
+
+                    } catch (ExecutionException e) {
+
+                    }
 
                 }
 
                 break;
 
             case R.id.btnHacerOperacion:
+
+                Boolean exito = false;
 
                 switch (bandera){
 
@@ -190,11 +222,27 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                             miWhere = "?nombre_usuario=" + edtUsuario.getText().toString() + "&password=" + edtPassword.getText().toString() + "&nombre_empresa=" + edtEmpresa.getText().toString() + "&bandera=" + bandera;
 
+                            exito = true;
+
                         }
 
                         break;
 
                     case 2:
+
+                        if(!camposVacios()){
+
+                            miPagina = "GestionEmpresas.php";
+
+                            miWhere = "?nombre_usuario=" + edtUsuario.getText().toString() + "&password=" + edtPassword.getText().toString() + "&nombre_empresa=" + edtEmpresa.getText().toString() + "&bandera=" + bandera;
+
+                            exito = true;
+
+                        }
+
+                        break;
+
+                    case 3:
 
                         if (misFunciones.badUser(edtUsuario.getText().toString())) {
 
@@ -202,15 +250,80 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                         } else {
 
-                            miPagina = "GestionEmpresas.php";
+                            miPagina = "BusquedaUsuarios.php";
 
-                            miWhere = "?nombre_usuario=" + edtUsuario.getText().toString() + "&bandera=" + bandera;
+                            miWhere = "?nombre_usuario=" + edtUsuario.getText().toString();
+
+                            try {
+
+                                BusquedaUsuarios miBusqueda = new BusquedaUsuarios();
+
+                                String[] respuesta2 = miBusqueda.execute(misFunciones.datosLlamada(miPagina, miWhere)).get();
+
+                                if (respuesta2[0] == null) {
+
+                                    misFunciones.WarningMessages(getActivity(), "El usuario no existe");
+
+                                } else {
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                                    builder.setMessage("¿Está seguro de que desea borrar " + edtUsuario.getText().toString() + "?").setCancelable(false)
+                                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+
+                                                    String miPagina2 = "GestionEmpresas.php";
+
+                                                    String miWhere2 = "?nombre_usuario=" + edtUsuario.getText().toString() + "&bandera=" + bandera;
+
+                                                    try{
+                                                        ConexionGestionEmpresas miCon = new ConexionGestionEmpresas();
+
+                                                        Integer respuesta = miCon.execute(misFunciones.datosLlamada(miPagina2, miWhere2)).get();
+
+                                                        if(respuesta == 1){
+
+                                                            misFunciones.WarningMessages(getActivity(), "El usuario se ha eliminado correctamente");
+
+                                                            nuevoClick();
+
+                                                        } else {
+
+                                                            misFunciones.WarningMessages(getActivity(), "El usuario no se encontraba en la base de datos");
+
+                                                        }
+
+                                                    } catch (InterruptedException e){
+
+                                                    } catch (ExecutionException e){
+
+                                                    }
+
+                                                    nuevoClick();
+
+                                                }
+                                            })
+                                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+
+                                                    dialog.cancel();
+
+                                                }
+                                            });
+
+                                    AlertDialog alert = builder.create();
+
+                                    alert.show();
+
+                                }
+
+                            } catch (InterruptedException e) {
+
+                            } catch (ExecutionException e) {
+
+                            }
 
                         }
-
-                        break;
-
-                    case 3:
 
                         break;
 
@@ -232,21 +345,27 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                         case 1:
 
-                            ConexionGestionEmpresas miCon = new ConexionGestionEmpresas();
+                            if (exito){
 
-                            Integer respuesta = miCon.execute(misFunciones.datosLlamada(miPagina, miWhere)).get();
+                                ConexionGestionEmpresas miCon = new ConexionGestionEmpresas();
 
-                            if(respuesta == 1){
+                                Integer respuesta = miCon.execute(misFunciones.datosLlamada(miPagina, miWhere)).get();
 
-                                misFunciones.WarningMessages(getActivity(), "El usuario se ha creado correctamente");
+                                if(respuesta == 1){
 
-                                nuevoClick();
+                                    misFunciones.WarningMessages(getActivity(), "El usuario se ha creado correctamente");
+
+                                    nuevoClick();
+
+                                } else {
+
+                                    misFunciones.WarningMessages(getActivity(), "El usuario ya ha sido creado");
+
+                                }
 
                                 edtUsuario.setFocusable(true);
 
-                            } else {
-
-                                misFunciones.WarningMessages(getActivity(), "El usuario ya ha sido creado");
+                                edtUsuario.selectAll();
 
                             }
 
@@ -254,23 +373,27 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                         case 2:
 
-                            BusquedaUsuarios miBusqueda = new BusquedaUsuarios();
+                            if(exito){
 
-                            String[] respuesta2 = miBusqueda.execute(misFunciones.datosLlamada(miPagina, miWhere)).get();
+                                ConexionGestionEmpresas miCon = new ConexionGestionEmpresas();
 
-                            if(respuesta2[0] == null){
+                                Integer respuesta = miCon.execute(misFunciones.datosLlamada(miPagina, miWhere)).get();
 
-                                misFunciones.WarningMessages(getActivity(), "baia baia");
+                                if(respuesta == 1){
 
-                            } else {
+                                    misFunciones.WarningMessages(getActivity(), "El usuario se ha actualizado correctamente");
 
-                                edtPassword.setText(respuesta2[0].toString());
+                                    nuevoClick();
 
-                                edtEmpresa.setText(respuesta2[1].toString());
-                                
+                                } else {
+
+                                    misFunciones.WarningMessages(getActivity(), "El usuario ya ha sido actualizado");
+
+                                }
+
                             }
 
-
+                            break;
 
                     }
 
@@ -327,11 +450,27 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
     private void nuevoClick(){
 
-        edtUsuario.setText("");
+        if(bandera != 2){
+
+            edtUsuario.setText("");
+
+        }
 
         edtPassword.setText("");
 
         edtEmpresa.setText("");
+
+        edtUsuario.setFocusable(true);
+
+        if(bandera == 3){
+
+            btnGuardar.setText("Eliminar");
+
+        } else {
+
+            btnGuardar.setText("Guardar");
+
+        }
 
     }
 
