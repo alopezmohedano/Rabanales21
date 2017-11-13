@@ -89,6 +89,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 tvEnd.setVisibility(View.GONE);
                 spStart.setVisibility(View.GONE);
                 spEnd.setVisibility(View.GONE);
+                btnReservar.setVisibility(View.GONE);
                 btnDate.setText("FECHA");
             }
 
@@ -129,6 +130,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 tvStart.setVisibility(View.VISIBLE);
                 spEnd.setVisibility(View.VISIBLE);
                 tvEnd.setVisibility(View.VISIBLE);
+                btnReservar.setVisibility(View.VISIBLE);
                 btnReservar.setEnabled(true);
                 spStart.setSelection(0);
                 spEnd.setSelection(0);
