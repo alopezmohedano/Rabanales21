@@ -39,6 +39,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
     Spinner spEnd;
     Button btnDate;
     String fechaEscogida;
+    TextView tvStart;
+    TextView tvEnd;
 
 
     @Override
@@ -60,8 +62,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         btnReservar.setEnabled(false);
 
-        final TextView tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
-        final TextView tvEnd = (TextView) (getActivity().findViewById(R.id.tvEnd));
+        tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
+        tvEnd = (TextView) (getActivity().findViewById(R.id.tvEnd));
 
         tvStart.setVisibility(View.GONE);
         tvEnd.setVisibility(View.GONE);
@@ -253,8 +255,18 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
             case R.id.btnDate:
                 if (calendarView.getVisibility() == View.GONE) {
                     calendarView.setVisibility(View.VISIBLE);
+                    tvStart.setVisibility(View.GONE);
+                    spStart.setVisibility(View.GONE);
+                    tvEnd.setVisibility(View.GONE);
+                    spEnd.setVisibility(View.GONE);
                 } else {
                     calendarView.setVisibility(View.GONE);
+                    if(!btnDate.getText().toString().equals("FECHA")){
+                        tvStart.setVisibility(View.VISIBLE);
+                        spStart.setVisibility(View.VISIBLE);
+                        tvEnd.setVisibility(View.VISIBLE);
+                        spEnd.setVisibility(View.VISIBLE);
+                    }
                 }
                 break;
             case R.id.btnReservar:

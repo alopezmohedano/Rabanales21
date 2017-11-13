@@ -67,7 +67,7 @@
     <string name="wrongUser">Usuario o contraseña incorrectos</string>
     <string name="emptyPass">Contraseña vacia o demasiado corta</string>
     <string name="wrongPass">Contraseña de usuario incorrecta</string>
-    <string name="infoLostPass">Por favor para consultar el usuario y contraseña puede ponerse en contacto con nosotros vía teléfono:  957 340 116 o vía email: nfo@rabanales21.com. Gracias por su atención.</string>
+    <string name="infoLostPass">Para consultar el usuario y la contraseña puede ponerse en contacto con nosotros llamando al <b>957 340 116</b> o vía email: <b>info@rabanales21.com</b>. Gracias por su atención.</string>
     <string name="questionLostPass">¿Ha perdido los datos de su cuenta?</string>
 
     <!-- Strings Menu Activity -->
