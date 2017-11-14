@@ -60,6 +60,7 @@
         app:itemIconTint="@color/colorPrimaryDark"
         android:fitsSystemWindows="true"
         app:menu="@menu/activity_menu_drawer"
+
         />
 
 </android.support.v4.widget.DrawerLayout>

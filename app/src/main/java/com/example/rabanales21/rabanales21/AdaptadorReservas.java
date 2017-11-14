@@ -163,11 +163,7 @@ public class AdaptadorReservas extends RecyclerView.Adapter<AdaptadorReservas.Sa
                     }
                 });
                 dialogo1.show();
-
             }
         });
-
     }
-
-
 }
