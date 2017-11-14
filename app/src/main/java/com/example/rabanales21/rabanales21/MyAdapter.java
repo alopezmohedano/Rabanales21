@@ -53,10 +53,8 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.SadapterViewHolde
 
         public SadapterViewHolder(View v) {
             super(v);
-            //imagen = (ImageView) v.findViewById(R.id.imagen);
             nombre = (TextView) v.findViewById(R.id.nombre);
             visitas = (TextView) v.findViewById(R.id.visitas);
-            //cardView = (CardView) v.findViewById(R.id.card);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -109,9 +107,4 @@ public class MyAdapter extends  RecyclerView.Adapter<MyAdapter.SadapterViewHolde
 
 
     }
-
-
-
-
-
 }
