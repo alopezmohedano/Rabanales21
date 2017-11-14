@@ -2,7 +2,6 @@ package com.example.rabanales21.rabanales21;
 
 
 import android.content.DialogInterface;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +20,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+
+/**
+ * Gestiona la seleccion de datos y realizacion de la reserva de salas </p>
+ */
 
 public class ReservaSalas extends Fragment implements View.OnClickListener {
 

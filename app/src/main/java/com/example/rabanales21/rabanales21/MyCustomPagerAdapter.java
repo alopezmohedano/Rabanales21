@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+/**
+ * Gestiona el slider con las fotos de las salas. </p>
+ */
+
 public class MyCustomPagerAdapter extends PagerAdapter{
     Context context;
     int images[];

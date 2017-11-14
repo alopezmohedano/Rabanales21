@@ -1,5 +1,9 @@
 package com.example.rabanales21.rabanales21;
 
+/**
+ * Bean de Salas </p>
+ */
+
 public class Sala {
     private String nombre;
     private Integer codigoSala;
