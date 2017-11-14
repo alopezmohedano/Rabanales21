@@ -43,6 +43,34 @@ public class FuncionesGenerales {
 
     }
 
+    public boolean badCompany(String company){
+
+        Boolean error = false;
+
+        String[] valuesCompany = company.split("");
+
+        if(valuesCompany.length == 1){
+
+            error = true;
+
+        } else {
+
+            for (String data:valuesCompany){
+
+                if(data.equals(",") || data.equals(";") || data.equals(":")){
+
+                    error = true;
+
+                }
+
+            }
+
+        }
+
+        return error;
+
+    }
+
     /**
      * Gestiona las comprobaciones de seguridad de las passwords. </p>
      * @param pass la password que va a ser comprobada.

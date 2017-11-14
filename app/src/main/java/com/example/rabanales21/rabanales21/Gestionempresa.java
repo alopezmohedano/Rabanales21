@@ -228,6 +228,10 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
                             miPagina = "GestionEmpresas.php";
 
+                            if(edtEmpresa.getText().toString().contains(" ")){
+                                edtEmpresa.setText(edtEmpresa.getText().toString().replace(" ", "%20"));
+                            }
+
                             miWhere = "?nombre_usuario=" + edtUsuario.getText().toString() + "&password=" + edtPassword.getText().toString() + "&nombre_empresa=" + edtEmpresa.getText().toString() + "&bandera=" + bandera;
 
                             exito = true;
@@ -514,7 +518,7 @@ public class Gestionempresa extends Fragment implements View.OnClickListener{
 
             error = true;
 
-        } else if(misFunciones.badUser(edtEmpresa.getText().toString())){
+        } else if(misFunciones.badCompany(edtEmpresa.getText().toString())){
 
             misFunciones.WarningMessages(getActivity(), getString(R.string.nodataEmpresa));
 
