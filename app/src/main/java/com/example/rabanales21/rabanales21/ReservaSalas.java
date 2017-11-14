@@ -41,6 +41,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
     String fechaEscogida;
     TextView tvStart;
     TextView tvEnd;
+    TextView tvProyector;
 
 
     @Override
@@ -64,6 +65,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
 
         tvStart = (TextView) (getActivity().findViewById(R.id.tvStart));
         tvEnd = (TextView) (getActivity().findViewById(R.id.tvEnd));
+        tvProyector = (TextView) (getActivity().findViewById(R.id.tvProyector));
+        tvProyector.setVisibility(View.GONE);
 
         tvStart.setVisibility(View.GONE);
         tvEnd.setVisibility(View.GONE);
@@ -92,6 +95,7 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 spStart.setVisibility(View.GONE);
                 spEnd.setVisibility(View.GONE);
                 btnReservar.setVisibility(View.GONE);
+                tvProyector.setVisibility(View.GONE);
                 btnDate.setText("FECHA");
                 calendarView.setDate(System.currentTimeMillis());
             }
@@ -202,6 +206,11 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                     spEnd.setSelection(0);
                     spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
                     spEnd.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasEnd));
+                    if (spSalas.getSelectedItemId() == 1 || spSalas.getSelectedItemId() == 4) {
+                        tvProyector.setVisibility(View.VISIBLE);
+                    } else {
+                        tvProyector.setVisibility(View.GONE);
+                    }
                 }
             }
         });
