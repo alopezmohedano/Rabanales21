@@ -46,11 +46,11 @@ public class Muestra_salas extends Fragment {
         recycler = (RecyclerView)v.findViewById(R.id.reciclador);
         recycler.setHasFixedSize(true);
 
-// Usar un administrador para LinearLayout
+        // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(inflater.getContext());
         recycler.setLayoutManager(lManager);
 
-// Crear un nuevo adaptador
+        // Crear un nuevo adaptador
         adapter = new MyAdapter(items);
         recycler.setAdapter(adapter);
         /*recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -90,8 +90,6 @@ public class Muestra_salas extends Fragment {
         }
         );*/
         return  v;
-
-
     }
 
     @Override

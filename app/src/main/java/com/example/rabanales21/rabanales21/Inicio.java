@@ -72,17 +72,12 @@ public class Inicio extends Fragment {
 
                 if (respuesta[0] != null) {
 
-
                     fechas.setVisibility(View.VISIBLE);
                     horas.setVisibility(View.VISIBLE);
 
                     txtdia.setText(myController.formatoFecha(respuesta[1]));
                     txthora.setText(respuesta[1].substring(11, 16) + " a " + respuesta[2].substring(11,16));
                     txtsala.setText(respuesta[0]);
-
-
-                    //("Tu próxima reserva:\n\n" + respuesta[0] + "\nDía: " + myController.formatoFecha(respuesta[1]) + "\nHora: de " + respuesta[1].substring(11, 16) + " a " + respuesta[2].substring(11,16));
-
 
                 } else {
                     tvProxima.setText(R.string.noReserva);

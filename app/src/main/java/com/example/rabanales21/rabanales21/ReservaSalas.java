@@ -1,9 +1,8 @@
 package com.example.rabanales21.rabanales21;
 
-import android.content.Context;
+
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,8 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class ReservaSalas extends Fragment implements View.OnClickListener {
@@ -149,10 +146,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 if (getActivity().getIntent().hasExtra("respuestaLogin")) {
                     String[] datosUsuario = getActivity().getIntent().getStringArrayExtra("respuestaLogin");
                     int codUsuario = Integer.parseInt(datosUsuario[3]);
-                    /*if (getArguments() != null) {
-                        Bundle arguments = getArguments();
-                        numeroSala = arguments.getInt("sala");
-                    }*/
 
                     String miWhere = "?cod_usuario=" + codUsuario + "&cod_sala=" + (spSalas.getSelectedItemId() + 1);
 
