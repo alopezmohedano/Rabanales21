@@ -126,8 +126,6 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                 btnDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year);
                 calendarView.setVisibility(View.GONE);
 
-
-
                 horasStart.clear();
                 for (int i=7; i<22; i++) {horasStart.add(i+":00");}
 
@@ -206,6 +204,8 @@ public class ReservaSalas extends Fragment implements View.OnClickListener {
                     spEnd.setVisibility(View.VISIBLE);
                     spStart.setSelection(0);
                     spEnd.setSelection(0);
+                    spStart.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasStart));
+                    spEnd.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, horasEnd));
                 }
             }
         });
