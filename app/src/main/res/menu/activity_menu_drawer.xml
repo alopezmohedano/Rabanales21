@@ -53,7 +53,7 @@
         <menu>
             <item
                 android:id="@+id/cambiarpass"
-                android:icon="@android:drawable/ic_partial_secure"
+                android:icon="@drawable/candado"
                 android:title="Cambiar contraseña" />
             <item
                 android:id="@+id/cerrarsesion"
