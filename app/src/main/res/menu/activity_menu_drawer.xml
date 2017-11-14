@@ -10,7 +10,7 @@
         <item
             android:id="@+id/salas"
             android:icon="@mipmap/ic_sala"
-            android:title="Salas" />
+            android:title="Lista de salas" />
         <item
             android:id="@+id/salacentgrande"
             android:icon="@mipmap/ic_sala"
@@ -53,11 +53,11 @@
         <menu>
             <item
                 android:id="@+id/cambiarpass"
-                android:icon="@android:drawable/ic_partial_secure"
+                android:icon="@drawable/candado"
                 android:title="Cambiar contraseña" />
             <item
                 android:id="@+id/cerrarsesion"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/icono_logout"
                 android:title="Cerrar sesion" />
         </menu>
     </item>
