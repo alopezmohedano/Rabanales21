@@ -1,5 +1,9 @@
 package com.example.rabanales21.rabanales21;
 
+/**
+ * Bean de Reserva </p>
+ */
+
 public class Reserva {
     String cod_r;
     String cod_s;
